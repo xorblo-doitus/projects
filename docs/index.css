@@ -1,0 +1,29 @@
+#project-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1ch;
+    
+    justify-content: center;
+    
+    margin: 1ch;
+}
+
+body {
+    margin: 0;
+}
+
+.wip {
+    color: chocolate;
+    background-color: yellow;
+    border: 0.1ch solid chocolate;
+    
+    text-align: center;
+    padding: 0.5ch;
+}
+
+lang-select {
+    position: fixed;
+    top: 0.5ch;
+    left: 0.5ch;
+}

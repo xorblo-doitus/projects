@@ -1,0 +1,38 @@
+:host {
+    --corner-radius: 1ch;
+    --width: 40ch;
+}
+
+#card {
+    border: 0.1ch solid black;
+    border-radius: var(--corner-radius);
+    width: var(--width);
+    
+    overflow: hidden;
+}
+
+img {
+    /* Diasbled because caused little gap in the corner, overflow: hidden; is better */
+    /* border-radius: var(--corner-radius) var(--corner-radius) 0 0; */
+    width: var(--width);
+    height: auto;
+    
+    border-bottom: 0.1ch solid black;
+}
+
+#title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: black;
+}
+
+a.link {
+    text-decoration: none;
+}
+a.link:hover {
+    text-decoration: underline;
+}
+
+.thin-padding {
+    padding: 1ch;
+}
