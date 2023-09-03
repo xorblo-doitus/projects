@@ -18,6 +18,7 @@ for (const row of parser) {
     translationServer.bindAttribute(newCard, "desc", row.get("title") + "_DESC");
     newCard.setAttribute("thumbnail", row.get("thumbnail"));
     newCard.setAttribute("url", row.get("url"));
+    newCard.setAttribute("tags", row.get("tags"));
     document.getElementById("project-list").appendChild(newCard);
 }
 // end = performance.now();
