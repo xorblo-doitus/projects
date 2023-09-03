@@ -1,5 +1,9 @@
 import { CSVParser } from "../csv-parser/csv-parser.js";
-import { HTMLElementHelper } from "../elements/elements.js";
+import { HTMLElementHelper, SHADOW_HOST_CLASS } from "../elements/elements.js";
+
+
+const TRANSLATION_KEY_ATTR = "trkey";
+const TRANSLATION_LANG_ATTR = "trlang";
 
 
 class TranslationServer {
@@ -11,8 +15,13 @@ class TranslationServer {
 	constructor(CSVData, lang = undefined) {
 		this.boundAttributes = [];
 		
-		this._fallbacks = navigator.languages.slice(1).concat(["en", "fr"])
+		this._fallbacks = navigator.languages.slice(1).concat(["en", "fr"]);
 		this.setup(CSVData, lang);
+		
+		this.trDOM();
+		for (const root of HTMLElementHelper.getRootsRecursive(document)) {
+			this.listenToAddedNodes(root);
+		}
 	}
 	
 	/**
@@ -86,6 +95,10 @@ class TranslationServer {
 	 * @param {String} lang 
 	 */
 	trWithLang(key, lang) {
+		if (this.CSVData == undefined) {
+			return;
+		}
+		
 		return this.CSVData.getCellByHeaders(key, lang, key);
 	}
 	
@@ -95,6 +108,10 @@ class TranslationServer {
 	 * @param {String} key 
 	 */
 	tr(key) {
+		if (this.CSVData == undefined) {
+			return;
+		}
+		
 		let translation = undefined;
 		for (const lang of this.cachedLangs) {
 			translation = this.CSVData.getCellByHeaders(key, this.nonDialect(lang), undefined);
@@ -133,6 +150,49 @@ class TranslationServer {
 		for (const infos of this.boundAttributes) {
 			infos.element.setAttribute(infos.attribute, this.tr(infos.key));
 		}
+		
+		this.trDOM();
+	}
+	
+	
+	trElement(element) {
+		const lang = element.getAttribute(TRANSLATION_LANG_ATTR);
+		if (lang == null) {
+			element.textContent = this.tr(element.getAttribute(TRANSLATION_KEY_ATTR));
+		} else {
+			element.textContent = this.trWithLang(element.getAttribute(TRANSLATION_KEY_ATTR), lang);
+		}
+	}
+	
+	trDOM(DOM = document) {
+		for (const toScan of HTMLElementHelper.getRootsRecursive(DOM)) {
+			for (const element of toScan.querySelectorAll(`[${TRANSLATION_KEY_ATTR}]`)) {
+				this.trElement(element);
+			}
+		}
+	}
+	
+	listenToAddedNodes(DOM) {
+		const pseudoThis = this;
+		
+		new MutationObserver(function(mutations) {
+			mutations.forEach(function(mutation) {
+				for(const addedNode of  mutation.addedNodes) {
+					if (addedNode instanceof HTMLElement) {
+						if (addedNode.hasAttribute(TRANSLATION_KEY_ATTR)) {
+							pseudoThis.trElement(addedNode);
+						}
+						if (addedNode.classList.contains(SHADOW_HOST_CLASS)) {
+							pseudoThis.trDOM(addedNode.shadowRoot);
+							pseudoThis.listenToAddedNodes(addedNode.shadowRoot);
+						}
+					}
+				}
+			})
+		}).observe(DOM, {
+			childList: true,
+			subtree: true,
+		});
 	}
 }
 const translationServer = new TranslationServer();
@@ -182,8 +242,8 @@ class LangSelect extends HTMLElementHelper {
 		}
 	}
 }
-HTMLElementHelper.register("lang-select", LangSelect, "lib/patou/localization/lang-select/lang-select.html")
+HTMLElementHelper.register("lang-select", LangSelect, "lib/patou/localization/lang-select/lang-select.html");
 
 
 
-export { translationServer, TranslationServer, LangSelect }
+export { translationServer, TranslationServer, LangSelect };

@@ -1,3 +1,6 @@
+const SHADOW_HOST_CLASS = "shadow-host";
+
+
 class HTMLElementHelper extends HTMLElement {
 	static allInnerHTML = new Map();
 	
@@ -16,6 +19,10 @@ class HTMLElementHelper extends HTMLElement {
 		// 	},
 		// 	3000 // Enough for slow 3G (tested with devtool's throttling)
 		// );
+	}
+	
+	connectedCallback() {
+		this.classList.add(SHADOW_HOST_CLASS);
 	}
 	
 	
@@ -54,6 +61,25 @@ class HTMLElementHelper extends HTMLElement {
 	querySelectorAll(query) {
 		return this.root.querySelectorAll(query);
 	}
+	
+	static getRootsRecursive(root, includeBaseRoot = true) {
+		let allToScan = [root];
+		let result = includeBaseRoot ? [root] : [];
+		
+		while (allToScan.length != 0) {
+			const subRoots = Array.from(allToScan.pop().querySelectorAll("." + SHADOW_HOST_CLASS)).reduce(
+				(accumulator, newValue) => {
+					accumulator.push(newValue.root);
+					return accumulator;
+				},
+				[]
+			);
+			result = result.concat(subRoots);
+			allToScan = allToScan.concat(subRoots);
+		}
+		
+		return result;
+	}
 }
 
 
@@ -69,4 +95,4 @@ await HTMLElementHelper.register("common-footer", CommonFooter)
 */
 
 
-export {HTMLElementHelper};
+export {HTMLElementHelper, SHADOW_HOST_CLASS};
