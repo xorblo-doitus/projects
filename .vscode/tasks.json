@@ -7,6 +7,11 @@
             "label": "Export data",
             "type": "shell",
             "command": "tasks/export_data.cmd"
+        },
+        {
+            "label": "Update live branch",
+            "type": "shell",
+            "command": "tasks/publish/html/update_live.cmd",
         }
     ]
 }
