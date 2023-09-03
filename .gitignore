@@ -1,5 +1,6 @@
 ## Custom ignores
 drafts/
+.~lock*
 
 # Symlink used to have the the path as on github while testing locally
 docs/projects
