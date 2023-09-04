@@ -30,7 +30,7 @@ img {
     border-color: rgb(80, 0, 0);
 }
 #background[tag="web"] img {
-    content: url("../../projects/assets/images/icons/web.svg");
+    content: url("../../assets/images/icons/web.svg");
     translate: 0 15%;
 }
 #background[tag="arcade"] {
