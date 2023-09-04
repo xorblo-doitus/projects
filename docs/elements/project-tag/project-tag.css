@@ -5,9 +5,14 @@
 
 #background {
     padding: 0.2em;
+    padding-right: 0.35em;
     border-radius: 99999px; /* Extremly high value cause a capsule shape */
     border: 0.1em solid black;
     /* font-size: 0.5em; */
+}
+
+img {
+    height: 1em;
 }
 
 #background[tag="scratch"] {
@@ -15,10 +20,18 @@
     background-color: rgb(245, 115, 0);
     border-color: rgb(245, 70, 0);
 }
+#background[tag="scratch"] img {
+    content: url("https://scratch.mit.edu/favicon.ico");
+    translate: 0 15%;
+}
 #background[tag="web"] {
     color: white;
     background-color: red;
     border-color: rgb(80, 0, 0);
+}
+#background[tag="web"] img {
+    content: url("../../projects/assets/images/icons/web.svg");
+    translate: 0 15%;
 }
 #background[tag="arcade"] {
     background-color: pink;
