@@ -1,5 +1,7 @@
 import { HTMLElementHelper } from "../lib/patou/elements/elements.js";
 import { TokenList } from "../lib/patou/token-list/token-list.js";
+import { TRANSLATION_KEY_ATTR } from "../lib/patou/localization/localization.js";
+
 
 
 class ProjectCard extends HTMLElementHelper {
@@ -82,10 +84,16 @@ class ProjectTag extends HTMLElementHelper {
     get tag() {return this.getAttribute("tag"); }
     
     
+    /**
+     * 
+     * @param {String} attribute 
+     * @param {String} oldValue 
+     * @param {String} newValue 
+     */
     attributeChangedCallback(attribute, oldValue, newValue) {
 		switch (attribute) {
 			case "tag":
-				this.getElementById("tag-text").textContent = newValue;
+				this.getElementById("tag-text").setAttribute(TRANSLATION_KEY_ATTR, newValue.toUpperCase().replace(" ", "_"));
 				this.getElementById("background").setAttribute("tag", newValue);
                 break;
 		}

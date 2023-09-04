@@ -246,4 +246,4 @@ HTMLElementHelper.register("lang-select", LangSelect, "lib/patou/localization/la
 
 
 
-export { translationServer, TranslationServer, LangSelect };
+export { translationServer, TranslationServer, LangSelect, TRANSLATION_KEY_ATTR, TRANSLATION_LANG_ATTR };
