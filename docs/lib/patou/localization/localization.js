@@ -37,7 +37,7 @@ class TranslationServer {
 	
 	set lang(newValue) {
 		this._lang = newValue;
-		document.querySelector("html").lang = this.nonDialect(newValue);
+		document.querySelector("html").lang = newValue;
 		this.refreshCachedLangs();
 	}
 	get lang() {
@@ -63,6 +63,14 @@ class TranslationServer {
 				accumulator.push(currentValue);
 				if (currentValue != this.nonDialect(currentValue)) {
 					accumulator.push(this.nonDialect(currentValue));
+				}
+				return accumulator;
+			},
+			[]
+		).reduce(
+			(accumulator, currentValue) => {
+				if (!accumulator.includes(currentValue)) {
+					accumulator.push(currentValue);
 				}
 				return accumulator;
 			},
@@ -114,7 +122,7 @@ class TranslationServer {
 		
 		let translation = undefined;
 		for (const lang of this.cachedLangs) {
-			translation = this.CSVData.getCellByHeaders(key, this.nonDialect(lang), undefined);
+			translation = this.CSVData.getCellByHeaders(key, lang, undefined);
 			if (translation != undefined && translation != "") {
 				return translation;
 			}
