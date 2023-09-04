@@ -12,12 +12,21 @@ SPACE_ADVENTURE_DESC,Avoid getting hit by asteroids while collecting fuel and ma
 PUZZLE,Puzzle,Puzzle
 PUZZLE_DESC,A puzzle created for a school project.,Un puzzle créé pour un projet scolaire.
 WIP,⚠ Work in progress ⚠,⚠ En construction ⚠
-PLATFORMER,Plateformer,Plateforme
+PLATFORMER,Platformer,Plateforme
+PLATFORMER_DESC,Platformer game.,Jeu de plateforme.
 2D,2D,2D
+2D_DESC,2 dimensionnal game.,Jeu en 2 dimensions.
 ARCADE,Arcade,Arcade
+ARCADE_DESC,Arcade game.,Jeu d’arcade.
 WEB,Browser,Navigateur
+WEB_DESC,"Playable directly inside one’s browser. (Chrome, Firefox, Edge…)","Jouable directement dans le navigateur. (Chrome, Firefox, Edge…)"
 SCRATCH,Scratch,Scratch
+SCRATCH_DESC,Created with Scratch. This is a website for beginner programmers.,"Jeu créé avec Scratch, un site de programmation pour les débutants."
 COOP,Co-op,Coop
+COOP_DESC,Playable cooperatively with your friends.,Jouable en coopération avec des amis.
 SCHOOL,School,Scolaire
+SCHOOL_DESC,Created for school.,Créé pour une activité scolaire.
 1V1,1vs1,1 contre 1
+1V1_DESC,1 versus 1 fighting game.,Jeu de combat en 1 contre 1.
 MULTIPLAYER,Multiplayer,Multijoueur
+MULTIPLAYER_DESC,You can play with other peoples localy.,Se joue à plusieurs. (En local)

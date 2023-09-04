@@ -1,6 +1,6 @@
 import { HTMLElementHelper } from "../lib/patou/elements/elements.js";
 import { TokenList } from "../lib/patou/token-list/token-list.js";
-import { TRANSLATION_KEY_ATTR } from "../lib/patou/localization/localization.js";
+import { TRANSLATION_KEY_ATTR, translationServer } from "../lib/patou/localization/localization.js";
 
 
 
@@ -59,6 +59,7 @@ class ProjectCard extends HTMLElementHelper {
                 for (const tag of this.tagsList) {
                     let newTag = document.createElement("project-tag");
                     newTag.tag = tag;
+                    translationServer.bindAttribute(newTag, "title", tag.toUpperCase() + "_DESC");
                     tagsContainer.appendChild(newTag);
                 }
                 
