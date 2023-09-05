@@ -1,5 +1,18 @@
 class Sorter {
 	/**
+	 * @type {Map<String, function(*, *): Number>}
+	 */
+	comparingFunctions = new Map;
+	
+	/**
+	 * @type {String}
+	 */
+	currentComparingFunction = "";
+	
+	/** @type {Boolean} */
+	reverted = false;
+	
+	/**
 	 * Check elements against these callables, if any return true, it will be included.
 	 * @type {Array<function(*): Boolean>} (element) => {if (should be shown) {return true} else {return false}}
 	 */
@@ -109,6 +122,14 @@ class Sorter {
 				}
 			}
 			result = newResult;
+		}
+		
+		
+		if (this.comparingFunctions.get(this.currentComparingFunction, undefined) != undefined) {
+			result.sort(this.comparingFunctions.get(this.currentComparingFunction));
+		}
+		if (this.reverted) {
+			result.reverse();
 		}
 		
 		

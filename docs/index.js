@@ -9,6 +9,11 @@ class ProjectSorter extends Sorter {
     // includedTags = ["arcade"]; // Testing values.
     // excludedTags = ["multiplayer"]; // Testing values.
     
+    comparingFunctions = new Map([
+        ["title", (a, b) => { return a.title.localeCompare(b.title); }],
+    ]);
+    currentComparingFunction = "";
+    
     /**
      * @param {ProjectCard} element 
      * @returns {String[]}
@@ -66,4 +71,6 @@ for (const row of parser) {
 // console.log(`Iteration took ${end - start} milliseconds`)
 
 
-new ProjectSorter().sort();
+const PROJECT_SORTER = new ProjectSorter();
+PROJECT_SORTER.sort();
+translationServer.addLangChangedListener(() => {PROJECT_SORTER.sort()});
