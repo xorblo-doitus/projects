@@ -154,9 +154,34 @@ class TranslationServer {
 		element.setAttribute(attribute, this.tr(key));
 	}
 	
+	/** @type {CallableFunction[]} */
+	langChangedCallbacks = [];
+	
+	/**
+	 * @param {CallableFunction} callback 
+	 */
+	addLangChangedListener(callback) {
+		this.langChangedCallbacks.push(callback);
+	}
+	
+	/**
+	 * @param {CallableFunction} callback 
+	 */
+	removeLangChangedListener(callback) {
+		const index = this.langChangedCallbacks.indexOf(callback);
+		if (index == -1) {
+			return;
+		}
+		this.langChangedCallbacks.splice(index, 1);
+	}
+	
 	onLangChanged() {
 		for (const infos of this.boundAttributes) {
 			infos.element.setAttribute(infos.attribute, this.tr(infos.key));
+		}
+		
+		for (const callback of this.langChangedCallbacks) {
+			callback();
 		}
 		
 		this.trDOM();
