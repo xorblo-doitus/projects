@@ -17,7 +17,7 @@ class CSVParser {
 	//  * @param {String} line 
 	//  * @returns {Array<String>}
 	//  */
-    // parseLine(line) {
+	// parseLine(line) {
 	// 	let result = [];
 	// 	const parts = line.split(this.valueDelimiter);
 		
@@ -35,12 +35,12 @@ class CSVParser {
 		
 	// 	return result;
 	// }
-    
+	
 	// /**
 	//  * 
 	//  * @param {Array<String>} lines 
 	//  */
-    // parseLines(lines) {
+	// parseLines(lines) {
 	// 	// lines = this.trimCSV(lines); // Inutile depuis `.split("\r\n")` au lieu de `.split("\n")`
 		
 	// 	// lines.reverse()
@@ -61,14 +61,14 @@ class CSVParser {
 	// 		// new EasterEgg(argumentMapper);
 	// 	}
 	// }
-    
+	
 	/**
 	 * Fill data with what is read in text.
 	 * 
 	 * @param {String} text 
 	 * @returns {CSVParser} self
 	 */
-    parseText(text) {
+	parseText(text) {
 		// Clear data
 		this.data.length = 0;
 		
