@@ -13,7 +13,7 @@ class Sorter {
 	reverted = false;
 	
 	/**
-	 * Check elements against these callables, if any return true, it will be included.
+	 * Check elements against these callables, if every return true, it will be included.
 	 * @type {Array<function(*): Boolean>} (element) => {if (should be shown) {return true} else {return false}}
 	 */
 	whiteList = [];
@@ -24,13 +24,13 @@ class Sorter {
 	blackList = [];
 	
 	/**
-	 * When sorting, elements with these tags will be shown.
+	 * When sorting, elements with all these tags will be shown.
 	 * @type {String[]}
 	 */
 	includedTags = [];
 	
 	/**
-	 * When sorting, elements with these tags will NOT be showen.
+	 * When sorting, elements with any of these tags will NOT be showen.
 	 * @type {String[]}
 	 */
 	excludedTags = [];
@@ -77,28 +77,25 @@ class Sorter {
 		let result = [];
 		
 		// White List
-		let dropped = [];
 		if (this.whiteList.length != 0) {
 			for (const element of elements) {
-				if (this.matchAny(element, this.whiteList)) {
+				if (this.matchEvery(element, this.whiteList)) {
 					result.push(element);
-				} else {
-					dropped.push(element)
 				}
 			}
-		} else if (this.includedTags.length == 0) {
-			result = elements;
 		} else {
-			dropped = elements;
+			result = elements;
 		}
 		
 		// Included Tags
 		if (this.includedTags.length != 0) {
-			for (const element of dropped) {
-				if (this.matchAnyTag(this.getTags(element), this.includedTags)) {
-					result.push(element);
+			let newResult = [];
+			for (const element of result) {
+				if (this.matchEveryTag(this.getTags(element), this.includedTags)) {
+					newResult.push(element);
 				}
 			}
+			result = newResult;
 		}
 		
 		
@@ -162,12 +159,35 @@ class Sorter {
 	}
 	
 	/**
+	 * @param {*} element 
+	 * @param {Array<function(*): Boolean>} checkers 
+	 */
+	matchEvery(element, checkers) {
+		for (const checker of checkers) {
+			if (!checker(element)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	/**
 	 * @param {String[]} elementTags 
 	 * @param {String[]} filterTags 
 	 */
 	matchAnyTag(elementTags, filterTags) {
 		return elementTags.some(
 			(tag) => {return filterTags.includes(tag);}
+		);
+	}
+	
+	/**
+	 * @param {String[]} elementTags 
+	 * @param {String[]} filterTags 
+	 */
+	matchEveryTag(elementTags, filterTags) {
+		return filterTags.every(
+			(tag) => {return elementTags.includes(tag);}
 		);
 	}
 }
