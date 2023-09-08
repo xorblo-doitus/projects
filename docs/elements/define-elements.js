@@ -50,7 +50,6 @@ class ProjectCard extends HTMLElementHelper {
 				if (this.listenTagsListChanged) {
 					this.listenTagsListChanged = false;
 					this.tagsList.value = newValue;
-					console.log(this.tagsList);
 					this.listenTagsListChanged = true;
 				}
 				
@@ -71,8 +70,8 @@ await HTMLElementHelper.register("project-card", ProjectCard);
 
 
 class ProjectTag extends HTMLElementHelper {
-	constructor() {
-		super("project-tag");
+	constructor(tagName = "project-tag") {
+		super(tagName);
 	}
 	
 	static get observedAttributes() {
@@ -101,6 +100,66 @@ class ProjectTag extends HTMLElementHelper {
 	}
 }
 await HTMLElementHelper.register("project-tag", ProjectTag);
+
+
+class TagFilter extends ProjectTag {
+	/** @type {String} */
+	mode = "";
+	modeChangedListeners = [];
+	
+	constructor() {
+		super("tag-filter");
+		
+		const includeCheckbox = this.getElementById("include");
+		const excludeCheckbox = this.getElementById("exclude");
+		
+		includeCheckbox.addEventListener("change", (event) => {
+			if (event.target.checked) {
+				this.mode = "include";
+				excludeCheckbox.checked = false;
+			} else {
+				this.mode = "";
+			}
+			this.fireModeChanged();
+		});
+		excludeCheckbox.addEventListener("change", (event) => {
+			if (event.target.checked) {
+				this.mode = "exclude";
+				includeCheckbox.checked = false;
+			} else {
+				this.mode = "";
+			}
+			this.fireModeChanged();
+		});
+	}
+	
+	/**
+	 * 
+	 * @param {CallableFunction} callback 
+	 */
+	addModeChangedListener(callback) {
+		this.modeChangedListeners.push(callback);
+	}
+	
+	/**
+	 * 
+	 * @param {CallableFunction} callback 
+	*/
+	removeModeChangedListener(callback) {
+		const index = this.modeChangedListeners.indexOf(callback);
+		if (index == -1) {
+			return;
+		}
+		this.modeChangedListeners.splice(index, 1);
+	}
+	
+	fireModeChanged() {
+		for (const callback of this.modeChangedListeners) {
+			callback();
+		}
+	}
+}
+await HTMLElementHelper.register("tag-filter", TagFilter);
 
 
 export { ProjectCard }

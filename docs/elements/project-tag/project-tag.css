@@ -7,7 +7,7 @@
     padding: 0.2em;
     padding-right: 0.35em;
     border-radius: 99999px; /* Extremly high value cause a capsule shape */
-    border: 0.1em solid black;
+    border: 0.1em solid var(--border-color);
     /* font-size: 0.5em; */
 }
 
@@ -18,7 +18,7 @@ img {
 #background[tag="scratch"] {
     color: white;
     background-color: rgb(245, 115, 0);
-    border-color: rgb(245, 70, 0);
+    --border-color: rgb(245, 37, 0);
 }
 #background[tag="scratch"] img {
     content: url("https://scratch.mit.edu/favicon.ico");
@@ -27,7 +27,7 @@ img {
 #background[tag="web"] {
     color: white;
     background-color: red;
-    border-color: rgb(80, 0, 0);
+    --border-color: rgb(108, 0, 0);
 }
 #background[tag="web"] img {
     content: url("../../assets/images/icons/web.svg");
@@ -35,32 +35,32 @@ img {
 }
 #background[tag="arcade"] {
     background-color: pink;
-    border-color: rgb(200, 150, 150);
+    --border-color: rgb(200, 150, 150);
 }
 #background[tag="platformer"] {
     background-color: lightblue;
-    border-color: rgb(123, 205, 255);
+    --border-color: rgb(105, 140, 255);
 }
 #background[tag="2D"] {
     background-color: greenyellow;
-    border-color: rgb(70, 199, 0);
+    --border-color: rgb(70, 199, 0);
 }
 #background[tag="1v1"] {
     color: white;
     background-color: orangered;
-    border-color: red;
+    --border-color: rgb(176, 0, 0);
 }
 #background[tag="coop"] {
     color: white;
-    background-color: orangered;
-    border-color: red;
+    background-color: rgb(45, 45, 255);
+    --border-color: rgb(0, 0, 116);
 }
 #background[tag="multiplayer"] {
     color: white;
-    background-color: purple;
-    border-color: rgb(50, 0, 50);
+    background-color: rgb(171, 0, 171);
+    --border-color: rgb(50, 0, 50);
 }
 #background[tag="school"] {
     background-color: yellow;
-    border-color: rgb(200, 200, 0);
+    --border-color: rgb(200, 200, 0);
 }

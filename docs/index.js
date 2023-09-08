@@ -4,6 +4,7 @@ import { Sorter } from "./lib/patou/sort/sort.js";
 import { ProjectCard } from "./elements/define-elements.js";
 
 
+const FILTERS = document.getElementById("filters");
 const PROJECT_LIST = document.getElementById("project-list");
 
 class ProjectSorter extends Sorter {
@@ -43,9 +44,12 @@ class ProjectSorter extends Sorter {
 		}
 		for (const [idx, element] of newOrder.entries()) {
 			element.style.order = idx;
+			element.style.display = "";
 		}
 	}
 }
+
+const PROJECT_SORTER = new ProjectSorter();
 
 var text = (await fetch("assets/data/projects.csv").then((response) => {return response.text()}));
 
@@ -57,6 +61,8 @@ var parser = new CSVParser().parseText(text)
 
 // console.log(parser.data)
 // start = performance.now();
+const ALL_TAGS = new Set;
+
 for (const row of parser) {
 	let newCard = document.createElement("project-card");
 	// console.log(row);
@@ -66,12 +72,38 @@ for (const row of parser) {
 	newCard.setAttribute("url", row.get("url"));
 	newCard.setAttribute("tags", row.get("tags"));
 	PROJECT_LIST.appendChild(newCard);
+    
+    for (const tag of newCard.tagsList.values()) {
+        ALL_TAGS.add(tag);
+    }
+}
+
+const TAG_FILTERS = [];
+function onFiltersChanged() {
+	PROJECT_SORTER.includedTags.splice(0);
+	PROJECT_SORTER.excludedTags.splice(0);
+	
+	for (const tagFilter of FILTERS.childNodes) {
+		if (tagFilter.mode == "include") {
+			PROJECT_SORTER.includedTags.push(tagFilter.tag);
+		} else if (tagFilter.mode == "exclude") {
+			PROJECT_SORTER.excludedTags.push(tagFilter.tag);
+		}
+	}
+	
+	PROJECT_SORTER.sort();
+}
+
+for (const tag of ALL_TAGS.values()) {
+    let newTagFilter = document.createElement("tag-filter");
+    newTagFilter.tag = tag;
+	newTagFilter.addModeChangedListener(onFiltersChanged);
+    FILTERS.appendChild(newTagFilter);
 }
 // end = performance.now();
 
 // console.log(`Iteration took ${end - start} milliseconds`)
 
 
-const PROJECT_SORTER = new ProjectSorter();
 PROJECT_SORTER.sort();
 translationServer.addLangChangedListener(() => {PROJECT_SORTER.sort()});
