@@ -1,9 +1,8 @@
 @import url("../project-tag/project-tag.css");
 
 #background {
-	display: flex;
-	align-items: center;
-	gap: 0.5ch;
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 1em;
 }
 
 label {

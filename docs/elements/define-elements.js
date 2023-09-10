@@ -131,6 +131,29 @@ class TagFilter extends ProjectTag {
 			}
 			this.fireModeChanged();
 		});
+		
+		for (const element of this.querySelectorAll("label, input")) {
+			element.addEventListener("click", event => event.stopPropagation());
+		}
+		
+		this.getElementById("background").addEventListener("click", (event) => {
+			switch (this.mode) {
+				case "":
+					this.mode = "include";
+					includeCheckbox.checked = true;
+					break;
+				case "include":
+					this.mode = "exclude";
+					includeCheckbox.checked = false;
+					excludeCheckbox.checked = true;
+					break;
+				case "exclude":
+					this.mode = "";
+					excludeCheckbox.checked = false;
+					break;
+				}
+			this.fireModeChanged();
+		});
 	}
 	
 	/**
