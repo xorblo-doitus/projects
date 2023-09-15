@@ -20,6 +20,8 @@ class ProjectCard extends HTMLElementHelper {
 		this.tagsList.addChangedListener(() => {
 			this.setAttribute("tags", this.tagsList.value);
 		});
+		
+		translationServer.addLangChangedListener(() => this.updateDate());
 	}
 	
 	static get observedAttributes() {
@@ -29,6 +31,7 @@ class ProjectCard extends HTMLElementHelper {
 			"title",
 			"url",
 			"tags",
+			"unixtime",
 		];
 	}
 	
@@ -63,7 +66,60 @@ class ProjectCard extends HTMLElementHelper {
 				}
 				
 				break;
+			case "unixtime":
+				this.updateDate();
+				break;
 		}
+	}
+	
+	set dateFormat(newValue) {
+		if (newValue == "") {
+			newValue = undefined;
+		} else if (typeof newValue === 'string' || newValue instanceof String) {
+			newValue = JSON.parse(newValue);
+		}
+		this._dateFormat = newValue;
+		this.updateDate();
+	}
+	get dateFormat() {
+		return this._dateFormat;
+	}
+	
+	set unixtime(newValue) {
+		if (typeof newValue === 'string' || newValue instanceof String) {
+			newValue = parseInt(newValue);
+		}
+		this.setAttribute("unixtime", newValue);
+		this.updateDate();
+	}
+	get unixtime() {
+		return parseInt(this.getAttribute("unixtime"));
+	}
+	
+	getDateFormatAuto(timeSince1970ms) {
+		let dateFormat = this.dateFormat;
+		if (dateFormat != undefined) {
+			return dateFormat;
+		}
+		
+		const elapsedms = Date.now() - timeSince1970ms;
+		if (elapsedms < 1000 * 60 * 60 * 24 * 6) { // dans la semaine
+			return {month: "long", day: "numeric", weekday: "long"};
+		} else if (elapsedms < 1000 * 60 * 60 * 24 * 32) { // 1 mois environ
+			return {month: "long", day: "numeric"};
+		} else if (elapsedms < 1000 * 60 * 60 * 24 * 365 * 2) { // 2 ans
+			return {year: "numeric", month: "long"};
+		} else {
+			return {year: "numeric"};
+		}
+	}
+	
+	updateDate() {
+		const timeSince1970ms = 1000 * this.unixtime;
+		console.log(this.getDateFormatAuto(timeSince1970ms));
+		console.log(new Date(timeSince1970ms).toLocaleDateString(undefined, this.getDateFormatAuto(timeSince1970ms)));
+		this.getElementById("date").textContent = new Date(timeSince1970ms).toLocaleDateString(translationServer.lang, this.getDateFormatAuto(timeSince1970ms));
+		this.getElementById("date").title = new Date(timeSince1970ms).toLocaleDateString();
 	}
 }
 await HTMLElementHelper.register("project-card", ProjectCard);

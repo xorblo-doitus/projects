@@ -26,6 +26,16 @@ img {
     color: black;
 }
 
+#date {
+    color: darkslategray;
+    /* font-size: 0.9em; */
+    flex-shrink: 1;
+}
+
+#tags {
+    margin: 0.3em 0;
+}
+
 a.link {
     text-decoration: none;
 }
@@ -35,4 +45,16 @@ a.link:hover {
 
 .thin-padding {
     padding: 1ch;
+}
+
+
+.flex-h {
+    display: flex;
+    align-items: baseline;
+    gap: 0 1ch;
+    flex-wrap: wrap;
+}
+
+.flex-h a {
+    flex-grow: 1;
 }

@@ -71,6 +71,8 @@ for (const row of parser) {
 	newCard.setAttribute("thumbnail", row.get("thumbnail"));
 	newCard.setAttribute("url", row.get("url"));
 	newCard.setAttribute("tags", row.get("tags"));
+	newCard.setAttribute("unixtime", row.get("unixtime"));
+	newCard.dateFormat = row.get("date_format");
 	PROJECT_LIST.appendChild(newCard);
     
     for (const tag of newCard.tagsList.values()) {
