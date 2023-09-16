@@ -6,5 +6,4 @@ class HistoryHelper {
 	}
 }
 
-
 export { HistoryHelper };

@@ -9,7 +9,6 @@ const TRANSLATION_LANG_ATTR = "trlang";
 
 class TranslationServer {
 	/**
-	 * 
 	 * @param {CSVParser} CSVData 
 	 * @param {String} lang 
 	 */
@@ -23,25 +22,33 @@ class TranslationServer {
 		for (const root of HTMLElementHelper.getRootsRecursive(document)) {
 			this.listenToAddedNodes(root);
 		}
+		
+		onpopstate = _ => {
+			this.chooseLangFromURL();
+		} 
 	}
 	
 	/**
-	 * 
 	 * @param {CSVParser} CSVData 
 	 * @param {String} lang 
 	 */
 	setup(CSVData, lang = null) {
 		this.CSVData = CSVData;
 		
-		if (lang == null) {
-			lang = new URL(location.href).searchParams.get("lang");
-		}
-		
 		this.chooseLang(lang);
 	}
 	
 	/**
-	 * 
+	 * @param {String?} lang 
+	 */
+	chooseLangFromURL(lang = null) {
+		if (lang == null) {
+			lang = new URL(location.href).searchParams.get("lang");
+		}
+		this.chooseLang(lang);
+	}
+	
+	/**
 	 * @param {String?} lang 
 	 */
 	chooseLang(lang) {
