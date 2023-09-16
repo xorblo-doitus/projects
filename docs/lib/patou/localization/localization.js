@@ -1,5 +1,6 @@
 import { CSVParser } from "../csv-parser/csv-parser.js";
 import { HTMLElementHelper, SHADOW_HOST_CLASS } from "../elements/elements.js";
+import { HistoryHelper } from "../history-helper/history-helper.js";
 
 
 const TRANSLATION_KEY_ATTR = "trkey";
@@ -61,7 +62,7 @@ class TranslationServer {
 		} else {
 			newURL.searchParams.set("lang", newValue);
 		}
-		history.pushState(undefined, "", newURL.toString());
+		HistoryHelper.updateURL(newURL.toString());
 		
 		this.refreshCachedLangs();
 	}
