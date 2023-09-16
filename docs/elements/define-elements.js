@@ -116,8 +116,6 @@ class ProjectCard extends HTMLElementHelper {
 	
 	updateDate() {
 		const timeSince1970ms = 1000 * this.unixtime;
-		console.log(this.getDateFormatAuto(timeSince1970ms));
-		console.log(new Date(timeSince1970ms).toLocaleDateString(undefined, this.getDateFormatAuto(timeSince1970ms)));
 		this.getElementById("date").textContent = new Date(timeSince1970ms).toLocaleDateString(translationServer.lang, this.getDateFormatAuto(timeSince1970ms));
 		this.getElementById("date").title = new Date(timeSince1970ms).toLocaleDateString();
 	}
