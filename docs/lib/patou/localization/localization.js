@@ -8,6 +8,9 @@ const TRANSLATION_LANG_ATTR = "trlang";
 
 
 class TranslationServer {
+	/** @type {LangSelect[]} */
+	selectors = [];
+	
 	/**
 	 * @param {CSVParser} CSVData 
 	 * @param {String} lang 
@@ -217,6 +220,10 @@ class TranslationServer {
 			callback();
 		}
 		
+		for (const langSelect of this.selectors) {
+			langSelect.chooseBest();
+		}
+		
 		this.trDOM();
 	}
 	
@@ -280,19 +287,14 @@ class LangSelect extends HTMLElementHelper {
 			(event) => {
 				const lang = event.target.value;
 				if (lang == "AUTO") {
-					// this.chooseBest();
-					// if (this.select.selectedIndex != -1) {
-					// 	lang = this.langs[this.select.selectedIndex];
-					// } else {
-						// lang = null;
-					// 	this.select.selectedIndex = this.langs.length;
-					// }
 					translationServer.chooseLang(null);
 				} else {
 					translationServer.lang = lang;
 				}
 			}
 		);
+		
+		translationServer.selectors.push(this);
 	}
 	
 	
