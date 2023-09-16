@@ -12,7 +12,7 @@ class TranslationServer {
 	 * @param {CSVParser} CSVData 
 	 * @param {String} lang 
 	 */
-	constructor(CSVData, lang = undefined) {
+	constructor(CSVData, lang = null) {
 		this.boundAttributes = [];
 		
 		this._fallbacks = navigator.languages.slice(1).concat(["en", "fr"]);
@@ -29,15 +29,27 @@ class TranslationServer {
 	 * @param {CSVParser} CSVData 
 	 * @param {String} lang 
 	 */
-	setup(CSVData, lang = undefined) {
+	setup(CSVData, lang = null) {
 		this.CSVData = CSVData;
-		this.lang = lang == undefined ? navigator.language : lang;
+		if (lang == null) {
+			lang = new URL(location.href).searchParams.get("lang");
+		}
+		this.lang = lang == null ? navigator.language : lang;
 	}
 	
 	
 	set lang(newValue) {
 		this._lang = newValue;
 		document.querySelector("html").lang = newValue;
+		
+		const newURL = new URL(location.href);
+		if (navigator.language == newValue) {
+			newURL.searchParams.delete("lang");
+		} else {
+			newURL.searchParams.set("lang", newValue);
+		}
+		history.pushState(undefined, "", newURL.toString());
+		
 		this.refreshCachedLangs();
 	}
 	get lang() {
@@ -235,8 +247,9 @@ const translationServer = new TranslationServer();
 class LangSelect extends HTMLElementHelper {
 	constructor() {
 		super("lang-select");
+		this.select = this.querySelector("select");
 		
-		this.querySelector("select").addEventListener(
+		this.select.addEventListener(
 			"change",
 			(event) => {
 				translationServer.lang = event.target.value;
@@ -250,29 +263,37 @@ class LangSelect extends HTMLElementHelper {
 	 * @param {Array<String>} langs 
 	 */
 	setLangs(langs) {
-		let select = this.querySelector("select");
-		select.innerHTML = "";
+		this.select.innerHTML = "";
 		for (const lang of langs) {
-			let option = document.createElement("option");
-			option.value = lang;
-			option.innerHTML = translationServer.trWithLang(lang, lang);
-			select.appendChild(option);
+			this.createOption(lang);
 		}
 		
 		for (const lang of translationServer.cachedLangs) {
-			select.selectedIndex = langs.findIndex(elem=>elem==lang);
-			if (select.selectedIndex != -1) {
+			this.select.selectedIndex = langs.findIndex(elem=>elem==lang);
+			if (this.select.selectedIndex != -1) {
 				break;
 			}
 		}
 		
-		if (select.selectedIndex == -1) {
-			let option = document.createElement("option");
-			option.value = translationServer.lang;
-			option.innerHTML = translationServer.trWithLang(translationServer.lang, translationServer.lang);
-			select.appendChild(option);
-			select.selectedIndex = langs.length;
+		if (this.select.selectedIndex == -1) {
+			this.createOption(translationServer.lang);
+			this.select.selectedIndex = langs.length;
 		}
+	}
+	
+	/**
+	 * 
+	 * @param {String} lang 
+	 * @returns {HTMLOptionElement}
+	 */
+	createOption(lang) {
+		let option = document.createElement("option");
+		
+		option.value = lang;
+		option.innerHTML = translationServer.trWithLang(lang, lang);
+		this.select.appendChild(option);
+		
+		return option;
 	}
 }
 HTMLElementHelper.register("lang-select", LangSelect, "lib/patou/localization/lang-select/lang-select.html");
