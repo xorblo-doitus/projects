@@ -31,8 +31,21 @@ class TranslationServer {
 	 */
 	setup(CSVData, lang = null) {
 		this.CSVData = CSVData;
+		
 		if (lang == null) {
 			lang = new URL(location.href).searchParams.get("lang");
+		}
+		
+		this.chooseLang(lang);
+	}
+	
+	/**
+	 * 
+	 * @param {String?} lang 
+	 */
+	chooseLang(lang) {
+		if (lang == "AUTO") {
+			lang = null;
 		}
 		this.lang = lang == null ? navigator.language : lang;
 	}
@@ -245,6 +258,11 @@ const translationServer = new TranslationServer();
 
 
 class LangSelect extends HTMLElementHelper {
+	/**
+	 * @type {Array<String>} langs 
+	 */
+	langs = [];
+	
 	constructor() {
 		super("lang-select");
 		this.select = this.querySelector("select");
@@ -252,7 +270,19 @@ class LangSelect extends HTMLElementHelper {
 		this.select.addEventListener(
 			"change",
 			(event) => {
-				translationServer.lang = event.target.value;
+				const lang = event.target.value;
+				if (lang == "AUTO") {
+					// this.chooseBest();
+					// if (this.select.selectedIndex != -1) {
+					// 	lang = this.langs[this.select.selectedIndex];
+					// } else {
+						// lang = null;
+					// 	this.select.selectedIndex = this.langs.length;
+					// }
+					translationServer.chooseLang(null);
+				} else {
+					translationServer.lang = lang;
+				}
 			}
 		);
 	}
@@ -263,21 +293,32 @@ class LangSelect extends HTMLElementHelper {
 	 * @param {Array<String>} langs 
 	 */
 	setLangs(langs) {
+		this.langs = langs;
 		this.select.innerHTML = "";
 		for (const lang of langs) {
 			this.createOption(lang);
 		}
 		
-		for (const lang of translationServer.cachedLangs) {
-			this.select.selectedIndex = langs.findIndex(elem=>elem==lang);
-			if (this.select.selectedIndex != -1) {
-				break;
-			}
-		}
+		this.chooseBest();
 		
 		if (this.select.selectedIndex == -1) {
 			this.createOption(translationServer.lang);
 			this.select.selectedIndex = langs.length;
+		}
+		
+		this.createOption("AUTO");
+	}
+	
+	/**
+	 * 
+	 * @param {Array<String>} langs 
+	 */
+	chooseBest() {
+		for (const lang of translationServer.cachedLangs) {
+			this.select.selectedIndex = this.langs.findIndex(elem=>elem==lang);
+			if (this.select.selectedIndex != -1) {
+				break;
+			}
 		}
 	}
 	
@@ -290,7 +331,11 @@ class LangSelect extends HTMLElementHelper {
 		let option = document.createElement("option");
 		
 		option.value = lang;
-		option.innerHTML = translationServer.trWithLang(lang, lang);
+		if (lang == "AUTO") {
+			option.innerHTML = translationServer.tr(lang);
+		} else {
+			option.innerHTML = translationServer.trWithLang(lang, lang);
+		}
 		this.select.appendChild(option);
 		
 		return option;
