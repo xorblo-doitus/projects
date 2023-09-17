@@ -1,12 +1,14 @@
 :host {
     --corner-radius: 1ch;
-    --width: 40ch;
+    --width: min(40ch, 96vw);
 }
 
 #card {
     border: 0.1ch solid black;
     border-radius: var(--corner-radius);
+    
     width: var(--width);
+    height: 100%;
     
     overflow: hidden;
 }
