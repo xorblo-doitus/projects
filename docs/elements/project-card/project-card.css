@@ -45,7 +45,7 @@ img {
     height: var(--size);
     
     background-color: rgb(99, 216, 99);
-    /* border: 0.2em solid darkgreen; */
+    border: 0.05em solid black;
     
     border-radius: 100%;
     
