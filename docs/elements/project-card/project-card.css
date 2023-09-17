@@ -35,8 +35,8 @@ img {
 }
 
 #fun {
-    --bad: rgb(231, 33, 33);
-    --good: rgb(23, 196, 23);
+    --bad: rgb(247 17 17);
+    --good: rgb(15 225 15);
     
     float: left;
     
@@ -44,8 +44,7 @@ img {
     width: var(--size);
     height: var(--size);
     
-    background-color: rgb(99, 216, 99);
-    border: 0.05em solid black;
+    border: 0.07em solid rgba(0,0,0, 0.5);
     
     border-radius: 100%;
     
