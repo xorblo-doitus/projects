@@ -32,6 +32,7 @@ class ProjectCard extends HTMLElementHelper {
 			"url",
 			"tags",
 			"unixtime",
+			"fun",
 		];
 	}
 	
@@ -68,6 +69,10 @@ class ProjectCard extends HTMLElementHelper {
 				break;
 			case "unixtime":
 				this.updateDate();
+				break;
+			case "fun":
+				this.getElementById("fun").textContent = newValue;
+				this.getElementById("fun").style.backgroundColor = `color-mix(in hwb, var(--bad), var(--good) ${newValue}%)`;
 				break;
 		}
 	}

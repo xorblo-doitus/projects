@@ -34,6 +34,28 @@ img {
     flex-shrink: 1;
 }
 
+#fun {
+    --bad: rgb(231, 33, 33);
+    --good: rgb(23, 196, 23);
+    
+    float: left;
+    
+    --size: 1.5em;
+    width: var(--size);
+    height: var(--size);
+    
+    background-color: rgb(99, 216, 99);
+    /* border: 0.2em solid darkgreen; */
+    
+    border-radius: 100%;
+    
+    font-size: 1.3em;
+    text-align: center;
+    line-height: var(--size);
+    
+    margin: 0 0.2em 0.2em 0
+}
+
 #tags {
     margin: 0.3em 0;
 }
