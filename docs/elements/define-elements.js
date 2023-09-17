@@ -101,6 +101,13 @@ class ProjectCard extends HTMLElementHelper {
 		return parseInt(this.getAttribute("unixtime"));
 	}
 	
+	set fun(newValue) {
+		this.setAttribute("fun", newValue);
+	}
+	get fun() {
+		return parseInt(this.getAttribute("fun"));
+	}
+	
 	getDateFormatAuto(timeSince1970ms) {
 		let dateFormat = this.dateFormat;
 		if (dateFormat != undefined) {

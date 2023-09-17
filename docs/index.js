@@ -10,11 +10,17 @@ const PROJECT_LIST = document.getElementById("project-list");
 class ProjectSorter extends Sorter {
 	// includedTags = ["arcade"]; // Testing values.
 	// excludedTags = ["multiplayer"]; // Testing values.
+	// currentComparingFunction = "fun"; // Testing values.
+	// reverted = true;
 	
+	/**
+	 * @type {Map<String, function(ProjectCard, ProjectCard): Number>}
+	 */
 	comparingFunctions = new Map([
 		["title", (a, b) => { return a.title.localeCompare(b.title); }],
+		["date", (a, b) => { return b.unixtime - a.unixtime; }], // Reversed by default, to get best project to front easily.
+		["fun", (a, b) => { return b.fun - a.fun; }], // Reversed by default, to get best project to front easily.
 	]);
-	currentComparingFunction = "";
 	
 	/**
 	 * @param {ProjectCard} element 
