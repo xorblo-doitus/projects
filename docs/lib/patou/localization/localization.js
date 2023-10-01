@@ -279,7 +279,7 @@ class LangSelect extends HTMLElementHelper {
 	langs = [];
 	
 	constructor() {
-		super("lang-select");
+		super();
 		this.select = this.querySelector("select");
 		
 		this.select.addEventListener(

@@ -41,14 +41,17 @@ class PropertyAttributeBindHelper {
 
 class HTMLElementHelper extends HTMLElement {
 	static allInnerHTML = new Map();
+	/** The name of the element, used between `<>` to create this element.
+	 * @type {string} */
+	static _name = undefined;
 	
-	constructor(name) {
+	constructor() {
 		super();
 		
 		this.root = this.attachShadow({ mode: "open" });
 		// let sheets = [...this.root.adoptedStyleSheets, noTranisitionSheet];
 		// this.root.adoptedStyleSheets = sheets;
-		this.root.innerHTML = HTMLElementHelper.allInnerHTML.get(name);
+		this.root.innerHTML = HTMLElementHelper.allInnerHTML.get(this.constructor._name);
 		
 		// setTimeout(
 		// 	() => {
@@ -65,7 +68,7 @@ class HTMLElementHelper extends HTMLElement {
 	
 	
 	/**
-	 * 
+	 * Define the element in the document and download innerHTML of shadowRoot.
 	 * @param {String} name 
 	 * @param {CustomElementConstructor} constructor 
 	 * @param {String} path If not specified, trye to find `elements/${name}/${name}.html`.
@@ -80,6 +83,8 @@ class HTMLElementHelper extends HTMLElement {
 			await fetch(path)
 				.then(response => response.text())
 		);
+		
+		constructor._name = name;
 		
 		customElements.define(name, constructor);
 	}
@@ -136,7 +141,7 @@ class HTMLElementHelper extends HTMLElement {
 
 class CommonFooter extends HTMLElementHelper {
 	constructor() {
-		super("common-footer");
+		super();
 		// other stuff
 	}
 }

@@ -15,7 +15,7 @@ class ProjectCard extends HTMLElementHelper {
 	listenTagsListChanged = true;
 	
 	constructor() {
-		super("project-card");
+		super();
 		
 		this.tagsList.addChangedListener(() => {
 			this.setAttribute("tags", this.tagsList.value);
@@ -132,10 +132,6 @@ ProjectCard.bindPropertiesToAtributes([
 
 
 class ProjectTag extends HTMLElementHelper {
-	constructor(tagName = "project-tag") {
-		super(tagName);
-	}
-	
 	static get observedAttributes() {
 		return [
 			"tag",
@@ -170,7 +166,7 @@ class TagFilter extends ProjectTag {
 	modeChangedListeners = [];
 	
 	constructor() {
-		super("tag-filter");
+		super();
 		
 		const includeCheckbox = this.getElementById("include");
 		const excludeCheckbox = this.getElementById("exclude");
