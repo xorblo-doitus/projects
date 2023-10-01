@@ -1,6 +1,44 @@
 const SHADOW_HOST_CLASS = "shadow-host";
 
 
+class PropertyAttributeBindHelper {
+	/** @type {String} */
+	name = null;
+	/** @type {PropertyDescriptor} */
+	propertyDescriptor = null;
+	
+	/**
+	 * 
+	 * @param {String} name 
+	 * @param {(attributeValue: string) => *} parser 
+	 * @param {(newValue: *) => string} serializer 
+	 * @param {string} attributeName 
+	 */
+	constructor(name, parser = undefined, serializer = undefined, attributeName = name) {
+		this.name = name;
+		this.propertyDescriptor = {
+			configurable: true,
+			enumerable: true,
+		};
+		
+		this.propertyDescriptor.get = parser ?
+			function() { return parser(this.getAttribute(attributeName)); }
+			: function() { return this.getAttribute(attributeName); };
+		
+		this.propertyDescriptor.set = serializer ?
+			function(newValue) { this.setAttribute(attributeName, serializer(newValue)); }
+			: function(newValue) { this.setAttribute(attributeName, newValue); };
+	}
+	
+	/**
+	 * @param {*} target 
+	 */
+	applyTo(target) {
+		Object.defineProperty(target, this.name, this.propertyDescriptor);
+	}
+}
+
+
 class HTMLElementHelper extends HTMLElement {
 	static allInnerHTML = new Map();
 	
@@ -80,6 +118,17 @@ class HTMLElementHelper extends HTMLElement {
 		
 		return result;
 	}
+	
+	
+	/**
+	 * @param {PropertyAttributeBindHelper[]} properties 
+	 */
+	static bindPropertiesToAtributes(properties) {
+		for (const property of properties) {
+			property.applyTo(this.prototype);
+			// Object.defineProperty(this.prototype, property.name, propertyDescriptor);
+		}
+	}
 }
 
 
@@ -95,4 +144,4 @@ await HTMLElementHelper.register("common-footer", CommonFooter)
 */
 
 
-export {HTMLElementHelper, SHADOW_HOST_CLASS};
+export {HTMLElementHelper, PropertyAttributeBindHelper, SHADOW_HOST_CLASS};

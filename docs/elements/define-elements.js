@@ -1,4 +1,4 @@
-import { HTMLElementHelper } from "../lib/patou/elements/elements.js";
+import { HTMLElementHelper, PropertyAttributeBindHelper } from "../lib/patou/elements/elements.js";
 import { TokenList } from "../lib/patou/token-list/token-list.js";
 import { TRANSLATION_KEY_ATTR, translationServer } from "../lib/patou/localization/localization.js";
 
@@ -101,13 +101,6 @@ class ProjectCard extends HTMLElementHelper {
 		return parseInt(this.getAttribute("unixtime"));
 	}
 	
-	set fun(newValue) {
-		this.setAttribute("fun", newValue);
-	}
-	get fun() {
-		return parseInt(this.getAttribute("fun"));
-	}
-	
 	getDateFormatAuto(timeSince1970ms) {
 		let dateFormat = this.dateFormat;
 		if (dateFormat != undefined) {
@@ -133,6 +126,9 @@ class ProjectCard extends HTMLElementHelper {
 	}
 }
 await HTMLElementHelper.register("project-card", ProjectCard);
+ProjectCard.bindPropertiesToAtributes([
+	new PropertyAttributeBindHelper("fun", parseInt),
+]);
 
 
 class ProjectTag extends HTMLElementHelper {
