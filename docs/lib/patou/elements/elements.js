@@ -2,10 +2,14 @@ const SHADOW_HOST_CLASS = "shadow-host";
 
 
 class PropertyAttributeBindHelper {
-	/** @type {String} */
+	/** @type {string} */
 	name = null;
+	/** @type {string} */
+	attributeName = null;
 	/** @type {PropertyDescriptor} */
 	propertyDescriptor = null;
+	/** @type {(newValue: string) => void}} */
+	attributeChangedCallback = null;
 	
 	/**
 	 * 
@@ -16,6 +20,7 @@ class PropertyAttributeBindHelper {
 	 */
 	constructor(name, parser = undefined, serializer = undefined, attributeName = name) {
 		this.name = name;
+		this.attributeName = attributeName;
 		this.propertyDescriptor = {
 			configurable: true,
 			enumerable: true,
@@ -31,10 +36,24 @@ class PropertyAttributeBindHelper {
 	}
 	
 	/**
+	 * (Chainable) Set a callback for this attribute when it's changed.
+	 * @param {(newValue: string) => void} newCallback 
+	 * @returns {PropertyAttributeBindHelper} `this`
+	 */
+	setAttributeChangedCallback(newCallback) {
+		this.attributeChangedCallback = newCallback;
+		return this;
+	}
+	
+	/**
 	 * @param {*} target 
 	 */
 	applyTo(target) {
-		Object.defineProperty(target, this.name, this.propertyDescriptor);
+		Object.defineProperty(target.prototype, this.name, this.propertyDescriptor);
+		if (this.attributeChangedCallback) {
+			target.observedAttributes = target.observedAttributes.concat(this.attributeName);
+			target.attributeChangedCallbacks = new Map(target.attributeChangedCallbacks).set(this.attributeName, this.attributeChangedCallback)
+		}
 	}
 }
 
@@ -105,6 +124,24 @@ class HTMLElementHelper extends HTMLElement {
 		return this.root.querySelectorAll(query);
 	}
 	
+	/**
+	 * @param {string} attribute 
+	 * @param {string} newValue 
+	 * @param {string} oldValue 
+	 */
+	attributeChangedCallback(attribute, oldValue, newValue) {
+		for (const [attributeCandidate, callback] of this.constructor.attributeChangedCallbacks) {
+			if (attributeCandidate == attribute) {
+				callback.call(this, newValue);
+			}
+		}
+	}
+	
+	/** @type {string[]} */
+	static observedAttributes = [];
+	/** @type {Map<string, (newValue: string) => void>} */
+	static attributeChangedCallbacks = new Map();
+	
 	static getRootsRecursive(root, includeBaseRoot = true) {
 		let allToScan = [root];
 		let result = includeBaseRoot ? [root] : [];
@@ -130,7 +167,7 @@ class HTMLElementHelper extends HTMLElement {
 	 */
 	static bindPropertiesToAtributes(properties) {
 		for (const property of properties) {
-			property.applyTo(this.prototype);
+			property.applyTo(this);
 			// Object.defineProperty(this.prototype, property.name, propertyDescriptor);
 		}
 	}

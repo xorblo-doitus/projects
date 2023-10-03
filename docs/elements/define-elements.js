@@ -24,19 +24,17 @@ class ProjectCard extends HTMLElementHelper {
 		translationServer.addLangChangedListener(() => this.updateDate());
 	}
 	
-	static get observedAttributes() {
-		return [
-			"thumbnail",
-			"desc",
-			"title",
-			"url",
-			"tags",
-			"unixtime",
-			"fun",
-		];
-	}
+	static observedAttributes = [
+		"thumbnail",
+		"desc",
+		"title",
+		"url",
+		"tags",
+		"unixtime",
+	];
 	
 	attributeChangedCallback(attribute, oldValue, newValue) {
+		super.attributeChangedCallback(attribute, oldValue, newValue);
 		switch (attribute) {
 			case "thumbnail":
 				this.getElementById("thumbnail").src = newValue;
@@ -69,10 +67,6 @@ class ProjectCard extends HTMLElementHelper {
 				break;
 			case "unixtime":
 				this.updateDate();
-				break;
-			case "fun":
-				this.getElementById("fun").textContent = newValue;
-				this.getElementById("fun").style.backgroundColor = `color-mix(in hwb, var(--bad), var(--good) ${newValue}%)`;
 				break;
 		}
 	}
@@ -125,10 +119,14 @@ class ProjectCard extends HTMLElementHelper {
 		this.getElementById("date").title = new Date(timeSince1970ms).toLocaleDateString();
 	}
 }
-await HTMLElementHelper.register("project-card", ProjectCard);
+
 ProjectCard.bindPropertiesToAtributes([
-	new PropertyAttributeBindHelper("fun", parseInt),
+	new PropertyAttributeBindHelper("fun", parseInt).setAttributeChangedCallback(function(newValue) {
+		this.getElementById("fun").textContent = newValue;
+		this.getElementById("fun").style.backgroundColor = `color-mix(in hwb, var(--bad), var(--good) ${newValue}%)`;
+	}),
 ]);
+await HTMLElementHelper.register("project-card", ProjectCard);
 
 
 class ProjectTag extends HTMLElementHelper {
