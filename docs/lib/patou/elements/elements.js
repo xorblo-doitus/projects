@@ -59,11 +59,6 @@ class PropertyAttributeBindHelper {
 
 
 class HTMLElementHelper extends HTMLElement {
-	static allInnerHTML = new Map();
-	/** The name of the element, used between `<>` to create this element.
-	 * @type {string} */
-	static _name = undefined;
-	
 	constructor() {
 		super();
 		
@@ -85,6 +80,56 @@ class HTMLElementHelper extends HTMLElement {
 		this.classList.add(SHADOW_HOST_CLASS);
 	}
 	
+	/**
+	 * @see {@link DocumentFragment.getElementById}
+	 * @param {string} id 
+	 */
+	getElementById(id) {
+		return this.root.getElementById(id);
+	}
+	
+	/**
+	 * @see {@link Document.getElementsByClassName}
+	 * @param {string} className 
+	 */
+	getElementsByClassName(className) {
+		return this.root.querySelectorAll("." + className);
+	}
+	
+	/**
+	 * @see {@link Element.querySelector}
+	 * @param {string} query 
+	 */
+	querySelector(query) {
+		return this.root.querySelector(query);
+	}
+	
+	/**
+	 * @see {@link Element.querySelectorAll}
+	 * @param {string} query 
+	 */
+	querySelectorAll(query) {
+		return this.root.querySelectorAll(query);
+	}
+	
+	/**
+	 * @param {string} attribute 
+	 * @param {string} newValue 
+	 * @param {string} oldValue 
+	 */
+	attributeChangedCallback(attribute, oldValue, newValue) {
+		for (const [attributeCandidate, callback] of this.constructor.attributeChangedCallbacks) {
+			if (attributeCandidate == attribute) {
+				callback.call(this, newValue);
+			}
+		}
+	}
+	
+	/** @type {Map<string, string>} */
+	static allInnerHTML = new Map();
+	/** The name of the element, used between `<>` to create this element.
+	 * @type {string} */
+	static _name = undefined;
 	
 	/**
 	 * Define the element in the document and download innerHTML of shadowRoot.
@@ -108,40 +153,17 @@ class HTMLElementHelper extends HTMLElement {
 		customElements.define(name, constructor);
 	}
 	
-	getElementById(id) {
-		return this.root.getElementById(id);
-	}
-	
-	getElementsByClassName(className) {
-		return this.root.querySelectorAll("." + className);
-	}
-	
-	querySelector(query) {
-		return this.root.querySelector(query);
-	}
-	
-	querySelectorAll(query) {
-		return this.root.querySelectorAll(query);
-	}
-	
-	/**
-	 * @param {string} attribute 
-	 * @param {string} newValue 
-	 * @param {string} oldValue 
-	 */
-	attributeChangedCallback(attribute, oldValue, newValue) {
-		for (const [attributeCandidate, callback] of this.constructor.attributeChangedCallbacks) {
-			if (attributeCandidate == attribute) {
-				callback.call(this, newValue);
-			}
-		}
-	}
-	
 	/** @type {string[]} */
 	static observedAttributes = [];
 	/** @type {Map<string, (newValue: string) => void>} */
 	static attributeChangedCallbacks = new Map();
 	
+	/**
+	 * Returns all the shadow roots present under the given `root`. Search recursively. Only finds shadow roots created trough {@link HTMLElementHelper}
+	 * @param {DocumentFragment} root 
+	 * @param {boolean} includeBaseRoot If true, the returned value will include `root`
+	 * @returns {DocumentFragment[]}
+	 */
 	static getRootsRecursive(root, includeBaseRoot = true) {
 		let allToScan = [root];
 		let result = includeBaseRoot ? [root] : [];
@@ -161,14 +183,12 @@ class HTMLElementHelper extends HTMLElement {
 		return result;
 	}
 	
-	
 	/**
 	 * @param {PropertyAttributeBindHelper[]} properties 
 	 */
 	static bindPropertiesToAtributes(properties) {
 		for (const property of properties) {
 			property.applyTo(this);
-			// Object.defineProperty(this.prototype, property.name, propertyDescriptor);
 		}
 	}
 }
