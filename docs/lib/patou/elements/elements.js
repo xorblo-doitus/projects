@@ -10,6 +10,11 @@ class PropertyAttributeBindHelper {
 	propertyDescriptor = null;
 	/** @type {(newValue: string) => void}} */
 	attributeChangedCallback = null;
+	/** @type {(newValue: string) => void}} */
+	elementBindingBefore = null;
+	/** @type {(newValue: string) => void}} */
+	elementBindingAfter = null;
+	
 	
 	/**
 	 * 
@@ -46,13 +51,60 @@ class PropertyAttributeBindHelper {
 	}
 	
 	/**
+	 * Use a CSS selector to find elements that are supposed to hold an attribute value as text.
+	 * @param {string} selector A CSS selector.
+	 * @param {boolean} after If true, update occurs after normal callback. Only two element bindings can be defined : one before, one after.
+	 * @returns 
+	 */
+	bindElements(selector, after = false) {
+		let func = function(newValue) {
+			for (const element of this.querySelectorAll(selector)) {
+				element.textContent = newValue;
+			}
+		};
+		
+		if (after) {
+			this.elementBindingAfter = func;
+		} else {
+			this.elementBindingBefore = func;
+		}
+		
+		return this;
+	}
+	
+	/**
 	 * @param {*} target 
 	 */
 	applyTo(target) {
 		Object.defineProperty(target.prototype, this.name, this.propertyDescriptor);
-		if (this.attributeChangedCallback) {
+		
+		const callbacks = [
+			this.elementBindingBefore,
+			this.attributeChangedCallback,
+			this.elementBindingAfter,
+		].reduce(
+			(accumulator, newValue) => {
+				if (newValue) {
+					accumulator.push(newValue);
+				}
+				return accumulator;
+			},
+			[]
+		);
+		
+		if (callbacks.length) {
 			target.observedAttributes = target.observedAttributes.concat(this.attributeName);
-			target.attributeChangedCallbacks = new Map(target.attributeChangedCallbacks).set(this.attributeName, this.attributeChangedCallback)
+			let func;
+			if (callbacks.length == 1) {
+				func = callbacks[0];
+			} else {
+				func = function(newValue) {
+					for (const callback of callbacks) {
+						callback.call(this, newValue);
+					}
+				}
+			}
+			target.attributeChangedCallbacks = new Map(target.attributeChangedCallbacks).set(this.attributeName, func);
 		}
 	}
 }
