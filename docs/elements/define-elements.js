@@ -25,7 +25,6 @@ class ProjectCard extends HTMLElementHelper {
 	}
 	
 	static observedAttributes = [
-		"thumbnail",
 		"desc",
 		"title",
 		"url",
@@ -35,40 +34,6 @@ class ProjectCard extends HTMLElementHelper {
 	
 	attributeChangedCallback(attribute, oldValue, newValue) {
 		super.attributeChangedCallback(attribute, oldValue, newValue);
-		switch (attribute) {
-			case "thumbnail":
-				this.getElementById("thumbnail").src = newValue;
-				break;
-			case "desc":
-			case "title":
-				this.getElementById(attribute).textContent = newValue;
-				break;
-			case "url":
-				for (const elem of this.getElementsByClassName("link")) {
-					elem.href = newValue;
-				}
-				break;
-			case "tags":
-				if (this.listenTagsListChanged) {
-					this.listenTagsListChanged = false;
-					this.tagsList.value = newValue;
-					this.listenTagsListChanged = true;
-				}
-				
-				const tagsContainer = this.getElementById("tags");
-				tagsContainer.innerHTML = "";
-				for (const tag of this.tagsList) {
-					let newTag = document.createElement("project-tag");
-					newTag.tag = tag;
-					translationServer.bindAttribute(newTag, "title", tag.toUpperCase() + "_DESC");
-					tagsContainer.appendChild(newTag);
-				}
-				
-				break;
-			case "unixtime":
-				this.updateDate();
-				break;
-		}
 	}
 	
 	set dateFormat(newValue) {
@@ -124,6 +89,35 @@ ProjectCard.bindPropertiesToAtributes([
 	new PropertyAttributeBindHelper("fun", parseInt).setAttributeChangedCallback(function(newValue) {
 		this.getElementById("fun").textContent = newValue;
 		this.getElementById("fun").style.backgroundColor = `color-mix(in hwb, var(--bad), var(--good) ${newValue}%)`;
+	}),
+	new PropertyAttributeBindHelper("thumbnail").setAttributeChangedCallback(function(newValue) {
+		this.getElementById("thumbnail").src = newValue;
+	}),
+	new PropertyAttributeBindHelper("desc").bindElements("#desc"),
+	new PropertyAttributeBindHelper("title").bindElements("#title"),
+	new PropertyAttributeBindHelper("url").setAttributeChangedCallback(function(newValue) {
+		for (const elem of this.getElementsByClassName("link")) {
+			elem.href = newValue;
+		}
+	}),
+	new PropertyAttributeBindHelper("tags").setAttributeChangedCallback(function(newValue) {
+		if (this.listenTagsListChanged) {
+			this.listenTagsListChanged = false;
+			this.tagsList.value = newValue;
+			this.listenTagsListChanged = true;
+		}
+		
+		const tagsContainer = this.getElementById("tags");
+		tagsContainer.innerHTML = "";
+		for (const tag of this.tagsList) {
+			let newTag = document.createElement("project-tag");
+			newTag.tag = tag;
+			translationServer.bindAttribute(newTag, "title", tag.toUpperCase() + "_DESC");
+			tagsContainer.appendChild(newTag);
+		}
+	}),
+	new PropertyAttributeBindHelper("unixtime").setAttributeChangedCallback(function(newValue) {
+		this.updateDate();
 	}),
 ]);
 await HTMLElementHelper.register("project-card", ProjectCard);
