@@ -119,8 +119,7 @@ ProjectCard.bindPropertiesToAtributes([
 	new PropertyAttributeBindHelper("unixtime").setAttributeChangedCallback(function(newValue) {
 		this.updateDate();
 	}),
-]);
-await HTMLElementHelper.register("project-card", ProjectCard);
+]).pushRegistering("project-card");
 
 
 class ProjectTag extends HTMLElementHelper {
@@ -234,5 +233,8 @@ class TagFilter extends ProjectTag {
 }
 await HTMLElementHelper.register("tag-filter", TagFilter);
 
+
+
+await HTMLElementHelper.awaitAllRegistering();
 
 export { ProjectCard }

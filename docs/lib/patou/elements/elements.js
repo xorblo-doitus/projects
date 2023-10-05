@@ -183,17 +183,36 @@ class HTMLElementHelper extends HTMLElement {
 	 * @type {string} */
 	static _name = undefined;
 	
+	/** @type {Promise<void>[]} */
+	static registeringPromises = [];
+	
+	/**
+	 * Does the same as {@link register}, but put the promise in a lsit that can be fully awaited with {@link awaitAllRegistering}
+	 * @param {String} name The tag name of the element. Must include a `-`, among other necessary conditions.
+	 * @param {CustomElementConstructor} constructor If not specified, default to this
+	 * @param {String} path If not specified, try to find `elements/${name}/${name}.html`.
+	 */
+	static pushRegistering(name, constructor = undefined, path = undefined) {
+		HTMLElementHelper.registeringPromises = HTMLElementHelper.registeringPromises.concat(this.register(name, constructor, path));
+	}
+	
+	/**
+	 * Use this method with await to wait for the download of every element's innerHTML.
+	 */
+	static async awaitAllRegistering() {
+		while (HTMLElementHelper.registeringPromises.length > 0) {
+			await HTMLElementHelper.registeringPromises[0];
+			HTMLElementHelper.registeringPromises.shift(); // Shift to ensure that if a new promise is added, it the right promise wich get removed.
+		}
+	}
+	
 	/**
 	 * Define the element in the document and download innerHTML of shadowRoot.
-	 * @param {String} name 
-	 * @param {CustomElementConstructor} constructor 
-	 * @param {String} path If not specified, trye to find `elements/${name}/${name}.html`.
+	 * @param {String} name The tag name of the element. Must include a `-`, among other necessary conditions.
+	 * @param {CustomElementConstructor} constructor If not specified, default to this
+	 * @param {String} path If not specified, try to find `elements/${name}/${name}.html`.
 	 */
-	static async register(name, constructor, path = undefined) {
-		if (path == undefined) {
-			path = `elements/${name}/${name}.html`;
-		}
-		
+	static async register(name, constructor = this, path = `elements/${name}/${name}.html`) {
 		HTMLElementHelper.allInnerHTML.set(
 			name,
 			await fetch(path)
@@ -242,6 +261,8 @@ class HTMLElementHelper extends HTMLElement {
 		for (const property of properties) {
 			property.applyTo(this);
 		}
+		
+		return this; // Allow chaining
 	}
 }
 
