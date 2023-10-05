@@ -74,11 +74,11 @@ for (const row of parser) {
 	// console.log(row);
 	translationServer.bindAttribute(newCard, "title", row.get("title"));
 	translationServer.bindAttribute(newCard, "desc", row.get("title") + "_DESC");
-	newCard.setAttribute("thumbnail", row.get("thumbnail"));
-	newCard.setAttribute("url", row.get("url"));
-	newCard.setAttribute("tags", row.get("tags"));
-	newCard.setAttribute("unixtime", row.get("unixtime"));
-	newCard.setAttribute("fun", row.get("fun"));
+	newCard.thumbnail = row.get("thumbnail");
+	newCard.url = row.get("url");
+	newCard.tags = row.get("tags");
+	newCard.unixtime = row.get("unixtime");
+	newCard.fun = row.get("fun");
 	newCard.dateFormat = row.get("date_format");
 	PROJECT_LIST.appendChild(newCard);
     
