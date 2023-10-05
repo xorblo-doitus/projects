@@ -24,18 +24,6 @@ class ProjectCard extends HTMLElementHelper {
 		translationServer.addLangChangedListener(() => this.updateDate());
 	}
 	
-	static observedAttributes = [
-		"desc",
-		"title",
-		"url",
-		"tags",
-		"unixtime",
-	];
-	
-	attributeChangedCallback(attribute, oldValue, newValue) {
-		super.attributeChangedCallback(attribute, oldValue, newValue);
-	}
-	
 	set dateFormat(newValue) {
 		if (newValue == "") {
 			newValue = undefined;
@@ -47,17 +35,6 @@ class ProjectCard extends HTMLElementHelper {
 	}
 	get dateFormat() {
 		return this._dateFormat;
-	}
-	
-	set unixtime(newValue) {
-		if (typeof newValue === 'string' || newValue instanceof String) {
-			newValue = parseInt(newValue);
-		}
-		this.setAttribute("unixtime", newValue);
-		this.updateDate();
-	}
-	get unixtime() {
-		return parseInt(this.getAttribute("unixtime"));
 	}
 	
 	getDateFormatAuto(timeSince1970ms) {
@@ -116,7 +93,7 @@ ProjectCard.bindPropertiesToAtributes([
 			tagsContainer.appendChild(newTag);
 		}
 	}),
-	new PropertyAttributeBindHelper("unixtime").setAttributeChangedCallback(function(newValue) {
+	new PropertyAttributeBindHelper("unixtime", parseInt).setAttributeChangedCallback(function(newValue) {
 		this.updateDate();
 	}),
 ]).pushRegistering("project-card");
