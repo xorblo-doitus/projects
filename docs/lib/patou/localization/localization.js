@@ -273,9 +273,7 @@ const translationServer = new TranslationServer();
 
 
 class LangSelect extends HTMLElementHelper {
-	/**
-	 * @type {Array<String>} langs 
-	 */
+	/** @type {Array<String>} */
 	langs = [];
 	
 	constructor() {
@@ -299,7 +297,6 @@ class LangSelect extends HTMLElementHelper {
 	
 	
 	/**
-	 * 
 	 * @param {Array<String>} langs 
 	 */
 	setLangs(langs) {
@@ -320,7 +317,6 @@ class LangSelect extends HTMLElementHelper {
 	}
 	
 	/**
-	 * 
 	 * @param {Array<String>} langs 
 	 */
 	chooseBest() {
@@ -333,7 +329,6 @@ class LangSelect extends HTMLElementHelper {
 	}
 	
 	/**
-	 * 
 	 * @param {String} lang 
 	 * @returns {HTMLOptionElement}
 	 */
@@ -351,8 +346,7 @@ class LangSelect extends HTMLElementHelper {
 		return option;
 	}
 }
-HTMLElementHelper.register("lang-select", LangSelect, "lib/patou/localization/lang-select/lang-select.html");
-
+await LangSelect.register("lang-select", "lib/patou/localization/lang-select/lang-select.html");
 
 
 export { translationServer, TranslationServer, LangSelect, TRANSLATION_KEY_ATTR, TRANSLATION_LANG_ATTR };

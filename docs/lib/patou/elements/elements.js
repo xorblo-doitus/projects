@@ -192,8 +192,8 @@ class HTMLElementHelper extends HTMLElement {
 	 * @param {CustomElementConstructor} constructor If not specified, default to this
 	 * @param {String} path If not specified, try to find `elements/${name}/${name}.html`.
 	 */
-	static pushRegistering(name, constructor = undefined, path = undefined) {
-		HTMLElementHelper.registeringPromises = HTMLElementHelper.registeringPromises.concat(this.register(name, constructor, path));
+	static pushRegistering(name, path = undefined, constructor = undefined) {
+		HTMLElementHelper.registeringPromises = HTMLElementHelper.registeringPromises.concat(this.register(name, path, constructor));
 	}
 	
 	/**
@@ -209,10 +209,10 @@ class HTMLElementHelper extends HTMLElement {
 	/**
 	 * Define the element in the document and download innerHTML of shadowRoot.
 	 * @param {String} name The tag name of the element. Must include a `-`, among other necessary conditions.
-	 * @param {CustomElementConstructor} constructor If not specified, default to this
 	 * @param {String} path If not specified, try to find `elements/${name}/${name}.html`.
+	 * @param {CustomElementConstructor} constructor If not specified, default to this
 	 */
-	static async register(name, constructor = this, path = `elements/${name}/${name}.html`) {
+	static async register(name, path = `elements/${name}/${name}.html`, constructor = this) {
 		HTMLElementHelper.allInnerHTML.set(
 			name,
 			await fetch(path)
