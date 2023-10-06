@@ -5,7 +5,12 @@
  * @typedef {(anyNuberOfArgument) => void} Callback
  */
 
-class CustomEvent {
+
+
+/**
+ * An event wich is not related to the DOM. Nammed signal like in the Godot game engine to not shadow built-in event-like classes.
+ */
+class Signal {
 	/** @type {Callback[]} */
 	callbacks = [];
 	
@@ -41,4 +46,4 @@ class CustomEvent {
 
 
 
-export { CustomEvent };
+export { Signal };
