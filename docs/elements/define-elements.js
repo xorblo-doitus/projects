@@ -163,7 +163,6 @@ class TagFilter extends ProjectTag {
 	}
 	
 	/**
-	 * 
 	 * @param {CallableFunction} callback 
 	 */
 	addModeChangedListener(callback) {
@@ -171,7 +170,6 @@ class TagFilter extends ProjectTag {
 	}
 	
 	/**
-	 * 
 	 * @param {CallableFunction} callback 
 	*/
 	removeModeChangedListener(callback) {
@@ -188,7 +186,7 @@ class TagFilter extends ProjectTag {
 		}
 	}
 }
-await HTMLElementHelper.register("tag-filter", TagFilter);
+await TagFilter.pushRegistering("tag-filter");
 
 
 
