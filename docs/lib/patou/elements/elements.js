@@ -1,4 +1,9 @@
+import { TokenList } from "../token-list/token-list.js";
+
+
+
 const SHADOW_HOST_CLASS = "shadow-host";
+
 
 
 class PropertyAttributeBindHelper {
@@ -73,7 +78,7 @@ class PropertyAttributeBindHelper {
 	}
 	
 	/**
-	 * @param {*} target 
+	 * @param {typeof HTMLElementHelper} target 
 	 */
 	applyTo(target) {
 		Object.defineProperty(target.prototype, this.name, this.propertyDescriptor);
@@ -110,7 +115,78 @@ class PropertyAttributeBindHelper {
 }
 
 
+class TokenListHelper {
+	/** @type {string} */
+	name = null;
+	/** @type {string} */
+	attributeName = null;
+	/** @type {(attributeValue: string) => *} */
+	changedCallback = null;
+	
+	/**
+	 * @param {string} name 
+	 * @param {string} attributeName 
+	 */
+	constructor(name, attributeName = name, changedCallback = undefined) {
+		this.name = name;
+		this.attributeName = attributeName;
+	}
+	
+	/**
+	 * @param {(attributeValue: string) => *} callback 
+	 */
+	setChangedCallback(callback) {
+		this.changedCallback = callback;
+		return this;
+	}
+	
+	/**
+	 * @param {typeof HTMLElementHelper} target 
+	 */
+	applyTo(target) {
+		target.tokenLists = target.tokenLists.concat(this);
+		target.observedAttributes = target.observedAttributes.concat(this.attributeName);
+		
+		const name = this.name;
+		const changedCallback = this.changedCallback
+		const func = changedCallback ?
+			function(newValue) {
+				changedCallback.call(this, newValue);
+				if (this[name].changed.preventingRecursion) {
+					return;
+				}
+				this[name].value = newValue;
+			}
+			: function(newValue) {
+				if (this[name].changed.preventingRecursion) {
+					return;
+				}
+				this[name].value = newValue;
+			}
+		target.attributeChangedCallbacks = new Map(target.attributeChangedCallbacks).set(this.attributeName, func);
+	}
+	
+	/**
+	 * @param {HTMLElementHelper} instance 
+	 */
+	applyToInstance(instance) {
+		const tokenList = new TokenList;
+		// Read-only
+		Object.defineProperty(instance, this.name, {
+			value: tokenList
+		})
+		
+		tokenList.changed.bind(() => {
+			instance.setAttribute(this.attributeName, tokenList.value)
+		});
+	}
+}
+
+
 class HTMLElementHelper extends HTMLElement {
+	/** @type {TokenListHelper[]} */
+	static tokenLists = [];
+	
 	constructor() {
 		super();
 		
@@ -118,6 +194,10 @@ class HTMLElementHelper extends HTMLElement {
 		// let sheets = [...this.root.adoptedStyleSheets, noTranisitionSheet];
 		// this.root.adoptedStyleSheets = sheets;
 		this.root.innerHTML = HTMLElementHelper.allInnerHTML.get(this.constructor._name);
+		
+		for (const tokanListHelper of this.constructor.tokenLists) {
+			tokanListHelper.applyToInstance(this);
+		}
 		
 		// setTimeout(
 		// 	() => {
@@ -255,7 +335,7 @@ class HTMLElementHelper extends HTMLElement {
 	}
 	
 	/**
-	 * @param {PropertyAttributeBindHelper[]} properties 
+	 * @param {(PropertyAttributeBindHelper|TokenListHelper)[]} properties 
 	 */
 	static bindPropertiesToAtributes(properties) {
 		for (const property of properties) {
@@ -279,4 +359,4 @@ await HTMLElementHelper.register("common-footer", CommonFooter)
 */
 
 
-export {HTMLElementHelper, PropertyAttributeBindHelper, SHADOW_HOST_CLASS};
+export {HTMLElementHelper, PropertyAttributeBindHelper, TokenListHelper, SHADOW_HOST_CLASS};

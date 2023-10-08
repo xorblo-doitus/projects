@@ -1,19 +1,13 @@
+import { Signal } from "../signal/signal.js";
+
+
+
 const SPLITTER = /\s/;
 
+
+
 class TokenList extends Set {
-	/**
-	 * @type {Array<CallableFunction>}
-	 */
-	changedListeners = [];
-	
-	/**
-	 * @type {Boolean}
-	 */
-	notifyChanged = true;
-	
-	constructor() {
-		super();
-	}
+	changed = new Signal
 	
 	/**
 	 * 
@@ -21,7 +15,7 @@ class TokenList extends Set {
 	 */
 	add(token) {
 		super.add(token);
-		this.fireChanged();
+		this.changed.fireNoRecursion();
 	}
 	
 	/**
@@ -33,16 +27,14 @@ class TokenList extends Set {
 	}
 	
 	/**
-	 * 
 	 * @param {String} token 
 	 */
 	remove(token) {
 		super.delete(token);
-		this.fireChanged();
+		this.changed.fireNoRecursion();
 	}
 	
 	/**
-	 * 
 	 * @param {String} token 
 	 */
 	toggle(token) {
@@ -54,7 +46,6 @@ class TokenList extends Set {
 	}
 	
 	/**
-	 * 
 	 * @param {String} oldToken 
 	 * @param {String} newToken 
 	 * @returns {Boolean}
@@ -63,7 +54,7 @@ class TokenList extends Set {
 		if (this.has(oldToken)) {
 			super.delete(oldToken);
 			super.add(newToken);
-			this.fireChanged();
+			this.changed.fireNoRecursion();
 			return true;
 		}
 		return false;
@@ -89,7 +80,7 @@ class TokenList extends Set {
 			super.add(token);
 		}
 		
-		this.fireChanged();
+		this.changed.fireNoRecursion();
 	}
 	
 	/**
@@ -98,48 +89,8 @@ class TokenList extends Set {
 	get value() {
 		return [...this.values()].join(" ");
 	}
-	
-	/**
-	 * 
-	 * @param {CallableFunction} callback 
-	 */
-	addChangedListener(callback) {
-		this.changedListeners.push(callback);
-	}
-	
-	/**
-	 * 
-	 * @param {CallableFunction} callback 
-	*/
-	removeChangedListener(callback) {
-		const index = this.changedListeners.indexOf(callback);
-		if (index == -1) {
-			return;
-		}
-		this.changedListeners.splice(index, 1);
-	}
-	
-	fireChanged() {
-		if (this.notifyChanged) {
-			this.notifyChanged = false;
-			for (const callback of this.changedListeners) {
-				callback();
-			}
-			this.notifyChanged = true;
-		}
-	}
 }
 
 
-// let test = new TokenList;
-// test.add("arbre");
-// test.add("arbre");
-// test.add("banane");
-// test.toggle("banane");
-// test.toggle("fruit");
-// test.remove("i don't exist");
-// test.replace("fruit", "abricot")
-// console.log(test);
-// console.log(test.value);
 
 export { TokenList };

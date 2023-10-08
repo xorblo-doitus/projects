@@ -26,7 +26,7 @@ class ProjectSorter extends Sorter {
 	 * @param {ProjectCard} element 
 	 * @returns {String[]}
 	 */
-	getTags(element) { return [...element.tagsList.values()]; }
+	getTags(element) { return [...element.tags.values()]; }
 	
 	/**
 	 * @returns {ProjectCard[]}
@@ -76,13 +76,13 @@ for (const row of parser) {
 	translationServer.bindAttribute(newCard, "desc", row.get("title") + "_DESC");
 	newCard.thumbnail = row.get("thumbnail");
 	newCard.url = row.get("url");
-	newCard.tags = row.get("tags");
+	newCard.tags.value = row.get("tags");
 	newCard.unixtime = row.get("unixtime");
 	newCard.fun = row.get("fun");
 	newCard.dateFormat = row.get("date_format");
 	PROJECT_LIST.appendChild(newCard);
     
-    for (const tag of newCard.tagsList.values()) {
+    for (const tag of newCard.tags.values()) {
         ALL_TAGS.add(tag);
     }
 }

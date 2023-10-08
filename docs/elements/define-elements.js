@@ -1,25 +1,12 @@
-import { HTMLElementHelper, PropertyAttributeBindHelper } from "../lib/patou/elements/elements.js";
+import { HTMLElementHelper, PropertyAttributeBindHelper, TokenListHelper } from "../lib/patou/elements/elements.js";
 import { TokenList } from "../lib/patou/token-list/token-list.js";
 import { TRANSLATION_KEY_ATTR, translationServer } from "../lib/patou/localization/localization.js";
 
 
 
 class ProjectCard extends HTMLElementHelper {
-	/**
-	 * @type {TokenList}
-	 */
-	tagsList = new TokenList;
-	/**
-	 * @type {Boolean}
-	 */
-	listenTagsListChanged = true;
-	
 	constructor() {
 		super();
-		
-		this.tagsList.addChangedListener(() => {
-			this.setAttribute("tags", this.tagsList.value);
-		});
 		
 		translationServer.addLangChangedListener(() => this.updateDate());
 	}
@@ -77,16 +64,11 @@ ProjectCard.bindPropertiesToAtributes([
 			elem.href = newValue;
 		}
 	}),
-	new PropertyAttributeBindHelper("tags").setAttributeChangedCallback(function(newValue) {
-		if (this.listenTagsListChanged) {
-			this.listenTagsListChanged = false;
-			this.tagsList.value = newValue;
-			this.listenTagsListChanged = true;
-		}
-		
+	new TokenListHelper("tags").setChangedCallback(function(newValue) {
+
 		const tagsContainer = this.getElementById("tags");
 		tagsContainer.innerHTML = "";
-		for (const tag of this.tagsList) {
+		for (const tag of this.tags) {
 			let newTag = document.createElement("project-tag");
 			newTag.tag = tag;
 			translationServer.bindAttribute(newTag, "title", tag.toUpperCase() + "_DESC");
