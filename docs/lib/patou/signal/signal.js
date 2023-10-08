@@ -13,6 +13,8 @@
 class Signal {
 	/** @type {Callback[]} */
 	callbacks = [];
+	/** @type {boolean} */
+	preventingRecursion = false;
 	
 	/**
 	 * Bind a callback that will be called when this event is fired.
@@ -41,6 +43,21 @@ class Signal {
 		for (const callback of this.callbacks) {
 			callback(...args);
 		}
+	}
+	
+	/**
+	 * Fire every callback from {@link callbacks} with {@link args}
+	 * while preventing a new firing to be made trough this function.
+	 * (normal fire still can produce recursion)
+	 * @param  {...any} args 
+	 */
+	fireNoRecursion(...args) {
+		if (this.preventingRecursion) {
+			return;
+		}
+		this.preventingRecursion = true;
+		this.fire(...args);
+		this.preventingRecursion = false;
 	}
 }
 
