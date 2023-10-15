@@ -137,4 +137,4 @@ for (const filterContainer of document.getElementsByClassName("filters-container
 
 
 PROJECT_SORTER.sort();
-translationServer.addLangChangedListener(() => {PROJECT_SORTER.sort()});
+translationServer.langChanged.bind(() => {PROJECT_SORTER.sort()});

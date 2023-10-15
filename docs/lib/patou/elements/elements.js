@@ -205,7 +205,6 @@ class HTMLElementHelper extends HTMLElement {
 		this.root = this.attachShadow({ mode: "open" });
 		this.root.innerHTML = HTMLElementHelper.allInnerHTML.get(this.constructor._name);
 		for (const element of this.getElementsByClassName("disable-first-transition")) {
-			console.log(element);
 			element.addEventListener("transitionstart", stopTransition);
 		}
 		

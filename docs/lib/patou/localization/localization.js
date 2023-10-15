@@ -1,6 +1,7 @@
 import { CSVParser } from "../csv-parser/csv-parser.js";
 import { HTMLElementHelper, SHADOW_HOST_CLASS } from "../elements/elements.js";
 import { HistoryHelper } from "../history-helper/history-helper.js";
+import { Signal } from "../signal/signal.js";
 
 
 const TRANSLATION_KEY_ATTR = "trkey";
@@ -8,6 +9,8 @@ const TRANSLATION_LANG_ATTR = "trlang";
 
 
 class TranslationServer {
+	langChanged = new Signal;
+	
 	/** @type {LangSelect[]} */
 	selectors = [];
 	
@@ -28,7 +31,19 @@ class TranslationServer {
 		
 		onpopstate = _ => {
 			this.chooseLangFromURL();
-		} 
+		}
+		
+		this.langChanged.bind(() => {
+			for (const infos of this.boundAttributes) {
+				infos.element.setAttribute(infos.attribute, this.tr(infos.key));
+			}
+			
+			for (const langSelect of this.selectors) {
+				langSelect.chooseBest();
+			}
+			
+			this.trDOM();
+		})
 	}
 	
 	/**
@@ -112,7 +127,7 @@ class TranslationServer {
 			},
 			[]
 		)
-		this.onLangChanged();
+		this.langChanged.fire();
 	}
 	get cachedLangs() {
 		return this._cachedLangs;
@@ -165,66 +180,11 @@ class TranslationServer {
 		}
 		return key;
 	}
-	// /**
-	//  * 
-	//  * @param {String} key 
-	//  */
-	// tr(key) {
-	//	 let translation = this.CSVData.getCellByHeaders(key, this.nonDialect(this.lang), undefined);
-	//	 if (translation != undefined && translation != "") {
-	//		 return translation;
-	//	 }
-		
-	//	 for (const lang of this.fallbacks) {
-	//		 translation = this.CSVData.getCellByHeaders(key, this.nonDialect(lang), undefined);
-	//		 if (translation != undefined && translation != "") {
-	//			 return translation;
-	//		 }
-	//	 }
-	//	 return key;
-	// }
 	
 	
 	bindAttribute(element, attribute, key) {
 		this.boundAttributes.push({"element": element, "attribute": attribute, "key": key});
 		element.setAttribute(attribute, this.tr(key));
-	}
-	
-	/** @type {CallableFunction[]} */
-	langChangedCallbacks = [];
-	
-	/**
-	 * @param {CallableFunction} callback 
-	 */
-	addLangChangedListener(callback) {
-		this.langChangedCallbacks.push(callback);
-	}
-	
-	/**
-	 * @param {CallableFunction} callback 
-	 */
-	removeLangChangedListener(callback) {
-		const index = this.langChangedCallbacks.indexOf(callback);
-		if (index == -1) {
-			return;
-		}
-		this.langChangedCallbacks.splice(index, 1);
-	}
-	
-	onLangChanged() {
-		for (const infos of this.boundAttributes) {
-			infos.element.setAttribute(infos.attribute, this.tr(infos.key));
-		}
-		
-		for (const callback of this.langChangedCallbacks) {
-			callback();
-		}
-		
-		for (const langSelect of this.selectors) {
-			langSelect.chooseBest();
-		}
-		
-		this.trDOM();
 	}
 	
 	

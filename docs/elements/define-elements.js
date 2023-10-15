@@ -9,7 +9,7 @@ class ProjectCard extends HTMLElementHelper {
 	constructor() {
 		super();
 		
-		translationServer.addLangChangedListener(() => this.updateDate());
+		translationServer.langChanged.bind(() => this.updateDate());
 	}
 	
 	set dateFormat(newValue) {
