@@ -16,7 +16,44 @@
 <body>
 	<lang-select></lang-select>
 	<div class="wip" trkey="WIP"></div>
-	<div id="filters"></div>
+	
+	<div id="all-filters">
+		<!-- <label for="search" trkey="SEARCH"></label>
+		<input type="text" name="search" id="search-bar" placeholder="SEARCH_BY_TITLE"> -->
+		<!-- <div class="filters-container">EMPTY</div> -->
+		<div class="filters-container">
+			<div class="filter-header"><expand-button></expand-button><span class="filter-title">Filtrer par étiquette :</span><div id="tag-filters-sumup" class="filters-sumup"></div></div>
+			<div class="filter-categories">
+				<div class="filter-categories-wrapper">
+					<div class="filter-category">
+						<span class="category-title">Genre</span>
+						<tag-filter tag="platformer"></tag-filter>
+						<tag-filter tag="arcade"></tag-filter>
+					</div>
+					<div class="filter-category">
+						<span class="category-title">Plateforme</span>
+						<tag-filter tag="scratch"></tag-filter>
+						<tag-filter tag="web"></tag-filter>
+					</div>
+					<div class="filter-category">
+						<span class="category-title">Nombre de joueurs</span>
+						<tag-filter tag="multiplayer"></tag-filter>
+						<tag-filter tag="coop"></tag-filter>
+						<tag-filter tag="1v1"></tag-filter>
+					</div>
+					<div class="filter-category">
+						<span class="category-title">Monde</span>
+						<tag-filter tag="2D"></tag-filter>
+					</div>
+					<div class="filter-category">
+						<span class="category-title">Cadre</span>
+						<tag-filter tag="school"></tag-filter>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<div id="project-list"></div>
 </body>
 </html>

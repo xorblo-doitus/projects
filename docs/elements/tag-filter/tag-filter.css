@@ -3,6 +3,12 @@
 #background {
 	font-family: 'Times New Roman', Times, serif;
 	font-size: 1em;
+	width: 100%;
+}
+
+#tag-text {
+	flex-grow: 1;
+	text-align: start;
 }
 
 label {

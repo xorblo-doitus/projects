@@ -4,7 +4,8 @@ import { Sorter } from "./lib/patou/sort/sort.js";
 import { ProjectCard } from "./elements/define-elements.js";
 
 
-const FILTERS = document.getElementById("filters");
+const TAG_FILTERS = [];
+// const TAG_FILTERS = document.getElementById("tag-filters");
 const PROJECT_LIST = document.getElementById("project-list");
 
 class ProjectSorter extends Sorter {
@@ -65,8 +66,6 @@ var parser = new CSVParser().parseText(text)
 
 // console.log(`Call to parseText took ${end - start} milliseconds`)
 
-// console.log(parser.data)
-// start = performance.now();
 const ALL_TAGS = new Set;
 
 for (const row of parser) {
@@ -87,12 +86,11 @@ for (const row of parser) {
     }
 }
 
-const TAG_FILTERS = [];
 function onFiltersChanged() {
 	PROJECT_SORTER.includedTags.splice(0);
 	PROJECT_SORTER.excludedTags.splice(0);
 	
-	for (const tagFilter of FILTERS.childNodes) {
+	for (const tagFilter of TAG_FILTERS) {
 		if (tagFilter.mode == "include") {
 			PROJECT_SORTER.includedTags.push(tagFilter.tag);
 		} else if (tagFilter.mode == "exclude") {
@@ -103,15 +101,39 @@ function onFiltersChanged() {
 	PROJECT_SORTER.sort();
 }
 
-for (const tag of ALL_TAGS.values()) {
-    let newTagFilter = document.createElement("tag-filter");
-    newTagFilter.tag = tag;
-	newTagFilter.addModeChangedListener(onFiltersChanged);
-    FILTERS.appendChild(newTagFilter);
+// for (const tag of ALL_TAGS.values()) {
+//     let newTagFilter = document.createElement("tag-filter");
+//     newTagFilter.tag = tag;
+// 	newTagFilter.addModeChangedListener(onFiltersChanged);
+//     TAG_FILTERS.appendChild(newTagFilter);
+// }
+for (const tagFilter of document.querySelectorAll("tag-filter")) {
+	tagFilter.modeChanged.bind(onFiltersChanged);
+	// const parent = tagFilter.parentElement;
+	// tagFilter.modeChanged.bind(function() {
+	// 	// if (tagFilter.mode == "") {
+	// 	// 	parent.append(tagFilter);
+	// 	// } else {
+	// 	// 	document.getElementById("tag-filters-sumup").appendChild(tagFilter);
+	// 	// }
+	// 	if (tagFilter.mode == "") {
+	// 		const clone = tagFilter.cloneNode(true);
+	// 		clone.modeChanged.bind(() => {
+				
+	// 		})
+	// 		document.getElementById("tag-filters-sumup").appendChild(clone);
+	// 		// parent.append(tagFilter);
+	// 	} else {
+	// 		// document.getElementById("tag-filters-sumup").appendChild(tagFilter);
+	// 	}
+	// })
+	TAG_FILTERS.push(tagFilter);
 }
-// end = performance.now();
 
-// console.log(`Iteration took ${end - start} milliseconds`)
+
+for (const filterContainer of document.getElementsByClassName("filters-container")) {
+	filterContainer.querySelector("expand-button").toggled.bind(() => {filterContainer.classList.toggle("open")});
+}
 
 
 PROJECT_SORTER.sort();

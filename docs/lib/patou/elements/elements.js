@@ -3,7 +3,11 @@ import { TokenList } from "../token-list/token-list.js";
 
 
 const SHADOW_HOST_CLASS = "shadow-host";
-
+const NO_TRANSITION_SHEET = (() => {
+	let sheet = new CSSStyleSheet();
+	sheet.replaceSync("* {transition: none !important} .transition-detector{transition: rotate 0.1s !important; rotate: 360deg}");
+	return sheet;
+})();
 
 
 class PropertyAttributeBindHelper {
@@ -183,6 +187,14 @@ class TokenListHelper {
 }
 
 
+function stopTransition() {
+	console.log("YOUPI");
+	this.style.transition = "none";
+	setTimeout(() => {this.style.transition = "";})
+	this.removeEventListener("transitionstart", stopTransition);
+}
+
+
 class HTMLElementHelper extends HTMLElement {
 	/** @type {TokenListHelper[]} */
 	static tokenLists = [];
@@ -191,21 +203,15 @@ class HTMLElementHelper extends HTMLElement {
 		super();
 		
 		this.root = this.attachShadow({ mode: "open" });
-		// let sheets = [...this.root.adoptedStyleSheets, noTranisitionSheet];
-		// this.root.adoptedStyleSheets = sheets;
 		this.root.innerHTML = HTMLElementHelper.allInnerHTML.get(this.constructor._name);
+		for (const element of this.getElementsByClassName("disable-first-transition")) {
+			console.log(element);
+			element.addEventListener("transitionstart", stopTransition);
+		}
 		
 		for (const tokanListHelper of this.constructor.tokenLists) {
 			tokanListHelper.applyToInstance(this);
 		}
-		
-		// setTimeout(
-		// 	() => {
-		// 		sheets.splice(this.root.adoptedStyleSheets.indexOf(noTranisitionSheet), 1);
-		// 		this.root.adoptedStyleSheets = sheets;
-		// 	},
-		// 	3000 // Enough for slow 3G (tested with devtool's throttling)
-		// );
 	}
 	
 	connectedCallback() {

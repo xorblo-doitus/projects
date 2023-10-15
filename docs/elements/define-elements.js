@@ -1,6 +1,7 @@
 import { HTMLElementHelper, PropertyAttributeBindHelper, TokenListHelper } from "../lib/patou/elements/elements.js";
 import { TokenList } from "../lib/patou/token-list/token-list.js";
 import { TRANSLATION_KEY_ATTR, translationServer } from "../lib/patou/localization/localization.js";
+import { Signal } from "../lib/patou/signal/signal.js";
 
 
 
@@ -93,7 +94,7 @@ ProjectTag.bindPropertiesToAtributes([
 class TagFilter extends ProjectTag {
 	/** @type {String} */
 	mode = "";
-	modeChangedListeners = [];
+	modeChanged = new Signal;
 	
 	constructor() {
 		super();
@@ -108,7 +109,7 @@ class TagFilter extends ProjectTag {
 			} else {
 				this.mode = "";
 			}
-			this.fireModeChanged();
+			this.modeChanged.fire();
 		});
 		excludeCheckbox.addEventListener("change", (event) => {
 			if (event.target.checked) {
@@ -117,7 +118,7 @@ class TagFilter extends ProjectTag {
 			} else {
 				this.mode = "";
 			}
-			this.fireModeChanged();
+			this.modeChanged.fire();
 		});
 		
 		for (const element of this.querySelectorAll("label, input")) {
@@ -140,37 +141,25 @@ class TagFilter extends ProjectTag {
 					excludeCheckbox.checked = false;
 					break;
 				}
-			this.fireModeChanged();
+			this.modeChanged.fire();
 		});
 	}
+}
+TagFilter.pushRegistering("tag-filter");
+
+
+class ExpandButton extends HTMLElementHelper {
+	toggled = new Signal;
 	
-	/**
-	 * @param {CallableFunction} callback 
-	 */
-	addModeChangedListener(callback) {
-		this.modeChangedListeners.push(callback);
-	}
-	
-	/**
-	 * @param {CallableFunction} callback 
-	*/
-	removeModeChangedListener(callback) {
-		const index = this.modeChangedListeners.indexOf(callback);
-		if (index == -1) {
-			return;
-		}
-		this.modeChangedListeners.splice(index, 1);
-	}
-	
-	fireModeChanged() {
-		for (const callback of this.modeChangedListeners) {
-			callback();
-		}
+	constructor() {
+		super();
+		this.addEventListener("click", function(e) {
+			this.classList.toggle("open");
+			this.toggled.fire();
+		});
 	}
 }
-await TagFilter.pushRegistering("tag-filter");
-
-
+ExpandButton.pushRegistering("expand-button");
 
 await HTMLElementHelper.awaitAllRegistering();
 
