@@ -3,11 +3,11 @@ import { TokenList } from "../token-list/token-list.js";
 
 
 const SHADOW_HOST_CLASS = "shadow-host";
-const NO_TRANSITION_SHEET = (() => {
-	let sheet = new CSSStyleSheet();
-	sheet.replaceSync("* {transition: none !important} .transition-detector{transition: rotate 0.1s !important; rotate: 360deg}");
-	return sheet;
-})();
+// const NO_TRANSITION_SHEET = (() => {
+// 	let sheet = new CSSStyleSheet();
+// 	sheet.replaceSync("* {transition: none !important} .transition-detector{transition: rotate 0.1s !important; rotate: 360deg}");
+// 	return sheet;
+// })();
 
 
 class PropertyAttributeBindHelper {
@@ -196,13 +196,13 @@ function stopTransition() {
 
 
 class HTMLElementHelper extends HTMLElement {
-	/** @type {TokenListHelper[]} */
-	static tokenLists = [];
-	
 	constructor() {
 		super();
 		
 		this.root = this.attachShadow({ mode: "open" });
+		for (const styleSheet of HTMLElementHelper.allCSS.get(this.constructor._name)) {
+			this.root.adoptedStyleSheets.push(styleSheet);
+		}
 		this.root.innerHTML = HTMLElementHelper.allInnerHTML.get(this.constructor._name);
 		for (const element of this.getElementsByClassName("disable-first-transition")) {
 			element.addEventListener("transitionstart", stopTransition);
@@ -264,6 +264,10 @@ class HTMLElementHelper extends HTMLElement {
 	
 	/** @type {Map<string, string>} */
 	static allInnerHTML = new Map();
+	/** @type {Map<string, CSSStyleSheet[]>} */
+	static allCSS = new Map();
+	/** @type {TokenListHelper[]} */
+	static tokenLists = [];
 	/** The name of the element, used between `<>` to create this element.
 	 * @type {string} */
 	static _name = undefined;
@@ -276,9 +280,10 @@ class HTMLElementHelper extends HTMLElement {
 	 * @param {String} name The tag name of the element. Must include a `-`, among other necessary conditions.
 	 * @param {CustomElementConstructor} constructor If not specified, default to this
 	 * @param {String} path If not specified, try to find `elements/${name}/${name}.html`.
+	 * @param {(string|CSSStyleSheet|Promise<StyleSheet>)[]} additionnalCSS If not specified, default to this
 	 */
-	static pushRegistering(name, path = undefined, constructor = undefined) {
-		HTMLElementHelper.registeringPromises = HTMLElementHelper.registeringPromises.concat(this.register(name, path, constructor));
+	static pushRegistering(name, path = undefined, constructor = undefined, additionnalCSS = undefined) {
+		HTMLElementHelper.registeringPromises = HTMLElementHelper.registeringPromises.concat(this.register(name, path, constructor, additionnalCSS));
 	}
 	
 	/**
@@ -296,13 +301,27 @@ class HTMLElementHelper extends HTMLElement {
 	 * @param {String} name The tag name of the element. Must include a `-`, among other necessary conditions.
 	 * @param {String} path If not specified, try to find `elements/${name}/${name}.html`.
 	 * @param {CustomElementConstructor} constructor If not specified, default to this
+	 * @param {(string|CSSStyleSheet|Promise<StyleSheet>)[]} additionnalCSS If not specified, default to this
 	 */
-	static async register(name, path = `elements/${name}/${name}.html`, constructor = this) {
+	static async register(name, path = `elements/${name}/${name}.html`, constructor = this, additionnalCSS=[]) {
 		HTMLElementHelper.allInnerHTML.set(
 			name,
 			await fetch(path)
 				.then(response => response.text())
 		);
+		additionnalCSS.push(HTMLElementHelper.loadStyleSheet(path.replace(".html", ".css")));
+		for (const [i, styleSheet] of additionnalCSS.entries()) {
+			if (typeof styleSheet == "string") {
+				additionnalCSS[i] = await HTMLElementHelper.loadStyleSheet(styleSheet);
+			} else {
+				additionnalCSS[i] = await styleSheet;
+			}
+		}
+		// const allSheets = [];
+		// for (const CSS of additionnalCSS) {
+		// 	allSheets.push(styleSheet);
+		// }
+		HTMLElementHelper.allCSS.set(name, additionnalCSS);
 		
 		constructor._name = name;
 		
@@ -348,6 +367,15 @@ class HTMLElementHelper extends HTMLElement {
 		}
 		
 		return this; // Allow chaining
+	}
+	
+	static async loadStyleSheet(path) {
+		const styleSheet = new CSSStyleSheet();
+		styleSheet.replaceSync(
+			await fetch(path.replace(".html", ".css"))
+			.then(response => response.text())
+		);
+		return styleSheet;
 	}
 }
 

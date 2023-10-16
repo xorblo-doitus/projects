@@ -145,7 +145,7 @@ class TagFilter extends ProjectTag {
 		});
 	}
 }
-TagFilter.pushRegistering("tag-filter");
+TagFilter.pushRegistering("tag-filter", undefined, undefined, ["/projects/elements/project-tag/project-tag.css"]);
 
 
 class ExpandButton extends HTMLElementHelper {
