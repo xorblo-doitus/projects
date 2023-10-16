@@ -12,6 +12,7 @@ SPACE_ADVENTURE_DESC,Avoid getting hit by asteroids while collecting fuel and ma
 PUZZLE,Puzzle,Puzzle
 PUZZLE_DESC,A puzzle created for a school project.,Un puzzle créé pour un projet scolaire.
 WIP,⚠ Work in progress ⚠: Not every projects are present and the site is missing features.,"⚠ En construction ⚠ : Tous les projets n’ont pas été ajouté, et le site n’a pas beaucoup de fonctionnalités."
+TAG_FILTERS,Filter by tag:,Filtrer par étiquette :
 PLATFORMER,Platformer,Plateforme
 PLATFORMER_DESC,Platformer game.,Jeu de plateforme.
 2D,2D,2D
@@ -30,6 +31,11 @@ SCHOOL_DESC,Created for school.,Créé pour une activité scolaire.
 1V1_DESC,1 versus 1 fighting game.,Jeu de combat en 1 contre 1.
 MULTIPLAYER,Multiplayer,Multijoueur
 MULTIPLAYER_DESC,You can play with other peoples localy.,Se joue à plusieurs. (En local)
+GENRE,Genre,Genre
+PLATFORM,Platform,Plateforme
+PLAYER_COUNT,Player count,Nombre de joueurs
+VUE,Vue,Vue
+SCOPE,Scope,Cadre
 AUTO,Automatic,Automatique
 en,English,Anglais
 fr,French,Français
