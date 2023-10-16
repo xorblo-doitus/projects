@@ -101,32 +101,20 @@ function onFiltersChanged() {
 	PROJECT_SORTER.sort();
 }
 
-// for (const tag of ALL_TAGS.values()) {
-//     let newTagFilter = document.createElement("tag-filter");
-//     newTagFilter.tag = tag;
-// 	newTagFilter.addModeChangedListener(onFiltersChanged);
-//     TAG_FILTERS.appendChild(newTagFilter);
-// }
 for (const tagFilter of document.querySelectorAll("tag-filter")) {
 	tagFilter.modeChanged.bind(onFiltersChanged);
-	// const parent = tagFilter.parentElement;
-	// tagFilter.modeChanged.bind(function() {
-	// 	// if (tagFilter.mode == "") {
-	// 	// 	parent.append(tagFilter);
-	// 	// } else {
-	// 	// 	document.getElementById("tag-filters-sumup").appendChild(tagFilter);
-	// 	// }
-	// 	if (tagFilter.mode == "") {
-	// 		const clone = tagFilter.cloneNode(true);
-	// 		clone.modeChanged.bind(() => {
-				
-	// 		})
-	// 		document.getElementById("tag-filters-sumup").appendChild(clone);
-	// 		// parent.append(tagFilter);
-	// 	} else {
-	// 		// document.getElementById("tag-filters-sumup").appendChild(tagFilter);
-	// 	}
-	// })
+	const parent = tagFilter.parentElement;
+	tagFilter.modeChanged.bind(function() {
+		if (tagFilter.mode == "") {
+			tagFilter.clearMimic();
+		} else {
+			if (tagFilter.mimic) {
+				tagFilter.createMimic();
+			} else {
+				document.getElementById("tag-filters-sumup").appendChild(tagFilter.createMimic());
+			}
+		}
+	})
 	TAG_FILTERS.push(tagFilter);
 }
 

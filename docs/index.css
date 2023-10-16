@@ -47,7 +47,7 @@
 .filter-header {
     display: flex;
     
-    padding: 1ch;
+    min-height: 2.1em;
     
     border-bottom: var(--default-border);
     border-bottom-width: 0px;
@@ -56,6 +56,20 @@
 .filters-container.open .filter-header {
     border-bottom: var(--default-border);
     transition: none;
+}
+
+.filter-header * {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.filter-header expand-button {
+    margin-left: 1ch;
+}
+
+.filters-sumup {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .filter-title {
