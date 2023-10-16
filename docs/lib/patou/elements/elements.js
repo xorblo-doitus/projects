@@ -188,7 +188,6 @@ class TokenListHelper {
 
 
 function stopTransition() {
-	console.log("YOUPI");
 	this.style.transition = "none";
 	setTimeout(() => {this.style.transition = "";})
 	this.removeEventListener("transitionstart", stopTransition);
