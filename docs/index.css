@@ -65,11 +65,14 @@
 
 .filter-header expand-button {
     margin-left: 1ch;
+    margin-right: 0.6ch;
 }
 
 .filters-sumup {
     display: flex;
     flex-wrap: wrap;
+    gap: 0.8ch;
+    padding: 0.2em;
 }
 
 .filter-title {
