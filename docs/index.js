@@ -91,9 +91,9 @@ function onFiltersChanged() {
 	PROJECT_SORTER.excludedTags.splice(0);
 	
 	for (const tagFilter of TAG_FILTERS) {
-		if (tagFilter.mode == "include") {
+		if (tagFilter.mode == 1) {
 			PROJECT_SORTER.includedTags.push(tagFilter.tag);
-		} else if (tagFilter.mode == "exclude") {
+		} else if (tagFilter.mode == -1) {
 			PROJECT_SORTER.excludedTags.push(tagFilter.tag);
 		}
 	}
@@ -105,7 +105,7 @@ for (const tagFilter of document.querySelectorAll("tag-filter")) {
 	tagFilter.modeChanged.bind(onFiltersChanged);
 	const parent = tagFilter.parentElement;
 	tagFilter.modeChanged.bind(function() {
-		if (tagFilter.mode == "") {
+		if (tagFilter.mode == 0) {
 			tagFilter.clearMimic();
 		} else {
 			if (tagFilter.mimic) {

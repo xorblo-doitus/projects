@@ -91,14 +91,21 @@ ProjectTag.bindPropertiesToAtributes([tagAttibuteBinder]).pushRegistering("proje
 
 
 class Filter extends HTMLElementHelper {
-	
-}
-
-
-class TagFilter extends Filter {
-	/** @type {String} */
-	mode = "";
 	modeChanged = new Signal;
+	_mode = 0;
+	
+	/** @param {-1|0|1} newValue */
+	set mode(newValue) {
+		if (newValue != this._mode) {
+			this._mode = newValue;
+			this.includeCheckbox.checked = newValue == 1;
+			this.excludeCheckbox.checked = newValue == -1;
+			this.modeChanged.fire();
+		}
+	}
+	get mode() {
+		return this._mode;
+	}
 	
 	constructor() {
 		super();
@@ -147,53 +154,31 @@ class TagFilter extends Filter {
 		
 		this.includeCallback = function(event) {
 			if (event.target.checked) {
-				tagFilter.mode = "include";
-				tagFilter.includeCheckbox.checked = true;
-				tagFilter.excludeCheckbox.checked = false;
+				tagFilter.mode = 1;
 			} else {
-				tagFilter.mode = "";
-				tagFilter.includeCheckbox.checked = false;
+				tagFilter.mode = 0;
 			}
-			tagFilter.modeChanged.fire();
 		}
 		this.includeCheckbox.addEventListener("change", this.includeCallback);
 		
 		this.excludeCallback = function(event) {
 			if (event.target.checked) {
-				tagFilter.mode = "exclude";
-				tagFilter.includeCheckbox.checked = false;
-				tagFilter.excludeCheckbox.checked = true;
+				tagFilter.mode = -1;
 			} else {
-				tagFilter.mode = "";
-				tagFilter.excludeCheckbox.checked = false;
+				tagFilter.mode = 0;
 			}
-			tagFilter.modeChanged.fire();
 		}
 		this.excludeCheckbox.addEventListener("change", this.excludeCallback);
 		
 		this.switchCallback = function(event) {
-			switch (tagFilter.mode) {
-				case "":
-					tagFilter.mode = "include";
-					tagFilter.includeCheckbox.checked = true;
-					tagFilter.excludeCheckbox.checked = false;
-					break;
-				case "include":
-					tagFilter.mode = "exclude";
-					tagFilter.includeCheckbox.checked = false;
-					tagFilter.excludeCheckbox.checked = true;
-					break;
-				case "exclude":
-					tagFilter.mode = "";
-					tagFilter.includeCheckbox.checked = false;
-					tagFilter.excludeCheckbox.checked = false;
-					break;
-				}
-			tagFilter.modeChanged.fire();
+			tagFilter.mode = ((tagFilter.mode + 2) % 3) - 1;
 		}
 		this.getElementById("background").addEventListener("click", this.switchCallback);
 	}
 }
+
+
+class TagFilter extends Filter {}
 TagFilter.bindPropertiesToAtributes([tagAttibuteBinder]).pushRegistering("tag-filter", undefined, undefined, ["/projects/elements/project-tag/project-tag.css"]);
 
 
