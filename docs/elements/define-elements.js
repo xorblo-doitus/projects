@@ -83,15 +83,19 @@ ProjectCard.bindPropertiesToAtributes([
 
 
 class ProjectTag extends HTMLElementHelper {}
-ProjectTag.bindPropertiesToAtributes([
-	new PropertyAttributeBindHelper("tag").setAttributeChangedCallback(function(newValue) {
-		this.getElementById("tag-text").setAttribute(TRANSLATION_KEY_ATTR, newValue.toUpperCase().replace(" ", "_"));
-		this.getElementById("background").setAttribute("tag", newValue);
-	})
-]).pushRegistering("project-tag");
+let tagAttibuteBinder = new PropertyAttributeBindHelper("tag").setAttributeChangedCallback(function(newValue) {
+	this.getElementById("tag-text").setAttribute(TRANSLATION_KEY_ATTR, newValue.toUpperCase().replace(" ", "_"));
+	this.getElementById("background").setAttribute("tag", newValue);
+})
+ProjectTag.bindPropertiesToAtributes([tagAttibuteBinder]).pushRegistering("project-tag");
 
 
-class TagFilter extends ProjectTag {
+class Filter extends HTMLElementHelper {
+	
+}
+
+
+class TagFilter extends Filter {
 	/** @type {String} */
 	mode = "";
 	modeChanged = new Signal;
@@ -190,7 +194,7 @@ class TagFilter extends ProjectTag {
 		this.getElementById("background").addEventListener("click", this.switchCallback);
 	}
 }
-TagFilter.pushRegistering("tag-filter", undefined, undefined, ["/projects/elements/project-tag/project-tag.css"]);
+TagFilter.bindPropertiesToAtributes([tagAttibuteBinder]).pushRegistering("tag-filter", undefined, undefined, ["/projects/elements/project-tag/project-tag.css"]);
 
 
 class ExpandButton extends HTMLElementHelper {
@@ -206,6 +210,11 @@ class ExpandButton extends HTMLElementHelper {
 }
 ExpandButton.pushRegistering("expand-button");
 
+
+
 await HTMLElementHelper.awaitAllRegistering();
+
+// Free useless things.
+tagAttibuteBinder = null
 
 export { ProjectCard }
