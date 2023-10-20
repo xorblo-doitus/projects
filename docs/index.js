@@ -118,7 +118,13 @@ for (const tagFilter of document.querySelectorAll("tag-filter")) {
 	TAG_FILTERS.push(tagFilter);
 }
 
+let ignoringSortFilters = false;
 function onSortFiltersChanged(sortFilter) {
+	if (ignoringSortFilters) {
+		return;
+	}
+	ignoringSortFilters = true;
+	
 	for (const otherSortFilter of SORT_FILTERS) {
 		if (otherSortFilter != sortFilter) {
 			otherSortFilter.mode = 0;
@@ -133,6 +139,7 @@ function onSortFiltersChanged(sortFilter) {
 		PROJECT_SORTER.reverted = sortFilter.mode == -1;
 	}
 	PROJECT_SORTER.sort();
+	ignoringSortFilters = false;
 }
 
 for (const sortFilter of document.querySelectorAll("sort-filter")) {
