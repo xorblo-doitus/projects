@@ -20,12 +20,22 @@
 	<div id="all-filters">
 		<!-- <label for="search" trkey="SEARCH"></label>
 		<input type="text" name="search" id="search-bar" placeholder="SEARCH_BY_TITLE"> -->
-		<!-- <div class="filters-container">EMPTY</div> -->
+		<div class="filters-container">
+			<div class="filter-header">
+				<span class="filter-title" trkey="SORT_FILTERS"></span>
+				<div id="sort-filters-sumup" class="filters-sumup">
+					<sort-filter sort-by="date"></sort-filter>
+					<sort-filter sort-by="fun"></sort-filter>
+					<sort-filter sort-by="title"></sort-filter>
+				</div>
+			</div>
+		</div>
 		<div class="filters-container">
 			<div class="filter-header">
 				<expand-button></expand-button>
 				<span class="filter-title" trkey="TAG_FILTERS"></span>
-				<div id="tag-filters-sumup" class="filters-sumup"></div></div>
+				<div id="tag-filters-sumup" class="filters-sumup"></div>
+			</div>
 			<div class="filter-categories">
 				<div class="filter-categories-wrapper">
 					<div class="filter-category">

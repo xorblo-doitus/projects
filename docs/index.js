@@ -5,13 +5,14 @@ import { ProjectCard } from "./elements/define-elements.js";
 
 
 const TAG_FILTERS = [];
+const SORT_FILTERS = [];
 // const TAG_FILTERS = document.getElementById("tag-filters");
 const PROJECT_LIST = document.getElementById("project-list");
 
 class ProjectSorter extends Sorter {
 	// includedTags = ["arcade"]; // Testing values.
 	// excludedTags = ["multiplayer"]; // Testing values.
-	currentComparingFunction = "date";
+	// currentComparingFunction = "date";
 	// reverted = true; // Testing values.
 	
 	/**
@@ -19,8 +20,8 @@ class ProjectSorter extends Sorter {
 	 */
 	comparingFunctions = new Map([
 		["title", (a, b) => { return a.title.localeCompare(b.title); }],
-		["date", (a, b) => { return b.unixtime - a.unixtime; }], // Reversed by default, to get best project to front easily.
-		["fun", (a, b) => { return b.fun - a.fun; }], // Reversed by default, to get best project to front easily.
+		["date", (a, b) => { return a.unixtime - b.unixtime; }],
+		["fun", (a, b) => { return a.fun - b.fun; }],
 	]);
 	
 	/**
@@ -86,7 +87,7 @@ for (const row of parser) {
     }
 }
 
-function onFiltersChanged() {
+function onTagFiltersChanged() {
 	PROJECT_SORTER.includedTags.splice(0);
 	PROJECT_SORTER.excludedTags.splice(0);
 	
@@ -102,8 +103,7 @@ function onFiltersChanged() {
 }
 
 for (const tagFilter of document.querySelectorAll("tag-filter")) {
-	tagFilter.modeChanged.bind(onFiltersChanged);
-	const parent = tagFilter.parentElement;
+	tagFilter.modeChanged.bind(onTagFiltersChanged);
 	tagFilter.modeChanged.bind(function() {
 		if (tagFilter.mode == 0) {
 			tagFilter.clearMimic();
@@ -118,11 +118,36 @@ for (const tagFilter of document.querySelectorAll("tag-filter")) {
 	TAG_FILTERS.push(tagFilter);
 }
 
+function onSortFiltersChanged(sortFilter) {
+	for (const otherSortFilter of SORT_FILTERS) {
+		if (otherSortFilter != sortFilter) {
+			otherSortFilter.mode = 0;
+		}
+	}
+	
+	if (sortFilter.mode == 0) {
+		PROJECT_SORTER.currentComparingFunction = "";
+		PROJECT_SORTER.reverted = false;
+	} else {
+		PROJECT_SORTER.currentComparingFunction = sortFilter.sortBy;
+		PROJECT_SORTER.reverted = sortFilter.mode == -1;
+	}
+	PROJECT_SORTER.sort();
+}
 
-for (const filterContainer of document.getElementsByClassName("filters-container")) {
-	filterContainer.querySelector("expand-button").toggled.bind(() => {filterContainer.classList.toggle("open")});
+for (const sortFilter of document.querySelectorAll("sort-filter")) {
+	sortFilter.modeChanged.bind(onSortFiltersChanged);
+	SORT_FILTERS.push(sortFilter);
 }
 
 
-PROJECT_SORTER.sort();
+for (const filterContainer of document.getElementsByClassName("filters-container")) {
+	const expandButton = filterContainer.querySelector("expand-button")
+	if (expandButton) {
+		expandButton.toggled.bind(() => {filterContainer.classList.toggle("open")});
+	}
+}
+
+
+document.querySelector('sort-filter[sort-by="date"]').mode = -1;
 translationServer.langChanged.bind(() => {PROJECT_SORTER.sort()});

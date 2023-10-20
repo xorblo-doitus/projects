@@ -15,6 +15,10 @@ PUZZLE,Puzzle,Puzzle
 PUZZLE_DESC,A puzzle created for a school project.,Un puzzle créé pour un projet scolaire.
 WIP,⚠ Work in progress ⚠: Not every projects are present and the site is missing features.,"⚠ En construction ⚠ : Tous les projets n’ont pas été ajouté, et le site n’a pas beaucoup de fonctionnalités."
 TAG_FILTERS,Filter by tag:,Filtrer par étiquette :
+SORT_FILTERS,Sort by:,Trier par :
+DATE,Date,Date
+FUN,Fun,Fun
+TITLE,Title,Titre
 PLATFORMER,Platformer,Plateforme
 PLATFORMER_DESC,Platformer game.,Jeu de plateforme.
 2D,2D,2D

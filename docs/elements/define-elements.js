@@ -100,7 +100,7 @@ class Filter extends HTMLElementHelper {
 			this._mode = newValue;
 			this.includeCheckbox.checked = newValue == 1;
 			this.excludeCheckbox.checked = newValue == -1;
-			this.modeChanged.fire();
+			this.modeChanged.fireNoRecursion(this);
 		}
 	}
 	get mode() {
@@ -180,6 +180,14 @@ class Filter extends HTMLElementHelper {
 
 class TagFilter extends Filter {}
 TagFilter.bindPropertiesToAtributes([tagAttibuteBinder]).pushRegistering("tag-filter", undefined, undefined, ["/projects/elements/project-tag/project-tag.css"]);
+
+
+class SortFilter extends Filter {}
+SortFilter.bindPropertiesToAtributes([
+	new PropertyAttributeBindHelper("sort-by").setAttributeChangedCallback(function(newValue) {
+		this.getElementById("sort-text").setAttribute(TRANSLATION_KEY_ATTR, newValue.toUpperCase().replace(" ", "_"));
+	})
+]).pushRegistering("sort-filter");
 
 
 class ExpandButton extends HTMLElementHelper {

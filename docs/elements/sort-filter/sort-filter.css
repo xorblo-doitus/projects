@@ -1,0 +1,79 @@
+:host {
+    display: inline-block;
+    margin: 0.2em;
+}
+
+#background {
+    padding: 0.2em;
+    padding-right: 0.35em;
+    border-radius: 99999px; /* Extremly high value cause a capsule shape */
+    border: 0.1em solid var(--border-color);
+    /* font-size: 0.5em; */
+    
+    display: flex;
+	align-items: center;
+	gap: 0.5ch;
+
+	
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 1em;
+	width: 100%;
+	
+	background-color: skyblue;
+	--border-color: rgb(47, 152, 193);
+}
+
+#sort-text {
+	flex-grow: 1;
+	text-align: start;
+}
+
+label {
+	display: grid;
+	height: 1em;
+	width: 1em;
+	border-radius: 0.2em;
+	border: 0.1em solid;
+	border-color: inherit;
+	
+	transition: background-color 0.5s;
+	line-height: 1.1em;
+}
+
+label span {
+	/* display: none; */
+	align-self: center;
+	justify-self: center;
+	
+    font-family: arial;
+	
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
+}
+
+input {
+	display: none;
+}
+
+input:checked + label span {
+	display: revert;
+}
+
+:checked + label {
+	color: white;
+	background-color: var(--border-color);
+	font-weight: 1000;
+	line-height: 1em;
+	/* color: white; */
+	/* box-shadow: inset 0 0 0.1em black; */
+	/* background-color: rgba(0, 0, 0, 50%); */
+	/* background-color: blue; */
+}
+
+/* #exclude:checked + label { */
+	/* color: white; */
+	/* box-shadow: inset 0 0 0.1em black; */
+	/* background-color: rgba(0, 0, 0, 50%); */
+	/* background-color: red; */
+/* } */
