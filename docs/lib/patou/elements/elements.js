@@ -33,6 +33,11 @@ class PropertyAttributeBindHelper {
 	 * @param {string} attributeName 
 	 */
 	constructor(name, parser = undefined, serializer = undefined, attributeName = name) {
+		const split = name.split("-");
+		name = split.shift();
+		for (const part of split) {
+			name += part[0].toUpperCase() + part.slice(1);
+		}
 		this.name = name;
 		this.attributeName = attributeName;
 		this.propertyDescriptor = {
