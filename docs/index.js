@@ -11,8 +11,8 @@ const PROJECT_LIST = document.getElementById("project-list");
 class ProjectSorter extends Sorter {
 	// includedTags = ["arcade"]; // Testing values.
 	// excludedTags = ["multiplayer"]; // Testing values.
-	// currentComparingFunction = "fun"; // Testing values.
-	// reverted = true;
+	currentComparingFunction = "date";
+	// reverted = true; // Testing values.
 	
 	/**
 	 * @type {Map<String, function(ProjectCard, ProjectCard): Number>}
