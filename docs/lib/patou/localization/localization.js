@@ -81,13 +81,7 @@ class TranslationServer {
 		this._lang = newValue;
 		document.querySelector("html").lang = newValue;
 		
-		const newURL = new URL(location.href);
-		if (navigator.language == newValue) {
-			newURL.searchParams.delete("lang");
-		} else {
-			newURL.searchParams.set("lang", newValue);
-		}
-		HistoryHelper.updateURL(newURL.toString());
+		HistoryHelper.updateURLParameter("lang", navigator.language == newValue ? null : newValue);
 		
 		this.refreshCachedLangs();
 	}
