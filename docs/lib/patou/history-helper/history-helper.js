@@ -24,7 +24,12 @@ class HistoryHelper {
 		} else {
 			newURL.searchParams.set(parameter, newValue);
 		}
-		HistoryHelper.updateURL(newURL.toString());
+		
+		let newString = newURL.toString().replace("=&", "&")
+		if (newString.endsWith("=")) {
+			newString = newString.slice(0, -1);
+		}
+		HistoryHelper.updateURL(newString);
 	}
 	
 	/**
