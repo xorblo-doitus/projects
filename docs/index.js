@@ -163,6 +163,9 @@ function onSortFiltersChanged(sortFilter) {
 		PROJECT_SORTER.reverted = sortFilter.mode == -1;
 	}
 	PROJECT_SORTER.sort();
+	
+	HistoryHelper.updateURLParameter("sortBy", PROJECT_SORTER.currentComparingFunction == "date" ? null : PROJECT_SORTER.currentComparingFunction);
+	HistoryHelper.updateURLParameter("sortRevert", PROJECT_SORTER.reverted ? "" : null);
 	ignoringSortFilters = false;
 }
 
@@ -179,6 +182,11 @@ for (const filterContainer of document.getElementsByClassName("filters-container
 	}
 }
 
-
-document.querySelector('sort-filter[sort-by="date"]').mode = -1;
+if (HistoryHelper.getParameter("sortBy") == null) {
+	document.querySelector('sort-filter[sort-by="date"]').mode = -1;
+} else if (HistoryHelper.getParameter("sortBy") != "") {
+	document.querySelector(
+		`sort-filter[sort-by="${ HistoryHelper.getParameter("sortBy") }"]`
+	).mode = HistoryHelper.getParameter("sortRevert") == null ? 1 : -1;
+}
 translationServer.langChanged.bind(() => {PROJECT_SORTER.sort()});
