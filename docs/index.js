@@ -2,6 +2,7 @@ import { CSVParser } from "./lib/patou/csv-parser/csv-parser.js";
 import { translationServer } from "./common/common.js";
 import { Sorter } from "./lib/patou/sort/sort.js";
 import { ProjectCard } from "./elements/define-elements.js";
+import { HistoryHelper } from "./lib/patou/history-helper/history-helper.js";
 
 
 const TAG_FILTERS = [];
@@ -100,6 +101,23 @@ function onTagFiltersChanged() {
 	}
 	
 	PROJECT_SORTER.sort();
+	
+	HistoryHelper.updateURLParameter("included-tags", PROJECT_SORTER.includedTags);
+	HistoryHelper.updateURLParameter("excluded-tags", PROJECT_SORTER.excludedTags);
+}
+
+let startingIncludedTags = HistoryHelper.getParameter("included-tags")
+if (startingIncludedTags == null) {
+	startingIncludedTags = [];
+} else {
+	startingIncludedTags = startingIncludedTags.split("~");
+}
+
+let startingExcludedTags = HistoryHelper.getParameter("excluded-tags")
+if (startingExcludedTags == null) {
+	startingExcludedTags = [];
+} else {
+	startingExcludedTags = startingExcludedTags.split("~");
 }
 
 for (const tagFilter of document.querySelectorAll("tag-filter")) {
@@ -116,6 +134,12 @@ for (const tagFilter of document.querySelectorAll("tag-filter")) {
 		}
 	})
 	TAG_FILTERS.push(tagFilter);
+	
+	if (startingIncludedTags.includes(tagFilter.tag)) {
+		tagFilter.mode = 1;
+	} else if (startingExcludedTags.includes(tagFilter.tag)) {
+		tagFilter.mode = -1;
+	}
 }
 
 let ignoringSortFilters = false;
