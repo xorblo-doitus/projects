@@ -5,7 +5,19 @@ class HistoryHelper {
 		}
 	}
 	
+	/**
+	 * @param {string} parameter 
+	 * @param {*} newValue NB: Arrays are join using `~`.
+	 */
 	static updateURLParameter(parameter, newValue) {
+		if (newValue instanceof Array) {
+			if (newValue.length == 0) {
+				newValue = null;
+			} else {
+				newValue = newValue.join("~");
+			}
+		}
+		
 		const newURL = HistoryHelper.getCurrentURL();
 		if (newValue == null) {
 			newURL.searchParams.delete(parameter);
@@ -13,6 +25,17 @@ class HistoryHelper {
 			newURL.searchParams.set(parameter, newValue);
 		}
 		HistoryHelper.updateURL(newURL.toString());
+	}
+	
+	/**
+	 * @param {string} parameter
+	 */
+	static getParameter(parameter) {
+		return HistoryHelper.getCurrentSearchParams().get(parameter);
+	}
+	
+	static getCurrentSearchParams() {
+		return HistoryHelper.getCurrentURL().searchParams;
 	}
 	
 	static getCurrentURL() {
