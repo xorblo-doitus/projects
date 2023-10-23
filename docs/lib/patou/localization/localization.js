@@ -179,7 +179,9 @@ class TranslationServer {
 	
 	bindAttribute(element, attribute, key) {
 		this.boundAttributes.push({"element": element, "attribute": attribute, "key": key});
-		element.setAttribute(attribute, this.tr(key));
+		if (this.CSVData != undefined) {
+			element.setAttribute(attribute, this.tr(key));
+		}
 	}
 	
 	
