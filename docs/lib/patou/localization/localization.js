@@ -5,6 +5,7 @@ import { Signal } from "../signal/signal.js";
 
 
 const TRANSLATION_KEY_ATTR = "trkey";
+const TRANSLATED_ATTRIBUTES_ATTR = "trattributes";
 const TRANSLATION_LANG_ATTR = "trlang";
 
 
@@ -195,6 +196,22 @@ class TranslationServer {
 		for (const toScan of HTMLElementHelper.getRootsRecursive(DOM)) {
 			for (const element of toScan.querySelectorAll(`[${TRANSLATION_KEY_ATTR}]`)) {
 				this.trElement(element);
+			}
+			for (const element of toScan.querySelectorAll(`[${TRANSLATED_ATTRIBUTES_ATTR}]`)) {
+				const binds = element.getAttribute(TRANSLATED_ATTRIBUTES_ATTR).split(";").reduce(
+					function(accumulator, value) {
+						// Allow trailing semicolon and empty binds.
+						if (value.length > 0) {
+							accumulator.push(value);
+						}
+						return accumulator;
+					},
+					[]
+				);
+				
+				for (const bind of binds) {
+					this.bindAttribute(element, ...bind.split(":"));
+				}
 			}
 		}
 	}
