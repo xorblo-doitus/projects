@@ -14,6 +14,8 @@ SPACE_ADVENTURE_DESC,Avoid getting hit by asteroids while collecting fuel and ma
 PUZZLE,Puzzle,Puzzle
 PUZZLE_DESC,A puzzle created for a school project.,Un puzzle créé pour un projet scolaire.
 WIP,⚠ Work in progress ⚠: Not every projects are present and the site is missing features.,"⚠ En construction ⚠ : Tous les projets n’ont pas été ajouté, et le site n’a pas beaucoup de fonctionnalités."
+SEARCH,Search,Rechercher
+SEARCH_PLACEHOLDER,Type one or more words to search in projects title and description... ,Entrez un ou plusieurs termes à chercher dans le titre et la description…
 TAG_FILTERS,Filter by tag:,Filtrer par étiquette :
 SORT_FILTERS,Sort by:,Trier par :
 DATE,Date,Date
