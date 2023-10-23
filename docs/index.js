@@ -88,8 +88,15 @@ for (const row of parser) {
 	// console.log(row);
 	translationServer.bindAttribute(newCard, "title", row.get("title"));
 	translationServer.bindAttribute(newCard, "desc", row.get("title") + "_DESC");
-	newCard.thumbnail = row.get("thumbnail");
-	newCard.url = row.get("url");
+	
+	newCard.thumbnail = row.get("thumbnail") ? row.get("thumbnail")
+		: row.get("tags").includes("scratch") ? `https://uploads.scratch.mit.edu/get_image/project/${row.get("foreign_id")}_480x360.png` 
+		:"no_thumbnail_provided";
+	
+	newCard.url = row.get("url") ? row.get("url")
+		: row.get("tags").includes("scratch") ? `https://scratch.mit.edu/projects/${row.get("foreign_id")}/`
+		: "/404.html";
+	
 	newCard.tags.value = row.get("tags");
 	newCard.unixtime = row.get("unixtime");
 	newCard.fun = row.get("fun");

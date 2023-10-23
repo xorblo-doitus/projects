@@ -1,7 +1,8 @@
 class CSVParser {
+	data = [];
+	
 	/**
 	 * By default, use `,` and `\n` as delimiter.
-	 * 
 	 * @param {String} valueDelimiter 
 	 * @param {String} lineDelimiter 
 	 */
@@ -9,7 +10,6 @@ class CSVParser {
 		this.valueDelimiter = valueDelimiter;
 		this.lineDelimiter = lineDelimiter;
 		this.stringDelimiter = stringDelimiter;
-		this.data = [];
 	}
 	
 	// /**
