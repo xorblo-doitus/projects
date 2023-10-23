@@ -22,21 +22,12 @@
     padding: 1em;
 }
 
-#search-bar {
-    flex-grow: 1;
-}
-#search-bar, label {
-    height: 0px;
-    font-size: 0px;
-    opacity: 0;
-}
-
 .filters-container {
     display: flex;
     flex-direction: column;
     
     align-items: stretch;
-    width: fit-content;
+    width: 100%;
     
     border: var(--default-border);
     border-radius: 1em 1em;
@@ -64,6 +55,22 @@
     margin-top: auto;
     margin-bottom: auto;
 }
+
+#search-bar {
+    flex-grow: 1;
+    height: auto;
+    border: none;
+    border-left: var(--default-border);
+    
+    margin: 0px;
+    margin-left: 1ch;
+    padding: 1ch;
+    /* min-width: 30ch; */
+    border-radius: 0 2ch 2ch 0;
+}
+/* #search-bar, label {
+    
+} */
 
 .filter-header expand-button {
     margin-right: 0.6ch;

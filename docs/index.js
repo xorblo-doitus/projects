@@ -25,6 +25,19 @@ class ProjectSorter extends Sorter {
 		["fun", (a, b) => { return a.fun - b.fun; }],
 	]);
 	
+	fuseOptions = {
+		threshold: 0.6,
+		keys: [
+			{
+				name: "title",
+			},
+			{
+				name: "desc",
+				weight: 0.3,
+			},
+		],
+	};
+	
 	/**
 	 * @param {ProjectCard} element 
 	 * @returns {String[]}
@@ -161,6 +174,7 @@ function onSortFiltersChanged(sortFilter) {
 	} else {
 		PROJECT_SORTER.currentComparingFunction = sortFilter.sortBy;
 		PROJECT_SORTER.reverted = sortFilter.mode == -1;
+		// document.getElementById("search-bar").value = "";
 	}
 	PROJECT_SORTER.sort();
 	
@@ -173,6 +187,11 @@ for (const sortFilter of document.querySelectorAll("sort-filter")) {
 	sortFilter.modeChanged.bind(onSortFiltersChanged);
 	SORT_FILTERS.push(sortFilter);
 }
+
+document.getElementById("search-bar").addEventListener("input", function(event) {
+	PROJECT_SORTER.query = event.target.value;
+	PROJECT_SORTER.sort();
+});
 
 
 for (const filterContainer of document.getElementsByClassName("filters-container")) {
