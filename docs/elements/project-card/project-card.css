@@ -1,6 +1,6 @@
 :host {
     --corner-radius: 1ch;
-    --width: min(40ch, 96vw);
+    --width: min(40ch, 90vw);
 }
 
 #card {
