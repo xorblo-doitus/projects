@@ -39,11 +39,20 @@ SCHOOL_DESC,Created for school.,Créé pour une activité scolaire.
 1V1_DESC,1 versus 1 fighting game.,Jeu de combat en 1 contre 1.
 MULTIPLAYER,Multiplayer,Multijoueur
 MULTIPLAYER_DESC,You can play with other peoples localy.,Se joue à plusieurs. (En local)
+LTS,LTS,LTS
+LTS_DESC,Long Term Support: expect only bugfix updates.,Support à Long Terme : Mises à jour correctives uniquement.
+COMPLETE,Complete,Complet
+COMPLETE_DESC,"Nothing will be added anymore, even bugfixes.","Le projet est terminé et rien n’y sera ajouté, pas même des correctifs."
+ONGOING,In progress,En cours
+ONGOING_DESC,This project is currenlty being working on.,Ce projet est actuellement en cours de développement.
+ABANDONED,Abandoned,Abandonné
+ABANDONED_DESC,This project is not complete and wont get updates.,Ce projet n’est pas terminé et ne le sera jamais.
 GENRE,Genre,Genre
 PLATFORM,Platform,Plateforme
 PLAYER_COUNT,Player count,Nombre de joueurs
 VUE,Vue,Vue
 SCOPE,Scope,Cadre
+DEVELOPMENT,Development,Développement
 AUTO,Automatic,Automatique
 en,English,Anglais
 fr,French,Français

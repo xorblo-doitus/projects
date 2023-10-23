@@ -1,70 +1,102 @@
 :host {
-    display: inline-block;
-    margin: 0.2em;
+	display: inline-block;
+	margin: 0.2em;
 }
 
 #background {
-    padding: 0.2em;
-    padding-right: 0.35em;
-    border-radius: 99999px; /* Extremly high value cause a capsule shape */
-    border: 0.1em solid var(--border-color);
-    /* font-size: 0.5em; */
-    
-    display: flex;
+	padding: 0.2em;
+	padding-right: 0.35em;
+	border-radius: 99999px; /* Extremly high value cause a capsule shape */
+	border: 0.1em solid var(--border-color);
+	/* font-size: 0.5em; */
+	
+	display: flex;
 	align-items: center;
 	gap: 0.5ch;
 }
 
 img {
-    height: 1em;
+	height: 1em;
 }
 
+/* Platforme */
 #background[tag="scratch"] {
-    color: white;
-    background-color: rgb(245, 115, 0);
-    --border-color: rgb(245, 37, 0);
+	color: white;
+	background-color: rgb(245, 115, 0);
+	--border-color: rgb(245, 37, 0);
 }
 #background[tag="scratch"] img {
-    content: url("https://scratch.mit.edu/favicon.ico");
-    /* translate: 0 15%; */
+	content: url("https://scratch.mit.edu/favicon.ico");
+	/* translate: 0 15%; */
 }
+
 #background[tag="web"] {
-    color: white;
-    background-color: red;
-    --border-color: rgb(108, 0, 0);
+	color: white;
+	background-color: red;
+	--border-color: rgb(108, 0, 0);
 }
 #background[tag="web"] img {
-    content: url("/projects/assets/images/icons/web.svg");
-    /* translate: 0 15%; */
+	content: url("/projects/assets/images/icons/web.svg");
+	/* translate: 0 15%; */
 }
+
+/* Genre */
 #background[tag="arcade"] {
-    background-color: pink;
-    --border-color: rgb(200, 150, 150);
+	background-color: pink;
+	--border-color: rgb(200, 150, 150);
 }
 #background[tag="platformer"] {
-    background-color: lightblue;
-    --border-color: rgb(105, 140, 255);
+	background-color: lightblue;
+	--border-color: rgb(105, 140, 255);
 }
+
+/* Vue */
 #background[tag="2D"] {
-    background-color: greenyellow;
-    --border-color: rgb(70, 199, 0);
+	background-color: greenyellow;
+	--border-color: rgb(70, 199, 0);
 }
+
+/* Player count */
 #background[tag="1v1"] {
-    color: white;
-    background-color: orangered;
-    --border-color: rgb(176, 0, 0);
+	color: white;
+	background-color: orangered;
+	--border-color: rgb(176, 0, 0);
 }
 #background[tag="coop"] {
-    color: white;
-    background-color: rgb(45, 45, 255);
-    --border-color: rgb(0, 0, 116);
+	color: white;
+	background-color: rgb(45, 45, 255);
+	--border-color: rgb(0, 0, 116);
 }
 #background[tag="multiplayer"] {
-    color: white;
-    background-color: rgb(171, 0, 171);
-    --border-color: rgb(50, 0, 50);
+	color: white;
+	background-color: rgb(171, 0, 171);
+	--border-color: rgb(50, 0, 50);
 }
+
+/* Scope */
 #background[tag="school"] {
-    background-color: yellow;
-    --border-color: rgb(200, 200, 0);
+	background-color: yellow;
+	--border-color: rgb(200, 200, 0);
 }
+
+/* Development */
+#background[tag="LTS"] {
+	color: white;
+	background-color: rgb(255, 0, 255);
+	--border-color: rgb(131, 0, 131);
+}
+#background[tag="complete"] {
+	background-color: rgb(65, 255, 26);
+	--border-color: rgb(25, 147, 0);
+}
+#background[tag="ongoing"] {
+	color: white;
+	background-color: rgb(0, 150, 236);
+	--border-color: rgb(0, 80, 127);
+}
+#background[tag="abandoned"] {
+	color: #ff5757;
+	background-color: rgb(0, 0, 0);
+	--border-color: rgb(189, 67, 67);
+}
+
