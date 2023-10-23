@@ -178,8 +178,14 @@ function onSortFiltersChanged(sortFilter) {
 	}
 	PROJECT_SORTER.sort();
 	
-	HistoryHelper.updateURLParameter("sortBy", PROJECT_SORTER.currentComparingFunction == "date" ? null : PROJECT_SORTER.currentComparingFunction);
-	HistoryHelper.updateURLParameter("sortRevert", PROJECT_SORTER.reverted ? "" : null);
+	if (PROJECT_SORTER.currentComparingFunction == "date" && PROJECT_SORTER.reverted) {
+		HistoryHelper.updateURLParameter("sortBy", null);
+		HistoryHelper.updateURLParameter("sortRevert", null);
+	} else {
+		HistoryHelper.updateURLParameter("sortBy", PROJECT_SORTER.currentComparingFunction ? PROJECT_SORTER.currentComparingFunction : null);
+		HistoryHelper.updateURLParameter("sortRevert", PROJECT_SORTER.reverted ? "" : null);
+	}
+	
 	ignoringSortFilters = false;
 }
 
@@ -201,7 +207,7 @@ for (const filterContainer of document.getElementsByClassName("filters-container
 	}
 }
 
-if (HistoryHelper.getParameter("sortBy") == null) {
+if (HistoryHelper.getParameter("sortBy") == null && HistoryHelper.getParameter("sortRevert") == null) {
 	document.querySelector('sort-filter[sort-by="date"]').mode = -1;
 } else if (HistoryHelper.getParameter("sortBy") != "") {
 	document.querySelector(
