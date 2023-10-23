@@ -100,3 +100,10 @@ img {
 	--border-color: rgb(189, 67, 67);
 }
 
+/* Time limit */
+#background[tag="24h"] {
+	background-color: rgb(236, 236, 236);
+	--border-color: rgb(0, 0, 0);
+}
+
+

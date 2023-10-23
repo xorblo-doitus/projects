@@ -47,12 +47,15 @@ ONGOING,In progress,En cours
 ONGOING_DESC,This project is currenlty being working on.,Ce projet est actuellement en cours de développement.
 ABANDONED,Abandoned,Abandonné
 ABANDONED_DESC,This project is not complete and wont get updates.,Ce projet n’est pas terminé et ne le sera jamais.
+24H,24h,24h
+24H_DESC,Made in less than 24 hours of development.,Créé en moins de 24 heures de développement.
 GENRE,Genre,Genre
 PLATFORM,Platform,Plateforme
 PLAYER_COUNT,Player count,Nombre de joueurs
 VUE,Vue,Vue
 SCOPE,Scope,Cadre
 DEVELOPMENT,Development,Développement
+TIME_LIMIT,Time limit,Temps imparti
 AUTO,Automatic,Automatique
 en,English,Anglais
 fr,French,Français
