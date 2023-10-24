@@ -52,8 +52,12 @@ class ProjectCard extends HTMLElementHelper {
 
 ProjectCard.bindPropertiesToAtributes([
 	new PropertyAttributeBindHelper("fun", parseInt).setAttributeChangedCallback(function(newValue) {
-		this.getElementById("fun").textContent = newValue;
-		this.getElementById("fun").style.backgroundColor = `color-mix(in hwb, var(--bad), var(--good) ${newValue}%)`;
+		if (newValue = "-1") {
+			this.getElementById("fun").style.display = "none"
+		} else {
+			this.getElementById("fun").textContent = newValue;
+			this.getElementById("fun").style.backgroundColor = `color-mix(in hwb, var(--bad), var(--good) ${newValue}%)`;
+		}
 	}),
 	new PropertyAttributeBindHelper("thumbnail").setAttributeChangedCallback(function(newValue) {
 		this.getElementById("thumbnail").src = newValue;
