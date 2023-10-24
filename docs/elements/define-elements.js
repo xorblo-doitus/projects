@@ -52,7 +52,7 @@ class ProjectCard extends HTMLElementHelper {
 
 ProjectCard.bindPropertiesToAtributes([
 	new PropertyAttributeBindHelper("fun", parseInt).setAttributeChangedCallback(function(newValue) {
-		if (newValue = "-1") {
+		if (newValue == "-1") {
 			this.getElementById("fun").style.display = "none"
 		} else {
 			this.getElementById("fun").textContent = newValue;
