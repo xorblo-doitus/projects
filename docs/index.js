@@ -83,6 +83,26 @@ var parser = new CSVParser().parseText(text)
 
 const ALL_TAGS = new Set;
 
+/**
+ * @param {Map<string, string>} row 
+ * @param {string} information 
+ */
+function getAboutURL(row, information) {
+	let site = row.get("website") || row.get("url");
+	
+	if (site.includes("xorblo-doitus.github.io/projects")) {
+		site = "http://localhost:5500/"
+	}
+	
+	if (!site.endsWith("/")) {
+		site += "/";
+	}
+	if (site.endsWith("/play/")) {
+		site = site.slice(0, -5);
+	}
+	return `${site}about/${information}`;
+}
+
 for (const row of parser) {
 	let newCard = document.createElement("project-card");
 	// console.log(row);
@@ -91,7 +111,8 @@ for (const row of parser) {
 	
 	newCard.thumbnail = row.get("thumbnail") ? row.get("thumbnail")
 		: row.get("tags").includes("scratch") ? `https://uploads.scratch.mit.edu/get_image/project/${row.get("foreign_id")}_480x360.png` 
-		:"no_thumbnail_provided";
+		: row.get("website").includes("xorblo-doitus.github.io") || row.get("url").includes("xorblo-doitus.github.io") ? getAboutURL(row, "thumbnail.png")
+		: "no_thumbnail_provided";
 	
 	newCard.url = row.get("url") ? row.get("url")
 		: row.get("tags").includes("scratch") ? `https://scratch.mit.edu/projects/${row.get("foreign_id")}/`
