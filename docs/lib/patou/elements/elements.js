@@ -308,26 +308,24 @@ class HTMLElementHelper extends HTMLElement {
 	 * @param {(string|CSSStyleSheet|Promise<StyleSheet>)[]} additionnalCSS If not specified, default to this
 	 */
 	static async register(name, path = `elements/${name}/${name}.html`, constructor = this, additionnalCSS=[]) {
-		HTMLElementHelper.allInnerHTML.set(
-			name,
-			await fetch(path)
-				.then(response => response.text())
-		);
+		constructor._name = name;
+		
+		const HTML = fetch(path).then(response => response.text());
+		
 		additionnalCSS.push(HTMLElementHelper.loadStyleSheet(path.replace(".html", ".css")));
 		for (const [i, styleSheet] of additionnalCSS.entries()) {
-			if (typeof styleSheet == "string") {
-				additionnalCSS[i] = await HTMLElementHelper.loadStyleSheet(styleSheet);
-			} else {
-				additionnalCSS[i] = await styleSheet;
+			if ( typeof styleSheet == "string") {
+				additionnalCSS[i] = HTMLElementHelper.loadStyleSheet(styleSheet);
 			}
 		}
-		// const allSheets = [];
-		// for (const CSS of additionnalCSS) {
-		// 	allSheets.push(styleSheet);
-		// }
-		HTMLElementHelper.allCSS.set(name, additionnalCSS);
 		
-		constructor._name = name;
+		// Only await once all request are made.
+		for (const [i, styleSheet] of additionnalCSS.entries()) {
+			additionnalCSS[i] = await styleSheet;
+		}
+		
+		HTMLElementHelper.allCSS.set(name, additionnalCSS);
+		HTMLElementHelper.allInnerHTML.set(name, await HTML);
 		
 		customElements.define(name, constructor);
 	}
