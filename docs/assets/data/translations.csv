@@ -22,6 +22,7 @@ TAG_FILTERS,Filter by tag:,Filtrer par étiquette :
 SORT_FILTERS,Sort by:,Trier par :
 DATE,Date,Date
 FUN,Fun,Fun
+FUN_DESC,A value from 0 to 100 grading the fun of the project.,Une valeur de 0 à 100 évaluant le fun du projet.
 TITLE,Title,Titre
 PLATFORMER,Platformer,Plateforme
 PLATFORMER_DESC,Platformer game.,Jeu de plateforme.
