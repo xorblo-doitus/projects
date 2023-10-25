@@ -307,7 +307,7 @@ class HTMLElementHelper extends HTMLElement {
 	 * @param {CustomElementConstructor} constructor If not specified, default to this
 	 * @param {(string|CSSStyleSheet|Promise<StyleSheet>)[]} additionnalCSS If not specified, default to this
 	 */
-	static async register(name, path = `elements/${name}/${name}.html`, constructor = this, additionnalCSS=[]) {
+	static async register(name = HTMLElementHelper.toKebabCase(this.name), path = `elements/${name}/${name}.html`, constructor = this, additionnalCSS=[]) {
 		constructor._name = name;
 		
 		const HTML = fetch(path).then(response => response.text());
@@ -378,6 +378,18 @@ class HTMLElementHelper extends HTMLElement {
 			.then(response => response.text())
 		);
 		return styleSheet;
+	}
+	
+	static toKebabCase(word) {
+		let result = word[0].toLowerCase();
+		for (const letter of word.slice(1)) {
+			if (letter == letter.toLowerCase()) {
+				result += letter;
+			} else {
+				result += "-" + letter.toLowerCase();
+			}
+		}
+		return result;
 	}
 }
 

@@ -84,7 +84,7 @@ ProjectCard.bindPropertiesToAtributes([
 	new PropertyAttributeBindHelper("unixtime", parseInt).setAttributeChangedCallback(function(newValue) {
 		this.updateDate();
 	}),
-]).pushRegistering("project-card");
+]).pushRegistering();
 
 
 class ProjectTag extends HTMLElementHelper {}
@@ -92,7 +92,7 @@ let tagAttibuteBinder = new PropertyAttributeBindHelper("tag").setAttributeChang
 	this.getElementById("tag-text").setAttribute(TRANSLATION_KEY_ATTR, newValue.toUpperCase().replace(" ", "_"));
 	this.getElementById("background").setAttribute("tag", newValue);
 })
-ProjectTag.bindPropertiesToAtributes([tagAttibuteBinder]).pushRegistering("project-tag");
+ProjectTag.bindPropertiesToAtributes([tagAttibuteBinder]).pushRegistering();
 
 
 class Filter extends HTMLElementHelper {
@@ -184,7 +184,7 @@ class Filter extends HTMLElementHelper {
 
 
 class TagFilter extends Filter {}
-TagFilter.bindPropertiesToAtributes([tagAttibuteBinder]).pushRegistering("tag-filter", undefined, undefined, ["/projects/elements/project-tag/project-tag.css"]);
+TagFilter.bindPropertiesToAtributes([tagAttibuteBinder]).pushRegistering(undefined, undefined, undefined, ["/projects/elements/project-tag/project-tag.css"]);
 
 
 class SortFilter extends Filter {}
@@ -192,7 +192,7 @@ SortFilter.bindPropertiesToAtributes([
 	new PropertyAttributeBindHelper("sort-by").setAttributeChangedCallback(function(newValue) {
 		this.getElementById("sort-text").setAttribute(TRANSLATION_KEY_ATTR, newValue.toUpperCase().replace(" ", "_"));
 	})
-]).pushRegistering("sort-filter");
+]).pushRegistering();
 
 
 class ExpandButton extends HTMLElementHelper {
@@ -206,7 +206,7 @@ class ExpandButton extends HTMLElementHelper {
 		});
 	}
 }
-ExpandButton.pushRegistering("expand-button");
+ExpandButton.pushRegistering();
 
 
 
