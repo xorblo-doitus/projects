@@ -21,6 +21,8 @@ label {
 	
 	transition: background-color 0.5s;
 	line-height: 1.1em;
+	
+	cursor: pointer;
 }
 
 label span {

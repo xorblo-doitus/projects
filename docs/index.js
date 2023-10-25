@@ -243,3 +243,7 @@ if (HistoryHelper.getParameter("sortBy") == null && HistoryHelper.getParameter("
 	).mode = HistoryHelper.getParameter("sortRevert") == null ? 1 : -1;
 }
 translationServer.langChanged.bind(() => {PROJECT_SORTER.sort()});
+
+new ResizeObserver(() => {
+	document.getElementById('top-bar-spacer').style.height = document.getElementById("top-bar").offsetHeight + "px";
+}).observe(document.getElementById("top-bar"));

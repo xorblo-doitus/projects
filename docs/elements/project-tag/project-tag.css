@@ -4,6 +4,8 @@
 }
 
 #background {
+	color: black;
+	
 	padding: 0.2em;
 	padding-right: 0.35em;
 	border-radius: 99999px; /* Extremly high value cause a capsule shape */
@@ -13,6 +15,8 @@
 	display: flex;
 	align-items: center;
 	gap: 0.5ch;
+	
+	cursor: pointer;
 }
 
 img {

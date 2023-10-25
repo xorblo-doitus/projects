@@ -1,6 +1,48 @@
+/*
+Color palette: https://coolors.co/b2bec8-63d471-6a7152-233329-58355e
++ #E7EBEE for lighter color
++ #111813 for darker color
+*/
+
 :root {
     --thin-width: 0.1rem;
-    --default-border: var(--thin-width) solid black;
+    --default-border: var(--thin-width) solid #58355e;
+}
+
+body {
+    background-color: #F3F5F7;
+    color: #111813;
+}
+
+#top-bar {
+    position: fixed;
+    width: 100%;
+    
+    background-color: #35c045;
+    color: #58355e;
+    border-bottom: var(--default-border);
+    
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: stretch;
+    
+    gap: 2ch;
+    padding: 1ch;
+    
+    z-index: 10;
+}
+
+#top-bar > * {
+    border: var(--default-border);
+    background-color: #63d471;
+	border: var(--default-border);
+    border-radius: 9999ch;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#top-bar > .clickable:hover {
+    background-color: #9fe5a7;
 }
 
 #project-list {
@@ -19,7 +61,7 @@
 	flex-direction: column;
     gap: 1ch;
     
-    padding: 1em;
+    margin: 1ch;
 }
 
 .filters-container {
@@ -33,6 +75,9 @@
     border-radius: 1em 1em;
     
     overflow: hidden;
+    
+    
+    background-color: #cfd7dd;
 }
 
 .filter-header {
@@ -116,16 +161,12 @@ body {
 }
 
 .wip {
-    color: chocolate;
+    /* color: chocolate;
     background-color: yellow;
-    border: 0.1ch solid chocolate;
+    border: 0.1ch solid chocolate; */
     
     text-align: center;
     padding: 0.5ch;
-}
-
-lang-select {
-    position: fixed;
-    top: 0.5ch;
-    left: 0.5ch;
+    
+    width: fit-content;
 }
