@@ -310,9 +310,14 @@ class LangSelect extends HTMLElementHelper {
 		
 		option.value = lang;
 		if (lang == "AUTO") {
-			option.innerHTML = translationServer.tr(lang);
+			option.textContent = translationServer.tr(lang);
 		} else {
-			option.innerHTML = translationServer.trWithLang(lang, lang);
+			let localizationProgress = translationServer.trWithLang("LOCALIZATION_PROGRESS", lang);
+			if (localizationProgress != "100%") {
+				option.textContent = `${translationServer.trWithLang(lang, lang)} (${localizationProgress})`;
+			} else {
+				option.textContent = translationServer.trWithLang(lang, lang);
+			}
 		}
 		this.select.appendChild(option);
 		
