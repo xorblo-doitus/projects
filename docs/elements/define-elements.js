@@ -64,7 +64,7 @@ ProjectCard.bindPropertiesToAtributes([
 		this.getElementById("thumbnail").src = newValue;
 	}),
 	new PropertyAttributeBindHelper("desc").bindElements("#desc"),
-	new PropertyAttributeBindHelper("title").bindElements("#title"),
+	new PropertyAttributeBindHelper("title", undefined, undefined, "project-title").bindElements("#title"),
 	new PropertyAttributeBindHelper("url").setAttributeChangedCallback(function(newValue) {
 		for (const elem of this.getElementsByClassName("link")) {
 			elem.href = newValue;

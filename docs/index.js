@@ -106,7 +106,7 @@ function getAboutURL(row, information) {
 for (const row of parser) {
 	let newCard = document.createElement("project-card");
 	// console.log(row);
-	translationServer.bindAttribute(newCard, "title", row.get("title"));
+	translationServer.bindAttribute(newCard, "project-title", row.get("title"));
 	translationServer.bindAttribute(newCard, "desc", row.get("title") + "_DESC");
 	
 	newCard.thumbnail = row.get("thumbnail") ? row.get("thumbnail")
