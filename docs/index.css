@@ -16,7 +16,8 @@ body {
 
 #top-bar {
     position: fixed;
-    width: 100%;
+    left: 0;
+    right: 0;
     
     background-color: #35c045;
     color: #58355e;
