@@ -90,7 +90,7 @@ const ALL_TAGS = new Set;
 function getAboutURL(row, information) {
 	let site = row.get("website") || row.get("url");
 	
-	if (site.includes("xorblo-doitus.github.io/projects")) {
+	if (site.includes("xorblo-doitus.github.io/projects") && location.href.includes("://localhost:5500")) {
 		site = "http://localhost:5500/"
 	}
 	
