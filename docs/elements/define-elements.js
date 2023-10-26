@@ -1,5 +1,4 @@
-import { HTMLElementHelper, PropertyAttributeBindHelper, TokenListHelper } from "../lib/patou/elements/elements.js";
-import { TokenList } from "../lib/patou/token-list/token-list.js";
+import { HTMLElementHelper, PropertyAttributeBindHelper, SHADOW_HOST_CLASS, TokenListHelper } from "../lib/patou/elements/elements.js";
 import { TRANSLATION_KEY_ATTR, translationServer } from "../lib/patou/localization/localization.js";
 import { Signal } from "../lib/patou/signal/signal.js";
 
@@ -208,7 +207,122 @@ class ExpandButton extends HTMLElementHelper {
 }
 ExpandButton.pushRegistering();
 
-
+class TooltipReader extends HTMLElementHelper {
+	_on = false;
+	/** @param {boolean} newValue */
+	set on(newValue) {
+		if (this._on == newValue) {
+			return;
+		}
+		this._on = newValue
+		if (newValue) {
+			document.addEventListener("mousemove", this.onMouseMove);
+			this.toggleable.classList.add("on");
+			this.tooltipShower.style.display = "";
+		} else {
+			document.removeEventListener("mousemove", this.onMouseMove);
+			this.toggleable.classList.remove("on");
+		}
+	}
+	get on() {
+		return this._on;
+	}
+	
+	constructor() {
+		super();
+		
+		this.toggleable = this.getElementById("toggleable");
+		this.tooltipShower = this.getElementById("tooltip-shower");
+		this.backgroundDarkener = this.getElementById("background-darkener");
+		
+		this.onMouseMove = this.onMouseMove.bind(this);
+		
+		this.getElementById("on-off").addEventListener("click", (event) => {
+			this.on = !this.on;
+			if (this.on) {
+				this.placeShower(event.clientX, event.clientY);
+			}
+		})
+		
+		this.backgroundDarkener.addEventListener("click", (event) => {
+			if (this.backgroundDarkener.style.cursor == "pointer") {
+				alert(this.tooltipShower.textContent);
+			}
+		});
+		
+		this.tooltipShower.style.display = "none";
+	}
+	
+	onMouseMove(event) {
+		let title = TooltipReader.getTitleAt(document, event.clientX, event.clientY)
+		if (title) {
+			this.tooltipShower.textContent = title;
+			this.backgroundDarkener.style.cursor = "pointer";
+		} else {
+			this.backgroundDarkener.style.cursor = "help";
+			this.tooltipShower.textContent = translationServer.tr("TOOLTIP_SHOWER");
+		}
+		
+		this.placeShower(event.clientX, event.clientY);
+	}
+	
+	placeShower(x, y) {
+		const viewportWidth = document.documentElement.clientWidth;
+		if (x < viewportWidth / 2) {
+			this.tooltipShower.style.left = `calc(1ch + ${x}px)`;
+			this.tooltipShower.style.right = "";
+		} else {
+			this.tooltipShower.style.left = "";
+			this.tooltipShower.style.right = `calc(1ch + ${viewportWidth - x}px)`;
+		}
+		const viewportHeight = document.documentElement.clientHeight;
+		if (y < viewportHeight / 2) {
+			this.tooltipShower.style.top = `calc(1ch + ${y}px)`;
+			this.tooltipShower.style.bottom = "";
+		} else {
+			this.tooltipShower.style.top = "";
+			this.tooltipShower.style.bottom = `calc(1ch + ${viewportHeight - y}px)`;
+		}
+	}
+	
+	/**
+	 * @param {Document} doc 
+	 * @param {number} x 
+	 * @param {number} y 
+	 * @returns {string}
+	 */
+	static getTitleAt(doc, x, y) {
+		const fetchedRoots = [doc];
+		const elements = doc.elementsFromPoint(x, y);
+		
+		for (let i = 0; i < elements.length; i++) {
+			const element = elements[i];
+			if (element.classList.contains(SHADOW_HOST_CLASS) && !fetchedRoots.includes(element.root)) {
+				fetchedRoots.push(element.root);
+				elements.splice(i, 1, ...element.root.elementsFromPoint(x, y).reduce(
+					(accumulator, newValue) => {
+						if (!elements.includes(newValue) || newValue == element) {
+							accumulator.push(newValue);
+						}
+						return accumulator;
+					},
+					[]
+				));
+				i--;
+			}
+		}
+		
+		for (const element of elements) {
+			const title = element.getAttribute("title");
+			if (title) {
+				return title;
+			}
+		}
+		
+		return "";
+	}
+}
+TooltipReader.pushRegistering();
 
 await HTMLElementHelper.awaitAllRegistering();
 
