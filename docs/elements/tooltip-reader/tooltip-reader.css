@@ -54,6 +54,7 @@
 	inset: auto;
 	margin: 1ch;
 	
+	color: #111813;
 	background-color: #cfd7dd;
 	border: var(--default-border);
 	border-radius: 0.5ch;
