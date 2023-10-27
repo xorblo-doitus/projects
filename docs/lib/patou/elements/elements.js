@@ -451,6 +451,15 @@ class HTMLElementHelper extends HTMLElement {
 		return this;
 	}
 	
+	/**
+	 * @param  {...string|typeof HTMLElementHelper} styleSheets Pathes to .css files,
+	 * or HTMLElementHelpers that act as ancestor of which style sheets will be fetched.
+	 */
+	static addStyleSheetsLowPriority(...styleSheets) {
+		this.__cssPathes.unshift(...styleSheets);
+		return this;
+	}
+	
 	static removeDefauktStyleSheet() {
 		for (const [i, elem] of this.__cssPathes.entries()) {
 			if (elem == null) {
