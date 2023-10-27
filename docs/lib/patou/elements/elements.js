@@ -470,7 +470,7 @@ class CommonFooter extends HTMLElementHelper {
 }
 
 await CommonFooter.register();
-OR
+// OR
 CommonFooter.pushRegistering();
 // Define other custom elements
 await HTMLElementHelper.awaitAllRegistering();
