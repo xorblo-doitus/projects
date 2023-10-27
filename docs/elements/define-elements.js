@@ -183,7 +183,11 @@ class Filter extends HTMLElementHelper {
 
 
 class TagFilter extends Filter {}
-TagFilter.bindPropertiesToAtributes([tagAttibuteBinder]).pushRegistering(undefined, undefined, undefined, ["/projects/elements/project-tag/project-tag.css"]);
+TagFilter.bindPropertiesToAtributes([
+	tagAttibuteBinder,
+]).addStyleSheets(
+	"/projects/elements/project-tag/project-tag.css",
+).pushRegistering();
 
 
 class SortFilter extends Filter {}

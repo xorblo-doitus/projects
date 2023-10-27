@@ -204,10 +204,10 @@ class HTMLElementHelper extends HTMLElement {
 		super();
 		
 		this.root = this.attachShadow({ mode: "open" });
-		for (const styleSheet of HTMLElementHelper.allCSS.get(this.constructor._name)) {
-			this.root.adoptedStyleSheets.push(styleSheet);
+		for (const styleSheetPath of HTMLElementHelper.allCSS.get(this.constructor._tagName)) {
+			this.root.adoptedStyleSheets.push(HTMLElementHelper.styleSheetCache.get(styleSheetPath));
 		}
-		this.root.innerHTML = HTMLElementHelper.allInnerHTML.get(this.constructor._name);
+		this.root.innerHTML = HTMLElementHelper.allInnerHTML.get(this.constructor._tagName);
 		for (const element of this.getElementsByClassName("disable-first-transition")) {
 			element.addEventListener("transitionstart", stopTransition);
 		}
@@ -268,26 +268,24 @@ class HTMLElementHelper extends HTMLElement {
 	
 	/** @type {Map<string, string>} */
 	static allInnerHTML = new Map();
-	/** @type {Map<string, CSSStyleSheet[]>} */
+	/** @type {Map<string, string[]>} */
 	static allCSS = new Map();
+	/** @type {Map<string, CSSStyleSheet>} */
+	static styleSheetCache = new Map();
 	/** @type {TokenListHelper[]} */
 	static tokenLists = [];
 	/** The name of the element, used between `<>` to create this element.
 	 * @type {string} */
-	static _name = undefined;
+	static _tagName = undefined;
 	
 	/** @type {Promise<void>[]} */
 	static registeringPromises = [];
 	
 	/**
 	 * Does the same as {@link register}, but put the promise in a lsit that can be fully awaited with {@link awaitAllRegistering}
-	 * @param {String} name The tag name of the element. Must include a `-`, among other necessary conditions.
-	 * @param {CustomElementConstructor} constructor If not specified, default to this
-	 * @param {String} path If not specified, try to find `elements/${name}/${name}.html`.
-	 * @param {(string|CSSStyleSheet|Promise<StyleSheet>)[]} additionnalCSS If not specified, default to this
 	 */
-	static pushRegistering(name, path = undefined, constructor = undefined, additionnalCSS = undefined) {
-		HTMLElementHelper.registeringPromises = HTMLElementHelper.registeringPromises.concat(this.register(name, path, constructor, additionnalCSS));
+	static pushRegistering() {
+		HTMLElementHelper.registeringPromises.push(this.register());
 	}
 	
 	/**
@@ -296,38 +294,39 @@ class HTMLElementHelper extends HTMLElement {
 	static async awaitAllRegistering() {
 		while (HTMLElementHelper.registeringPromises.length > 0) {
 			await HTMLElementHelper.registeringPromises[0];
-			HTMLElementHelper.registeringPromises.shift(); // Shift to ensure that if a new promise is added, it the right promise wich get removed.
+			HTMLElementHelper.registeringPromises.shift();
 		}
 	}
 	
 	/**
 	 * Define the element in the document and download innerHTML of shadowRoot.
-	 * @param {String} name The tag name of the element. Must include a `-`, among other necessary conditions.
-	 * @param {String} path If not specified, try to find `elements/${name}/${name}.html`.
-	 * @param {CustomElementConstructor} constructor If not specified, default to this
-	 * @param {(string|CSSStyleSheet|Promise<StyleSheet>)[]} additionnalCSS If not specified, default to this
 	 */
-	static async register(name = HTMLElementHelper.toKebabCase(this.name), path = `elements/${name}/${name}.html`, constructor = this, additionnalCSS=[]) {
-		constructor._name = name;
+	static async register() {
+		if (!this._tagName) {
+			this._tagName = HTMLElementHelper.toKebabCase(this.name);
+		}
+		if (!this._HTMLPath) {
+			this._HTMLPath = `elements/${this._tagName}/${this._tagName}.html`;
+		}
 		
-		const HTML = fetch(path).then(response => response.text());
+		const HTML = fetch(this._HTMLPath).then(response => response.text());
 		
-		additionnalCSS.push(HTMLElementHelper.loadStyleSheet(path.replace(".html", ".css")));
-		for (const [i, styleSheet] of additionnalCSS.entries()) {
-			if ( typeof styleSheet == "string") {
-				additionnalCSS[i] = HTMLElementHelper.loadStyleSheet(styleSheet);
+		const newSheetsToWait = [];
+		for (const styleSheetPath of this._cssPathes) {
+			if (!HTMLElementHelper.styleSheetCache.has(styleSheetPath)) {
+				newSheetsToWait.push(HTMLElementHelper.loadStyleSheet(styleSheetPath));
 			}
 		}
 		
 		// Only await once all request are made.
-		for (const [i, styleSheet] of additionnalCSS.entries()) {
-			additionnalCSS[i] = await styleSheet;
+		for (const promise of newSheetsToWait) {
+			await promise;
 		}
 		
-		HTMLElementHelper.allCSS.set(name, additionnalCSS);
-		HTMLElementHelper.allInnerHTML.set(name, await HTML);
+		HTMLElementHelper.allCSS.set(this._tagName, this._cssPathes);
+		HTMLElementHelper.allInnerHTML.set(this._tagName, await HTML);
 		
-		customElements.define(name, constructor);
+		customElements.define(this._tagName, this);
 	}
 	
 	/** @type {string[]} */
@@ -371,13 +370,15 @@ class HTMLElementHelper extends HTMLElement {
 		return this; // Allow chaining
 	}
 	
+	/**
+	 * @param {string} path 
+	 */
 	static async loadStyleSheet(path) {
 		const styleSheet = new CSSStyleSheet();
+		HTMLElementHelper.styleSheetCache.set(path, styleSheet);
 		styleSheet.replaceSync(
-			await fetch(path.replace(".html", ".css"))
-			.then(response => response.text())
+			await fetch(path).then(response => response.text())
 		);
-		return styleSheet;
 	}
 	
 	static toKebabCase(word) {
@@ -391,6 +392,71 @@ class HTMLElementHelper extends HTMLElement {
 		}
 		return result;
 	}
+	
+	
+	static _tagName = "";
+	static _HTMLPath = "";
+	/** @type {(string|typeof HTMLElementHelper|null)[]} */
+	static ___cssPathes = null;
+	static get __cssPathes() {
+		if (this.___cssPathes == undefined) {
+			this.___cssPathes = [this.prototype, null];
+		}
+		return this.___cssPathes;
+	}
+	/** @type {string[]} */
+	static get _cssPathes() {
+		const result = this.__cssPathes;
+		for (let i = 0; i < result.length; i++) {
+			const path = result[i];
+			if (path == null) {
+				result[i] = `elements/${this._tagName}/${this._tagName}.css`;
+			} else if (typeof path != "string") {
+				if (path._cssPathes) {
+					result.splice(i, 1, ...path._cssPathes);
+				} else {
+					result.splice(i, 1);
+				}
+				i--;
+			}
+		}
+		return result;
+	}
+	
+	/**
+	 * @param {string} newName 
+	 */
+	static setTagName(newName) {
+		this._tagName = newName;
+		return this;
+	}
+	
+	/**
+	 * @param {string} newName 
+	 */
+	static setHTMLPath(newPath) {
+		this._HTMLPath = newPath;
+		return this;
+	}
+	
+	/**
+	 * @param  {...string|typeof HTMLElementHelper} styleSheets Pathes to .css files,
+	 * or HTMLElementHelpers that act as ancestor of which style sheets will be fetched.
+	 */
+	static addStyleSheets(...styleSheets) {
+		this.__cssPathes.push(...styleSheets);
+		return this;
+	}
+	
+	static removeDefauktStyleSheet() {
+		for (const [i, elem] of this.__cssPathes.entries()) {
+			if (elem == null) {
+				this.__cssPathes.splice(i, 1);
+				break;
+			}
+		}
+		return this;
+	}
 }
 
 
@@ -402,7 +468,12 @@ class CommonFooter extends HTMLElementHelper {
 		// other stuff
 	}
 }
-await HTMLElementHelper.register("common-footer", CommonFooter)
+
+await CommonFooter.register();
+OR
+CommonFooter.pushRegistering();
+// Define other custom elements
+await HTMLElementHelper.awaitAllRegistering();
 */
 
 

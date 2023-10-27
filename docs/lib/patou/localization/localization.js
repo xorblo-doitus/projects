@@ -324,7 +324,9 @@ class LangSelect extends HTMLElementHelper {
 		return option;
 	}
 }
-await LangSelect.register(undefined, "lib/patou/localization/lang-select/lang-select.html");
+await LangSelect.removeDefauktStyleSheet()
+	.setHTMLPath("lib/patou/localization/lang-select/lang-select.html")
+	.register();
 
 
 export { translationServer, TranslationServer, LangSelect, TRANSLATION_KEY_ATTR, TRANSLATION_LANG_ATTR };
