@@ -185,7 +185,7 @@ Filter.removeDefauktStyleSheet();
 class TagFilter extends Filter {}
 TagFilter.bindPropertiesToAtributes([
 	tagAttibuteBinder,
-]).addStyleSheets(
+]).addStyleSheetsLowPriority(
 	"/projects/elements/project-tag/project-tag.css",
 ).pushRegistering();
 
