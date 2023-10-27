@@ -180,7 +180,7 @@ class Filter extends HTMLElementHelper {
 		this.getElementById("background").addEventListener("click", this.switchCallback);
 	}
 }
-
+Filter.removeDefauktStyleSheet();
 
 class TagFilter extends Filter {}
 TagFilter.bindPropertiesToAtributes([

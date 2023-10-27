@@ -399,14 +399,17 @@ class HTMLElementHelper extends HTMLElement {
 	/** @type {(string|typeof HTMLElementHelper|null)[]} */
 	static ___cssPathes = null;
 	static get __cssPathes() {
-		if (this.___cssPathes == undefined) {
-			this.___cssPathes = [this.prototype, null];
+		if (!Object.hasOwn(this, "___cssPathes")) {
+			this.___cssPathes = [Object.getPrototypeOf(this), null];
 		}
 		return this.___cssPathes;
 	}
 	/** @type {string[]} */
 	static get _cssPathes() {
 		const result = this.__cssPathes;
+		if (result == null) {
+			return null;
+		}
 		for (let i = 0; i < result.length; i++) {
 			const path = result[i];
 			if (path == null) {
