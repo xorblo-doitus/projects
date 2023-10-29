@@ -212,8 +212,8 @@ class HTMLElementHelper extends HTMLElement {
 			element.addEventListener("transitionstart", stopTransition);
 		}
 		
-		for (const tokanListHelper of this.constructor.tokenLists) {
-			tokanListHelper.applyToInstance(this);
+		for (const tokenListHelper of this.constructor.tokenLists) {
+			tokenListHelper.applyToInstance(this);
 		}
 	}
 	
@@ -302,10 +302,10 @@ class HTMLElementHelper extends HTMLElement {
 	 * Define the element in the document and download innerHTML of shadowRoot.
 	 */
 	static async register() {
-		if (!this._tagName) {
+		if (!Object.hasOwn(this, "_tagName")) {
 			this._tagName = HTMLElementHelper.toKebabCase(this.name);
 		}
-		if (!this._HTMLPath) {
+		if (!Object.hasOwn(this, "_HTMLPath")) {
 			this._HTMLPath = `elements/${this._tagName}/${this._tagName}.html`;
 		}
 		
