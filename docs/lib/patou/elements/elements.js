@@ -1,3 +1,4 @@
+import { Signal } from "../signal/signal.js";
 import { TokenList } from "../token-list/token-list.js";
 
 
@@ -200,6 +201,8 @@ function stopTransition() {
 
 
 class HTMLElementHelper extends HTMLElement {
+	static elementCreated = new Signal;
+	
 	constructor() {
 		super();
 		
@@ -215,6 +218,8 @@ class HTMLElementHelper extends HTMLElement {
 		for (const tokenListHelper of this.constructor.tokenLists) {
 			tokenListHelper.applyToInstance(this);
 		}
+		
+		HTMLElementHelper.elementCreated.fire(this);
 	}
 	
 	connectedCallback() {

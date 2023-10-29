@@ -29,6 +29,9 @@ class TranslationServer {
 		for (const root of HTMLElementHelper.getRootsRecursive(document)) {
 			this.listenToAddedNodes(root);
 		}
+		HTMLElementHelper.elementCreated.bind((element) => {
+			this.listenToAddedNodes(element.root);
+		});
 		
 		onpopstate = _ => {
 			this.chooseLangFromURL();
@@ -218,7 +221,13 @@ class TranslationServer {
 		}
 	}
 	
+	alreadyListening = [];
 	listenToAddedNodes(DOM) {
+		if (this.alreadyListening.includes(DOM)) {
+			return;
+		}
+		
+		this.alreadyListening.push(DOM);
 		const pseudoThis = this;
 		
 		new MutationObserver(function(mutations) {
