@@ -2,6 +2,10 @@
 	font-size: 1.2em;
 }
 
+#card {
+	overflow-y: auto;
+}
+
 #top-info {
 	display: flex;
 	flex-direction: row;
