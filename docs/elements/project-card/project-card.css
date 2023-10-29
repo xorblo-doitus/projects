@@ -82,6 +82,17 @@ a.link:hover {
     flex-wrap: wrap;
 }
 
-.flex-h a {
+expand-button {
+    margin: 0px;
+}
+
+.thumbnail-as-bg {
+    background-size: cover;
+    background-position: center;
+    background-image: var(--thumbnail);
+}
+
+.flex-grow-1 {
     flex-grow: 1;
+    opacity: 0;
 }

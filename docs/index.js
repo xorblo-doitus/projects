@@ -7,6 +7,8 @@ import { HistoryHelper } from "./lib/patou/history-helper/history-helper.js";
 
 const TAG_FILTERS = [];
 const SORT_FILTERS = [];
+const MORE_INFO = document.getElementById("more-info");
+let lastOpenedProject = null;
 // const TAG_FILTERS = document.getElementById("tag-filters");
 const PROJECT_LIST = document.getElementById("project-list");
 
@@ -83,51 +85,33 @@ var parser = new CSVParser().parseText(text)
 
 const ALL_TAGS = new Set;
 
-/**
- * @param {Map<string, string>} row 
- * @param {string} information 
- */
-function getAboutURL(row, information) {
-	let site = row.get("website") || row.get("url");
-	
-	if (site.includes("xorblo-doitus.github.io/projects") && location.href.includes("://localhost:5500")) {
-		site = "http://localhost:5500/"
-	}
-	
-	if (!site.endsWith("/")) {
-		site += "/";
-	}
-	if (site.endsWith("/play/")) {
-		site = site.slice(0, -5);
-	}
-	return `${site}about/${information}`;
-}
-
 for (const row of parser) {
+	/** @type {ProjectCard} */
 	let newCard = document.createElement("project-card");
-	// console.log(row);
-	translationServer.bindAttribute(newCard, "project-title", row.get("title"));
-	translationServer.bindAttribute(newCard, "desc", row.get("title") + "_DESC");
 	
-	newCard.thumbnail = row.get("thumbnail") ? row.get("thumbnail")
-		: row.get("tags").includes("scratch") ? `https://uploads.scratch.mit.edu/get_image/project/${row.get("foreign_id")}_480x360.png` 
-		: row.get("website").includes("xorblo-doitus.github.io") || row.get("url").includes("xorblo-doitus.github.io") ? getAboutURL(row, "thumbnail.png")
-		: "no_thumbnail_provided";
+	newCard.setInfoFromRow(row);
 	
-	newCard.url = row.get("url") ? row.get("url")
-		: row.get("tags").includes("scratch") ? `https://scratch.mit.edu/projects/${row.get("foreign_id")}/`
-		: "/404.html";
+	newCard.expandButton.toggled.bind(function(open) {
+		if (open) {
+			lastOpenedProject = newCard;
+			MORE_INFO.querySelector("project-page").setInfoFromRow(row);
+			MORE_INFO.querySelector("project-page").expandButton.toggle();
+		}
+	})
 	
-	newCard.tags.value = row.get("tags");
-	newCard.unixtime = row.get("unixtime");
-	newCard.fun = row.get("fun");
-	newCard.dateFormat = row.get("date_format");
 	PROJECT_LIST.appendChild(newCard);
     
     for (const tag of newCard.tags.values()) {
         ALL_TAGS.add(tag);
     }
 }
+
+MORE_INFO.querySelector("project-page").expandButton.toggled.bind(function(open) {
+	MORE_INFO.classList.toggle("open");
+	if (!open) {
+		lastOpenedProject.expandButton.toggle();
+	}
+})
 
 function onTagFiltersChanged() {
 	PROJECT_SORTER.includedTags.splice(0);
@@ -246,4 +230,5 @@ translationServer.langChanged.bind(() => {PROJECT_SORTER.sort()});
 
 new ResizeObserver(() => {
 	document.getElementById('top-bar-spacer').style.height = document.getElementById("top-bar").offsetHeight + "px";
+	document.getElementById('more-info').style.top = document.getElementById("top-bar").offsetHeight + "px";
 }).observe(document.getElementById("top-bar"));

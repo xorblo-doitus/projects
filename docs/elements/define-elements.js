@@ -5,6 +5,9 @@ import { Signal } from "../lib/patou/signal/signal.js";
 
 
 class ProjectCard extends HTMLElementHelper {
+	/** @type {ExpandButton} */
+	expandButton = this.getElementById("more-info");
+	
 	constructor() {
 		super();
 		
@@ -45,7 +48,51 @@ class ProjectCard extends HTMLElementHelper {
 	updateDate() {
 		const timeSince1970ms = 1000 * this.unixtime;
 		this.getElementById("date").textContent = new Date(timeSince1970ms).toLocaleDateString(translationServer.lang, this.getDateFormatAuto(timeSince1970ms));
-		this.getElementById("date").title = new Date(timeSince1970ms).toLocaleDateString();
+		this.getElementById("date").title = new Date(timeSince1970ms).toLocaleDateString(translationServer.lang);
+	}
+	
+	/**
+	 * Set all informations from a row of the projects.csv file.
+	 * @param {Map<string, string>} row 
+	 */
+	setInfoFromRow(row) {
+		translationServer.bindAttribute(this, "project-title", row.get("title"));
+		translationServer.bindAttribute(this, "desc", row.get("title") + "_DESC");
+		
+		this.thumbnail = row.get("thumbnail") ? row.get("thumbnail")
+			: row.get("tags").includes("scratch") ? `https://uploads.scratch.mit.edu/get_image/project/${row.get("foreign_id")}_480x360.png` 
+			: row.get("website").includes("xorblo-doitus.github.io") || row.get("url").includes("xorblo-doitus.github.io") ? ProjectCard.getAboutURL(row, "thumbnail.png")
+			: "no_thumbnail_provided";
+		
+		this.url = row.get("url") ? row.get("url")
+			: row.get("tags").includes("scratch") ? `https://scratch.mit.edu/projects/${row.get("foreign_id")}/`
+			: "/404.html";
+		
+		this.tags.value = row.get("tags");
+		this.unixtime = row.get("unixtime");
+		this.fun = row.get("fun");
+		this.dateFormat = row.get("date_format");
+	}
+	
+	
+	/**
+	 * @param {Map<string, string>} row 
+	 * @param {string} information 
+	 */
+	static getAboutURL(row, information) {
+		let site = row.get("website") || row.get("url");
+		
+		if (site.includes("xorblo-doitus.github.io/projects") && location.href.includes("://localhost:5500")) {
+			site = "http://localhost:5500/"
+		}
+		
+		if (!site.endsWith("/")) {
+			site += "/";
+		}
+		if (site.endsWith("/play/")) {
+			site = site.slice(0, -5);
+		}
+		return `${site}about/${information}`;
 	}
 }
 
@@ -60,7 +107,12 @@ ProjectCard.bindPropertiesToAtributes([
 		}
 	}),
 	new PropertyAttributeBindHelper("thumbnail").setAttributeChangedCallback(function(newValue) {
-		this.getElementById("thumbnail").src = newValue;
+		for (const elem of this.querySelectorAll("#thumbnail")) {
+			elem.src = newValue;
+		}
+		for (const elem of this.getElementsByClassName("thumbnail-as-bg")) {
+			elem.style.setProperty("--thumbnail", `url(${newValue})`);
+		}
 	}),
 	new PropertyAttributeBindHelper("desc").bindElements("#desc"),
 	new PropertyAttributeBindHelper("title", undefined, undefined, "project-title").bindElements("#title"),
@@ -85,6 +137,14 @@ ProjectCard.bindPropertiesToAtributes([
 	}),
 ]).pushRegistering();
 
+
+class ProjectPage extends ProjectCard {
+	updateDate() {
+		const date = new Date(1000 * this.unixtime);
+		this.getElementById("date").textContent = `${date.toLocaleDateString(translationServer.lang, {year: "numeric", month: "long", day: "numeric"})} (${date.toLocaleDateString(translationServer.lang)})`;
+	}
+}
+ProjectPage.pushRegistering();
 
 class ProjectTag extends HTMLElementHelper {}
 let tagAttibuteBinder = new PropertyAttributeBindHelper("tag").setAttributeChangedCallback(function(newValue) {
@@ -203,10 +263,12 @@ class ExpandButton extends HTMLElementHelper {
 	
 	constructor() {
 		super();
-		this.addEventListener("click", function(e) {
-			this.classList.toggle("open");
-			this.toggled.fire();
-		});
+		this.addEventListener("click", this.toggle);
+	}
+	
+	toggle() {
+		this.classList.toggle("open");
+		this.toggled.fire(this.classList.contains("open"));
 	}
 }
 ExpandButton.pushRegistering();

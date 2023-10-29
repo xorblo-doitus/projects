@@ -176,3 +176,24 @@ body {
     flex-grow: 1;
     opacity: 0;
 }
+
+#more-info {
+    position: fixed;
+    inset: 0;
+    
+    margin: 1ch;
+    
+    translate: -100vw;
+    transition: translate 0.5s ease-in-out;
+}
+
+#more-info.open {
+    translate: 0;
+}
+
+#more-info > project-page {
+    display: block;
+    width: 100%;
+    height: 100%;
+    --width: 100%;
+}

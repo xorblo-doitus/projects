@@ -1,0 +1,24 @@
+:host {
+	font-size: 1.2em;
+}
+
+#top-info {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+#date {
+	color: black;
+}
+
+#big-thumbnail {
+    background-image: linear-gradient(transparent, #cfd7dd), var(--thumbnail);
+	width: 100%;
+	height: 45vh;
+	margin-bottom: -4em;
+}
+
+#fun {
+	font-size: 1.5em;
+}

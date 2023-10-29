@@ -23,6 +23,7 @@ SORT_FILTERS,Sort by:,Trier par :
 DATE,Date,Date
 FUN,Fun,Fun
 FUN_DESC,A value from 0 to 100 grading the fun of the project.,Une valeur de 0 à 100 évaluant le fun du projet.
+DATE_DESC,Date when the project was released. This does not take updates into account.,Date de parution du projet. Le projet a pu être mis à jour entre temps.
 TITLE,Title,Titre
 THUMBNAIL,Thumbnail,Vignette
 TOOLTIP_READER,Tooltip reader,Lecteur d’infobulle
