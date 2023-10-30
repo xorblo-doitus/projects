@@ -68,6 +68,8 @@ class ProjectCard extends HTMLElementHelper {
 			: row.get("tags").includes("scratch") ? `https://scratch.mit.edu/projects/${row.get("foreign_id")}/`
 			: "/404.html";
 		
+		this.fetchSourceCode(row);
+		
 		this.tags.value = row.get("tags");
 		this.unixtime = row.get("unixtime");
 		this.fun = row.get("fun");
@@ -94,6 +96,27 @@ class ProjectCard extends HTMLElementHelper {
 			site = site.slice(0, -5);
 		}
 		return `${site}about/${information}`;
+	}
+	
+	/**
+	 * @param {Map<string, string>} row 
+	 */
+	fetchSourceCode(row) {
+		let sourceCode = row.get("source_code");
+		if (!sourceCode) {
+			if (this.url.includes("xorblo-doitus.github.io")) {
+				const url = new URL(this.url);
+				sourceCode = `https://github.com/xorblo-doitus/${url.pathname.split("/")[1]}/`;
+			} else if (this.url.includes("scratch.mit.edu")) {
+				sourceCode = `${this.url}editor/`;
+			}
+		}
+		
+		if (!sourceCode) {
+			sourceCode = "/404.html";
+		}
+		this.sourceCode = sourceCode;
+		console.log(sourceCode);
 	}
 }
 
