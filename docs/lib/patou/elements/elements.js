@@ -264,10 +264,8 @@ class HTMLElementHelper extends HTMLElement {
 	 * @param {string} oldValue 
 	 */
 	attributeChangedCallback(attribute, oldValue, newValue) {
-		for (const [attributeCandidate, callback] of this.constructor.attributeChangedCallbacks) {
-			if (attributeCandidate == attribute) {
-				callback.call(this, newValue);
-			}
+		for (const callback of this.constructor.getAttributeChangedCallbacks(attribute)) {
+			callback.call(this, newValue, oldValue);
 		}
 	}
 	
@@ -338,6 +336,27 @@ class HTMLElementHelper extends HTMLElement {
 	static observedAttributes = [];
 	/** @type {Map<string, (newValue: string) => void>} */
 	static attributeChangedCallbacks = new Map();
+	
+	/**
+	 * 
+	 * @param {string} attribute 
+	 * @returns {Array<(newValue: string) => void>}
+	 */
+	static getAttributeChangedCallbacks(attribute) {
+		if (this == HTMLElementHelper) {
+			return [];
+		}
+		
+		const result = Object.getPrototypeOf(this).getAttributeChangedCallbacks(attribute);
+		
+		for (const [attributeCandidate, callback] of this.attributeChangedCallbacks) {
+			if (attributeCandidate == attribute) {
+				result.push(callback);
+			}
+		}
+		
+		return result;
+	}
 	
 	/**
 	 * Returns all the shadow roots present under the given `root`. Search recursively. Only finds shadow roots created trough {@link HTMLElementHelper}
