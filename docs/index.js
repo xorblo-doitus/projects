@@ -83,7 +83,16 @@ var parser = new CSVParser().parseText(text)
 
 // console.log(`Call to parseText took ${end - start} milliseconds`)
 
-const ALL_TAGS = new Set;
+// const ALL_TAGS = new Set;
+
+
+MORE_INFO.querySelector("project-page").expandButton.toggled.bind(function(open) {
+	MORE_INFO.classList.toggle("open");
+	if (!open) {
+		lastOpenedProject.expandButton.toggle();
+		HistoryHelper.updateURLParameter("projectPage", null);
+	}
+})
 
 for (const row of parser) {
 	/** @type {ProjectCard} */
@@ -94,24 +103,22 @@ for (const row of parser) {
 	newCard.expandButton.toggled.bind(function(open) {
 		if (open) {
 			lastOpenedProject = newCard;
+			HistoryHelper.updateURLParameter("projectPage", newCard.id);
 			MORE_INFO.querySelector("project-page").setInfoFromRow(row);
 			MORE_INFO.querySelector("project-page").expandButton.toggle();
 		}
 	})
 	
+	if (HistoryHelper.getParameter("projectPage") == newCard.id) {
+		newCard.expandButton.toggle();
+	}
+	
 	PROJECT_LIST.appendChild(newCard);
     
-    for (const tag of newCard.tags.values()) {
-        ALL_TAGS.add(tag);
-    }
+    // for (const tag of newCard.tags.values()) {
+    //     ALL_TAGS.add(tag);
+    // }
 }
-
-MORE_INFO.querySelector("project-page").expandButton.toggled.bind(function(open) {
-	MORE_INFO.classList.toggle("open");
-	if (!open) {
-		lastOpenedProject.expandButton.toggle();
-	}
-})
 
 function onTagFiltersChanged() {
 	PROJECT_SORTER.includedTags.splice(0);

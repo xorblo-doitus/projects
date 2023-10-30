@@ -72,6 +72,7 @@ class ProjectCard extends HTMLElementHelper {
 		this.unixtime = row.get("unixtime");
 		this.fun = row.get("fun");
 		this.dateFormat = row.get("date_format");
+		this.id = row.get("id");
 	}
 	
 	
