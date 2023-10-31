@@ -4,12 +4,14 @@
 
 #card {
 	overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
-#top-info {
+#card > .thin-padding {
+	flex-grow: 1;
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	flex-direction: column;
 }
 
 #date {
@@ -35,9 +37,16 @@ img.link-icon {
     margin-right: 1ch;
 }
 
+#see-also {
+    display: flex;
+    flex-direction: column;
+	gap: 1ch;
+}
+
 a[href*="github.com/"] img.link-icon {
 	content: url("https://github.githubassets.com/favicons/favicon.svg");
 }
 a[href*="scratch.mit.edu/"] img.link-icon {
 	content: url("https://scratch.mit.edu/favicon.ico");
+	margin-right: 0.5ch;
 }

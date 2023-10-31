@@ -29,6 +29,8 @@ THUMBNAIL,Thumbnail,Vignette
 TOOLTIP_READER,Tooltip reader,Lecteur d’infobulle
 TOOLTIP_SHOWER,Move your mouse over an element to show it’s tooltip…,Survolez un élément avec votre curseur pour en montrer son infobulle…
 SOURCE_CODE,Source code,Code source
+REMAKE,Remake,Reprise
+ORIGINAL,Master copy,Projet original
 PLATFORMER,Platformer,Plateforme
 PLATFORMER_DESC,Platformer game.,Jeu de plateforme.
 2D,2D,2D

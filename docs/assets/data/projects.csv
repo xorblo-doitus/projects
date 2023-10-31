@@ -1,9 +1,9 @@
-title,id,fun,tags,url,thumbnail,unixtime,foreign_id,date_format,website,source_code
-FIRST_PLATFORMER,1,70,scratch platformer 2D web coop multiplayer complete,,,1497391200,162439969,,,
-TAPE_TAUPE,2,10,scratch arcade 2D web complete,,,1518130800,162691177,,,
-BUBBLE,3,20,scratch arcade 2D web abandoned,,,1548198000,281603316,,,
-BARTAILLERIE,4,80,scratch arcade 2D web 1v1 multiplayer abandoned,,,1536876000,198861730,,,
-SPACE_ADVENTURE,5,70,scratch arcade 2D web school complete,,,1611270000,445090385,,,
-PUZZLE,6,90,scratch 2D web school LTS 24h,,,1671404400,778764577,,,
-TAPE_TAUPE_REMAKE,7,100,scratch arcade 2D web LTS 24h,,,1697476730,904901399,,,
-PROJECTS,8,-1,web LTS,https://xorblo-doitus.github.io/projects/,,1693605600,,"{""year"": ""numeric""}",,
+title,id,fun,tags,url,thumbnail,unixtime,foreign_id,date_format,website,source_code,see_also
+FIRST_PLATFORMER,1,70,scratch platformer 2D web coop multiplayer complete,,,1497391200,162439969,,,,
+TAPE_TAUPE,2,10,scratch arcade 2D web complete,,,1518130800,162691177,,,,REMAKE:?projectPage=7
+BUBBLE,3,20,scratch arcade 2D web abandoned,,,1548198000,281603316,,,,
+BARTAILLERIE,4,80,scratch arcade 2D web 1v1 multiplayer abandoned,,,1536876000,198861730,,,,
+SPACE_ADVENTURE,5,70,scratch arcade 2D web school complete,,,1611270000,445090385,,,,
+PUZZLE,6,90,scratch 2D web school LTS 24h,,,1671404400,778764577,,,,
+TAPE_TAUPE_REMAKE,7,100,scratch arcade 2D web LTS 24h,,,1697476730,904901399,,,,ORIGINAL:?projectPage=2
+PROJECTS,8,-1,web LTS,https://xorblo-doitus.github.io/projects/,,1693605600,,"{""year"": ""numeric""}",,,

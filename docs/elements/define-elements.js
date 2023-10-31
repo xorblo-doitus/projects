@@ -166,6 +166,11 @@ class ProjectPage extends ProjectCard {
 		const date = new Date(1000 * this.unixtime);
 		this.getElementById("date").textContent = `${date.toLocaleDateString(translationServer.lang, {year: "numeric", month: "long", day: "numeric"})} (${date.toLocaleDateString(translationServer.lang)})`;
 	}
+	
+	setInfoFromRow(row) {
+		super.setInfoFromRow(row);
+		this.seeAlso.value = row.get("see_also");
+	}
 }
 ProjectPage.bindPropertiesToAtributes([
 	new PropertyAttributeBindHelper("source-code").setAttributeChangedCallback(function(newValue) {
@@ -175,7 +180,21 @@ ProjectPage.bindPropertiesToAtributes([
 		} else {
 			this.getElementById("source-code").style.display = "none";
 		}
-	})
+	}),
+	new TokenListHelper("see-also").setChangedCallback(function(newValue) {
+		for (const element of this.querySelectorAll(".see-also-link")) {
+			element.remove();
+		}
+		
+		for (const pair of newValue.split(" ")) {
+			const [text, url] = pair.split(":");
+			const newLink = document.createElement("a");
+			newLink.href = url;
+			newLink.setAttribute("trkey", text);
+			newLink.classList.add("see-also-link");
+			this.getElementById("see-also").appendChild(newLink);
+		}
+	}),
 ]).pushRegistering();
 
 class ProjectTag extends HTMLElementHelper {}
