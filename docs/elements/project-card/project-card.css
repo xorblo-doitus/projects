@@ -15,7 +15,7 @@
     background-color: #cfd7dd;
 }
 
-img {
+#thumbnail {
     /* Diasbled because caused little gap in the corner, overflow: hidden; is better */
     /* border-radius: var(--corner-radius) var(--corner-radius) 0 0; */
     width: var(--width);

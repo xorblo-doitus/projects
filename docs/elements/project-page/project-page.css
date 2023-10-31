@@ -26,3 +26,18 @@
 #fun {
 	font-size: 1.5em;
 }
+
+img.link-icon {
+	display: inline-block;
+	height: 1em;
+	width: 1em;
+	translate: 0 0.2em;
+    margin-right: 1ch;
+}
+
+a[href*="github.com/"] img.link-icon {
+	content: url("https://github.githubassets.com/favicons/favicon.svg");
+}
+a[href*="scratch.mit.edu/"] img.link-icon {
+	content: url("https://scratch.mit.edu/favicon.ico");
+}
