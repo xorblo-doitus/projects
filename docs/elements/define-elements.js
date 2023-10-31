@@ -116,7 +116,6 @@ class ProjectCard extends HTMLElementHelper {
 			sourceCode = "/404.html";
 		}
 		this.sourceCode = sourceCode;
-		console.log(sourceCode);
 	}
 }
 
@@ -168,7 +167,16 @@ class ProjectPage extends ProjectCard {
 		this.getElementById("date").textContent = `${date.toLocaleDateString(translationServer.lang, {year: "numeric", month: "long", day: "numeric"})} (${date.toLocaleDateString(translationServer.lang)})`;
 	}
 }
-ProjectPage.pushRegistering();
+ProjectPage.bindPropertiesToAtributes([
+	new PropertyAttributeBindHelper("source-code").setAttributeChangedCallback(function(newValue) {
+		if (newValue) {
+			this.getElementById("source-code").href = newValue;
+			this.getElementById("source-code").style.display = "";
+		} else {
+			this.getElementById("source-code").style.display = "none";
+		}
+	})
+]).pushRegistering();
 
 class ProjectTag extends HTMLElementHelper {}
 let tagAttibuteBinder = new PropertyAttributeBindHelper("tag").setAttributeChangedCallback(function(newValue) {

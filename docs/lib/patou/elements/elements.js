@@ -334,8 +334,22 @@ class HTMLElementHelper extends HTMLElement {
 	
 	/** @type {string[]} */
 	static observedAttributes = [];
-	/** @type {Map<string, (newValue: string) => void>} */
-	static attributeChangedCallbacks = new Map();
+	// /** @type {Map<string, (newValue: string) => void>} */
+	// static attributeChangedCallbacks = new Map();
+	
+	/**
+	 * @param {Map<string, (newValue: string) => void>} newValue 
+	 */
+	static set attributeChangedCallbacks(newValue) {
+		this._attributeChangedCallbacks = newValue;
+	}
+	static get attributeChangedCallbacks() {
+		if (!Object.hasOwn(this, "_attributeChangedCallbacks")) {
+			this._attributeChangedCallbacks = new Map();
+		}
+		
+		return this._attributeChangedCallbacks;
+	}
 	
 	/**
 	 * 
