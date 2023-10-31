@@ -138,6 +138,12 @@ class TokenListHelper {
 	 * @param {string} attributeName 
 	 */
 	constructor(name, attributeName = name, changedCallback = undefined) {
+		const split = name.split("-");
+		name = split.shift();
+		for (const part of split) {
+			name += part[0].toUpperCase() + part.slice(1);
+		}
+		
 		this.name = name;
 		this.attributeName = attributeName;
 	}
