@@ -21,6 +21,8 @@ PAINT_ADVENTURE,Paint Adventure,Peinture Aventure
 PAINT_ADVENTURE_DESC,A bad game with movement limit and conveyor belts.,Un mauvais jeu avec des mouvements limités et des convoyeurs.
 FETE_DES_PERES,Father’s Day,Fête des pères
 FETE_DES_PERES_DESC,"A little interactive toy made for Father’s Day. (Not sure my dad liked it, but at least it doesn’t take up space.)","Un petit jouet interactif fait pour la fête des pères. (Pas sûr que mon père ait apprécié, mais au moins ça prend pas de place, et il n’a pas à le jeter.)"
+ELEVAGE_DE_NOMBRES,Breeding of numbers,Élevage de nombres
+ELEVAGE_DE_NOMBRES_DESC,An unfinished game where you would have to breed number and use mathematical operations to upgrade them.,Un jeu inachevé où il aurait fallu élever des nombres et utiliser des opérations mathématiques pour les améliorer.
 WIP,⚠ Work in progress ⚠: Not every projects are present.,⚠ En construction ⚠ : Tous les projets ne sont pas listés.
 SEARCH,Search,Rechercher
 SEARCH_PLACEHOLDER,Type one or more words to search in projects title and description... ,Entrez un ou plusieurs termes à chercher dans le titre et la description…
@@ -29,7 +31,7 @@ SORT_FILTERS,Sort by:,Trier par :
 DATE,Date,Date
 FUN,Fun,Fun
 FUN_DESC,A value from 0 to 100 grading the fun of the project.,Une valeur de 0 à 100 évaluant le fun du projet.
-DATE_DESC,Date when the project was released. This does not take updates into account.,Date de parution du projet. Le projet a pu être mis à jour entre temps.
+DATE_DESC,Date when the project was released. This does not take updates into account. Dates from old projects are not exact.,Date de parution du projet. Le projet a pu être mis à jour entre temps. Les dates des vieux projets sont approximatives.
 TITLE,Title,Titre
 THUMBNAIL,Thumbnail,Vignette
 TOOLTIP_READER,Tooltip reader,Lecteur d’infobulle
