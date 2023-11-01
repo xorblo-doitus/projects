@@ -170,6 +170,7 @@ class ProjectPage extends ProjectCard {
 	setInfoFromRow(row) {
 		super.setInfoFromRow(row);
 		this.seeAlso.value = row.get("see_also");
+		this.bigThumbnailPosition = row.get("big_thumb_pos");
 	}
 }
 ProjectPage.bindPropertiesToAtributes([
@@ -180,6 +181,9 @@ ProjectPage.bindPropertiesToAtributes([
 		} else {
 			this.getElementById("source-code").style.display = "none";
 		}
+	}),
+	new PropertyAttributeBindHelper("bigThumbnailPosition", undefined, undefined, "big-thumb-pos").setAttributeChangedCallback(function(newValue) {
+		this.getElementById("big-thumbnail").style.backgroundPosition = newValue;
 	}),
 	new TokenListHelper("see-also").setChangedCallback(function(newValue) {
 		for (const element of this.querySelectorAll(".see-also-link")) {
