@@ -1,8 +1,8 @@
 title,id,fun,tags,url,thumbnail,unixtime,foreign_id,date_format,website,source_code,see_also
-FIRST_PLATFORMER,1,70,scratch platformer 2D web coop multiplayer complete,,,1497391200,162439969,,,,
+FIRST_PLATFORMER,1,70,scratch platformer 2D web coop multiplayer complete,,,1497391200,162439969,,,,REMAKE:?projectPage=14
 TAPE_TAUPE,2,10,scratch arcade 2D web complete,,,1518130800,162691177,,,,REMAKE:?projectPage=7
 BUBBLE,3,20,scratch arcade 2D web abandoned,,,1548198000,281603316,,,,
-BARTAILLERIE,4,80,scratch arcade 2D web 1v1 multiplayer abandoned,,,1536876000,198861730,,,,
+BARTAILLERIE,4,80,scratch arcade 2D web 1v1 multiplayer abandoned,,,1536876000,198861730,,,,REMAKE:?projectPage=13
 SPACE_ADVENTURE,5,70,scratch arcade 2D web school complete,,,1611270000,445090385,,,,
 PUZZLE,6,90,scratch 2D web school LTS 24h,,,1671404400,778764577,,,,
 TAPE_TAUPE_REMAKE,7,100,scratch arcade 2D web LTS 24h,,,1697476730,904901399,,,,ORIGINAL:?projectPage=2
@@ -11,3 +11,5 @@ MULTIPLICATION,9,5,scratch web abandoned tool,,,1539658800,252960004,,,,
 PAINT_ADVENTURE,10,10,scratch web 2D abandoned,,,1553004000,291376189,,,,
 FETE_DES_PERES,11,20,scratch web 2D complete toy,,,1497772800,163609187,,,,
 ELEVAGE_DE_NOMBRES,12,5,scratch web 2D abandoned,,,1549634841,283493508,,,,
+BARTAILLERIE_REMAKE,13,40,scratch web 2D arcade abandoned,,,1650791471,676670178,,,,ORIGINAL:?projectPage=4
+PLATFORMER_2023,14,30,scratch web 2D platformer abandoned,,,1687352400,864900134,,,,ORIGINAL:?projectPage=1

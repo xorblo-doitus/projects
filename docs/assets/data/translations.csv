@@ -8,7 +8,7 @@ TAPE_TAUPE_REMAKE_DESC,A little project made under 12h over 1 week.,Un mini proj
 BUBBLE,Bubble,Bulle
 BUBBLE_DESC,Somewhat an arcade game.,Une sorte de jeu d’arcade.
 BARTAILLERIE,Bartaillerie,Bartaillerie
-BARTAILLERIE_DESC,Local 1v1 game.,Jeu en 1v1 local.
+BARTAILLERIE_DESC,"This local 1v1 game is one of my best creation (at least was): I worked more than a year on it. I will forever remember it, and I still play it sometimes. It's sad that there is so many bugs, but I don't want to go back in that old spaghetti code to fix them.","Ce jeu en 1v1 local est l’une de mes meilleures créations (pour l’époque) : J’ai travaillé dessus au moins un an. J’en garderai toujours un incroyable souvenir, et j’y rejoue de temps en temps. Dommage qu’il y ait tant de bugs, mais je n’ai pas envie de me replonger dans le code spaghetti de l’époque pour les corriger."
 SPACE_ADVENTURE,Space Adventure,L’aventure de l’espace
 SPACE_ADVENTURE_DESC,Avoid getting hit by asteroids while collecting fuel and materials.,Projet de 3ème. Évitez les astéroïdes tout en collectant du carburant et des matériaux.
 PROJECTS,Projects,Projets
@@ -23,6 +23,10 @@ FETE_DES_PERES,Father’s Day,Fête des pères
 FETE_DES_PERES_DESC,"A little interactive toy made for Father’s Day. (Not sure my dad liked it, but at least it doesn’t take up space.)","Un petit jouet interactif fait pour la fête des pères. (Pas sûr que mon père ait apprécié, mais au moins ça prend pas de place, et il n’a pas à le jeter.)"
 ELEVAGE_DE_NOMBRES,Breeding of numbers,Élevage de nombres
 ELEVAGE_DE_NOMBRES_DESC,An unfinished game where you would have to breed number and use mathematical operations to upgrade them.,Un jeu inachevé où il aurait fallu élever des nombres et utiliser des opérations mathématiques pour les améliorer.
+BARTAILLERIE_REMAKE,Bartaillerie Remake,Bartaillerie Remake
+BARTAILLERIE_REMAKE_DESC,"Bartaillerie is one of the games I worked on the longest time. It is also one of wich I most played. One day, I started this remake with my new knowlegde, but because of school, i did not have time to finish it. Although the game has currently no goal, it is pretty addictive.","Bartaillerie est l'un des jeux sur lequel j'ai le plus longtemps travaillé et aussi auquel j'ai le plus le joué. Un jour, j'ai eu envie d'en faire une reprise avec mes nouvelles connaissances, sauf qu'à cause de la charge de travail à côté, ce projet est passé à la trappe... Néanmoins le jeu est en l'état actuel plutôt addictif même s'il n'a aucun but et que toutes les commandes de déboggage sont utilisables."
+PLATFORMER_2023,Platformer 2023,Jeu de plateforme 2023
+PLATFORMER_2023_DESC,A platformer created to see if I was able to create good platformer movements in Scratch.,Un jeu de plateforme commencé sur un coup tête pour voir si j’étais capable de faire une physique potable sur Scratch.
 WIP,⚠ Work in progress ⚠: Not every projects are present.,⚠ En construction ⚠ : Tous les projets ne sont pas listés.
 SEARCH,Search,Rechercher
 SEARCH_PLACEHOLDER,Type one or more words to search in projects title and description... ,Entrez un ou plusieurs termes à chercher dans le titre et la description…
