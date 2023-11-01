@@ -37,6 +37,12 @@ REMAKE,Remake,Reprise
 ORIGINAL,Master copy,Projet original
 PLATFORMER,Platformer,Plateforme
 PLATFORMER_DESC,Platformer game.,Jeu de plateforme.
+TOY,Toy,Jouet
+TOY_DESC,"A bit like a game, but without any goal.","Un peu comme un jeu, mais sans but."
+TOOL,Tool,Outils
+TOOL_DESC,"Not a game, but something usefull.","Pas un jeu, mais quelque chose d’utile."
+PLUGIN,Plugin,Module
+PLUGIN_DESC,Something modifying a software.,Quelque chose qui ajoute des fonctionnalités à un logiciel.
 2D,2D,2D
 2D_DESC,2 dimensionnal game.,Jeu en 2 dimensions.
 ARCADE,Arcade,Arcade

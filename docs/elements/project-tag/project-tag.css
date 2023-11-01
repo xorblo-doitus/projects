@@ -51,6 +51,18 @@ img {
 	background-color: lightblue;
 	--border-color: rgb(105, 140, 255);
 }
+#background[tag="toy"] {
+	background-color: rgb(230, 230, 173);
+	--border-color: rgb(196, 196, 118);
+}
+#background[tag="tool"] {
+	background-color: rgb(173, 174, 230);
+	--border-color: rgb(125, 118, 196);
+}
+#background[tag="plugin"] {
+	background-color: rgb(222, 173, 230);
+	--border-color: rgb(173, 118, 196);
+}
 
 /* Vue */
 #background[tag="2D"] {
