@@ -77,6 +77,8 @@ COMPLETE,Complete,Complet
 COMPLETE_DESC,"Nothing will be added anymore, even bugfixes.","Le projet est terminé et rien n’y sera ajouté, pas même des correctifs."
 ONGOING,In progress,En cours
 ONGOING_DESC,This project is currenlty being working on.,Ce projet est actuellement en cours de développement.
+PAUSED,Paused,En pause
+PAUSED_DESC,"Development is paused, but there should be new updates in the future (if everything goes well).","Le développement est interrompu temporairement, mais il devrait y avoir de nouvelles mises à jours (normalement)."
 ABANDONED,Abandoned,Abandonné
 ABANDONED_DESC,This project is not complete and wont get updates.,Ce projet n’est pas terminé et ne le sera jamais.
 24H,24h,24h

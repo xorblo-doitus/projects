@@ -123,6 +123,11 @@ img {
 	background-color: rgb(0, 150, 236);
 	--border-color: rgb(0, 80, 127);
 }
+#background[tag="paused"] {
+	color: white;
+	background-color: rgb(127, 127, 127);
+	--border-color: rgb(70, 70, 70);
+}
 #background[tag="abandoned"] {
 	color: #ff5757;
 	background-color: rgb(0, 0, 0);
