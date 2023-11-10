@@ -167,11 +167,10 @@ class TokenListHelper {
 		const changedCallback = this.changedCallback
 		const func = changedCallback ?
 			function(newValue) {
-				changedCallback.call(this, newValue);
-				if (this[name].changed.preventingRecursion) {
-					return;
+				if (!this[name].changed.preventingRecursion) {
+					this[name].value = newValue;
 				}
-				this[name].value = newValue;
+				changedCallback.call(this, newValue);
 			}
 			: function(newValue) {
 				if (this[name].changed.preventingRecursion) {
