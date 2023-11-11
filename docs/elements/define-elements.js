@@ -119,6 +119,13 @@ class ProjectCard extends HTMLElementHelper {
 	}
 }
 
+const TAG_IMPLIES = {
+	scratch: "web 2D",
+	roblox: "windows xbox android ios macos 3D",
+	coop: "multiplayer",
+	"1vs1": "multiplayer",
+}
+
 ProjectCard.bindPropertiesToAtributes([
 	new PropertyAttributeBindHelper("fun", parseInt).setAttributeChangedCallback(function(newValue) {
 		if (newValue == "-1") {
@@ -145,7 +152,11 @@ ProjectCard.bindPropertiesToAtributes([
 		}
 	}),
 	new TokenListHelper("tags").setChangedCallback(function(newValue) {
-
+		for (const [tag, implies] of Object.entries(TAG_IMPLIES)) {
+			newValue = newValue.replace(tag, `${tag} ${implies}`);
+		}
+		this.tags.value = newValue;
+		
 		const tagsContainer = this.getElementById("tags");
 		tagsContainer.innerHTML = "";
 		for (const tag of this.tags) {
