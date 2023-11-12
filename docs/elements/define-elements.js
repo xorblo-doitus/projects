@@ -168,7 +168,6 @@ ProjectCard.bindPropertiesToAtributes([
 			}
 			let newTag = document.createElement("project-tag");
 			newTag.tag = tag;
-			translationServer.bindAttribute(newTag, "title", tag.toUpperCase() + "_DESC");
 			tagsContainer.appendChild(newTag);
 		}
 	}),
@@ -222,6 +221,7 @@ class ProjectTag extends HTMLElementHelper {}
 let tagAttibuteBinder = new PropertyAttributeBindHelper("tag").setAttributeChangedCallback(function(newValue) {
 	this.getElementById("tag-text").setAttribute(TRANSLATION_KEY_ATTR, newValue.toUpperCase().replace(" ", "_"));
 	this.getElementById("background").setAttribute("tag", newValue);
+	translationServer.bindAttribute(this, "title", newValue.toUpperCase() + "_DESC");
 })
 ProjectTag.bindPropertiesToAtributes([tagAttibuteBinder]).pushRegistering();
 
