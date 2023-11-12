@@ -1,0 +1,1 @@
+To try AI a little bit, I am making prompts to speed up development. They are used with Brave's Leo basic model, I don't now if they will work well with others.
