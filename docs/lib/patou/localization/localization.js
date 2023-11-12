@@ -181,6 +181,10 @@ class TranslationServer {
 	
 	
 	bindAttribute(element, attribute, key) {
+		const alreadyExistIndex = this.boundAttributes.findIndex((bind) => {bind.element == element && bind.attribute == attribute});
+		if (alreadyExistIndex != -1) {
+			this.boundAttributes.splice(alreadyExistIndex, 1);
+		}
 		this.boundAttributes.push({"element": element, "attribute": attribute, "key": key});
 		if (this.CSVData != undefined) {
 			element.setAttribute(attribute, this.tr(key));
