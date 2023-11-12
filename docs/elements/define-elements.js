@@ -121,7 +121,7 @@ class ProjectCard extends HTMLElementHelper {
 
 const TAG_IMPLIES = {
 	scratch: "web 2D",
-	roblox: "windows xbox android ios macos 3D",
+	roblox: "windows xbox android iOS macOS 3D",
 	coop: "multiplayer",
 	"1vs1": "multiplayer",
 };

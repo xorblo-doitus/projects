@@ -35,6 +35,26 @@ img {
 	background-color: rgb(217, 222, 67);
 	--border-color: rgb(165, 170, 35);
 }
+#background[tag="macOS"] {
+	background-color: #FFC67D;
+	--border-color: #ce8c36;
+}
+#background[tag="iOS"] {
+	background-color: rgb(192, 192, 192);
+	--border-color: rgb(146, 146, 146);
+}
+#background[tag="xbox"] {
+	background-color: #33CC33;
+	--border-color: #228822;
+}
+#background[tag="android"] {
+	background-color: #8BC34A;
+	--border-color: rgb(79 126 48);
+}
+/* #background[tag="iOS"] {
+	background-color: rgb(230, 150, 230);
+	--border-color: rgb(180, 100, 180);
+} */
 
 /* Genre */
 #background[tag="arcade"] {
@@ -44,6 +64,10 @@ img {
 #background[tag="platformer"] {
 	background-color: lightblue;
 	--border-color: rgb(105, 140, 255);
+}
+#background[tag="puzzle"] {
+	background-color: rgb(176, 218, 129);
+	--border-color: rgb(115, 164, 59);
 }
 #background[tag="toy"] {
 	background-color: rgb(230, 230, 173);
@@ -62,6 +86,10 @@ img {
 #background[tag="2D"] {
 	background-color: greenyellow;
 	--border-color: rgb(70, 199, 0);
+}
+#background[tag="3D"] {
+	background-color: #56b3fa;
+	--border-color: #377eb4;
 }
 
 /* Player count */
@@ -106,6 +134,12 @@ img {
 #background[tag="godot"] img {
 	content: url("https://godotengine.org/assets/press/icon_color_outline.svg");
 	scale: 1.4;
+}
+
+#background[tag="roblox"] {
+	color: white;
+	background-color: rgb(214, 0, 0);
+	--border-color: rgb(70, 0, 0);
 }
 
 /* Development */

@@ -13,8 +13,8 @@ SPACE_ADVENTURE,Space Adventure,L’aventure de l’espace
 SPACE_ADVENTURE_DESC,Avoid getting hit by asteroids while collecting fuel and materials.,Projet de 3ème. Évitez les astéroïdes tout en collectant du carburant et des matériaux.
 PROJECTS,Projects,Projets
 PROJECTS_DESC,A site listing all my projects.,Un site recensant mes projets.
-PUZZLE,Puzzle,Puzzle
-PUZZLE_DESC,A puzzle created for a school project.,Un puzzle créé pour un projet scolaire.
+PUZZLE_PROJ,Puzzle,Puzzle
+PUZZLE_PROJ_DESC,A puzzle created for a school project.,Un puzzle créé pour un projet scolaire.
 MULTIPLICATION,Learn your multiplication tables,Révise tes tables de multiplication
 MULTIPLICATION_DESC,"Very bad, i don’t even now why I put it there… because of nostalgia ?","Horrible, je ne sais même pas pourquoi je le met sur le site… la nostalgie ?"
 PAINT_ADVENTURE,Paint Adventure,Peinture Aventure
@@ -47,6 +47,8 @@ REMAKE,Remake,Reprise
 ORIGINAL,Master copy,Projet original
 PLATFORMER,Platformer,Plateforme
 PLATFORMER_DESC,Platformer game.,Jeu de plateforme.
+PUZZLE,Puzzle,Puzzle
+PUZZLE_DESC,"A puzzle game's gameplay is made of enigmas, thought, out-of-the-box thinking...",Un jeu d’énigme où votre réflexion est mise à rude épreuve.
 TOY,Toy,Jouet
 TOY_DESC,"A bit like a game, but without any goal.","Un peu comme un jeu, mais sans but."
 TOOL,Tool,Outils
@@ -55,16 +57,28 @@ PLUGIN,Plugin,Module
 PLUGIN_DESC,Something modifying a software.,Quelque chose qui ajoute des fonctionnalités à un logiciel.
 2D,2D,2D
 2D_DESC,2 dimensionnal game.,Jeu en 2 dimensions.
+3D,3D,3D
+3D_DESC,3 dimensionnal game.,Jeu en 3 dimensions.
 ARCADE,Arcade,Arcade
 ARCADE_DESC,Arcade game.,Jeu d’arcade.
 WEB,Browser,Navigateur
 WEB_DESC,"Playable directly inside one’s browser. (Chrome, Firefox, Edge…)","Jouable directement dans le navigateur. (Chrome, Firefox, Edge…)"
 WINDOWS,Windows,Windows
 WINDOWS_DESC,Playable on a Windows computer.,Jouable sur un ordinateur avec le système d’exploitation Windows.
+MACOS,macOS,macOS
+MACOS_DESC,Playable on Apple’s computers.,Jouable sur un ordinateur d’Apple.
+IOS,iOS,iOS
+IOS_DESC,Playable on Apple’s smartphones.,Jouable sur un mobile multifonctions d’Apple.
+ANDROID,Android,Android
+ANDROID_DESC,Playable on Android smartphones.,Jouable sur un mobile multifonctions Android.
+XBOX,Xbox,Xbox
+XBOX_DESC,Playable on Xbox.,Jouable sur une console Xbox.
 SCRATCH,Scratch,Scratch
 SCRATCH_DESC,Created with Scratch. This is a website for beginner programmers.,"Créé avec Scratch, un site de programmation pour les débutants."
 GODOT,Godot,Godot
 GODOT_DESC,"Created with Godot, an open source game engine.","Créé avec Godot, un moteur de jeu open source."
+ROBLOX,Roblox,Roblox
+ROBLOX_DESC,Created with Roblox Studio. I now prefer Godot wich is open-source.,"Créé avec Roblox Studio. Je ne conseille pas d’utiliser cette plateforme, utilisez plutôt Godot qui est aussi gratuit, mais open-source."
 COOP,Co-op,Coop
 COOP_DESC,Playable cooperatively with your friends.,Jouable en coopération avec des amis.
 SCHOOL,School,Scolaire
