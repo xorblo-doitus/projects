@@ -59,11 +59,7 @@ class ProjectCard extends HTMLElementHelper {
 		translationServer.bindAttribute(this, "project-title", row.get("title"));
 		translationServer.bindAttribute(this, "desc", row.get("title") + "_DESC");
 		
-		this.thumbnail = row.get("thumbnail") ? row.get("thumbnail")
-			: row.get("tags").includes("scratch") ? `https://uploads.scratch.mit.edu/get_image/project/${row.get("foreign_id")}_480x360.png` 
-			: row.get("website").includes("xorblo-doitus.github.io") || row.get("url").includes("xorblo-doitus.github.io") ? ProjectCard.getAboutURL(row, "thumbnail.png")
-			: "no_thumbnail_provided";
-		
+		this.fetchThumbnail(row);
 		this.url = row.get("url") ? row.get("url")
 			: row.get("tags").includes("scratch") ? `https://scratch.mit.edu/projects/${row.get("foreign_id")}/`
 			: "/404.html";
@@ -77,7 +73,30 @@ class ProjectCard extends HTMLElementHelper {
 		this.id = row.get("id");
 	}
 	
-	
+	async fetchThumbnail(row) {
+		/** @type {string} */
+		let thumbnail = row.get("thumbnail");
+		if (!thumbnail) {
+			thumbnail = row.get("thumbnail") ? row.get("thumbnail")
+				: row.get("tags").includes("scratch") ? `https://uploads.scratch.mit.edu/get_image/project/${row.get("foreign_id")}_480x360.png` 
+				: row.get("website").includes("xorblo-doitus.github.io") || row.get("url").includes("xorblo-doitus.github.io") ? ProjectCard.getAboutURL(row, "thumbnail.png")
+				: row.get("tags").includes("roblox") ? `APIhttps://corsproxy.io/?https://thumbnails.roblox.com/v1/games/icons?universeIds=${row.get("foreign_id")}&returnPolicy=PlaceHolder&size=512x512&format=Png&isCircular=false`
+				: null;
+		}
+		
+		if (thumbnail.startsWith("API")) {
+			thumbnail = thumbnail.slice(3);
+			this.thumbnail = "WARNING_finding_thumbnail";
+			console.log(thumbnail);
+			this.thumbnail = await fetch(thumbnail).then(resp =>  resp.json()).then(json => json.data[0].imageUrl);
+			return;
+		}
+		
+		if (!thumbnail) {
+			thumbnail = "ERROR_no_thumbnail_provided";
+		}
+		this.thumbnail = thumbnail;
+	}	
 	/**
 	 * @param {Map<string, string>} row 
 	 * @param {string} information 
