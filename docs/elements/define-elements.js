@@ -74,29 +74,48 @@ class ProjectCard extends HTMLElementHelper {
 	}
 	
 	async fetchThumbnail(row) {
-		/** @type {string} */
-		let thumbnail = row.get("thumbnail");
-		if (!thumbnail) {
-			thumbnail = row.get("thumbnail") ? row.get("thumbnail")
-				: row.get("tags").includes("scratch") ? `https://uploads.scratch.mit.edu/get_image/project/${row.get("foreign_id")}_480x360.png` 
-				: row.get("website").includes("xorblo-doitus.github.io") || row.get("url").includes("xorblo-doitus.github.io") ? ProjectCard.getAboutURL(row, "thumbnail.png")
-				: row.get("tags").includes("roblox") ? `APIhttps://corsproxy.io/?https://thumbnails.roblox.com/v1/games/icons?universeIds=${row.get("foreign_id")}&returnPolicy=PlaceHolder&size=512x512&format=Png&isCircular=false`
-				: null;
+		this.thumbnail = (
+			row.get("thumbnail")
+			|| this.fetchThumbScratch(row)
+			|| this.fetchThumbSite(row)
+			|| this.fetchThumbRoblox(row)
+			|| "ERROR_no_thumbnail_provided"
+		);
+	}
+	
+	fetchThumbScratch(row) {
+		if (row.get("tags").includes("scratch")) {
+			return `https://uploads.scratch.mit.edu/get_image/project/${row.get("foreign_id")}_480x360.png`;
 		}
+	}
+	
+	fetchThumbSite(row) {
+		if (row.get("tags").includes("website") || row.get("url").includes("xorblo-doitus.github.io")) {
+			return ProjectCard.getAboutURL(row, "thumbnail.png");
+		}
+	}
+	
+	fetchThumbRoblox(row) {
+		if (row.get("tags").includes("roblox")) {
+			this.scrapThumbRoblox(row.get("foreign_id"));
+			return "WARNING_finding_thumbnail";
+		}
+	}
+	
+	async scrapThumbRoblox(placeID) {
+		const universeID = (await ProjectCard.corsProxyFetch(
+			`https://apis.roblox.com/universes/v1/places/${placeID}/universe`
+		)).universeId;
 		
-		if (thumbnail.startsWith("API")) {
-			thumbnail = thumbnail.slice(3);
-			this.thumbnail = "WARNING_finding_thumbnail";
-			console.log(thumbnail);
-			this.thumbnail = await fetch(thumbnail).then(resp =>  resp.json()).then(json => json.data[0].imageUrl);
-			return;
-		}
-		
-		if (!thumbnail) {
-			thumbnail = "ERROR_no_thumbnail_provided";
-		}
-		this.thumbnail = thumbnail;
-	}	
+		this.thumbnail = (await ProjectCard.corsProxyFetch(
+			`https://thumbnails.roblox.com/v1/games/icons?universeIds=${universeID}&returnPolicy=PlaceHolder&size=512x512&format=Png&isCircular=false`
+		)).data[0].imageUrl;
+	}
+	
+	static corsProxyFetch(url) {
+		return fetch(`https://corsproxy.io/?${url}`).then(resp =>  resp.json());
+	}
+	
 	/**
 	 * @param {Map<string, string>} row 
 	 * @param {string} information 
