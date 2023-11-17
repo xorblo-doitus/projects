@@ -29,6 +29,8 @@ PLATFORMER_2023,Platformer 2023,Jeu de plateforme 2023
 PLATFORMER_2023_DESC,A platformer created to see if I was able to create good platformer movements in Scratch.,Un jeu de plateforme commencé sur un coup tête pour voir si j’étais capable de faire une physique potable sur Scratch.
 FROM_BELOW,From Below,From Below
 FROM_BELOW_DESC,"From Below is inspired by a game I was playing when I was joung called Bonkheads. It is my first big game created with the Godot engine, and as of writting this, one of my most sofisticated games.","From Below est inspiré d’un jeu auquel j’ai beaucoup joué durant mon enfance : Bonkheads. C’est mon premier « gros » jeu réalisé avec le moteur Godot et, à l’heure d’écrire ceci, l’un de mes jeux les plus poussés."
+LA_MAISON_DES_SECRETS,House of secrets,La maison des secrets
+LA_MAISON_DES_SECRETS_DESC,An abandoned game (and house) with strange enigmas and minigames / minilevels.,Un projet abandonné avec des énigmes bizarres et des mini-jeux / mini-niveaux.
 WIP,⚠ Work in progress ⚠: Not every projects are present.,⚠ En construction ⚠ : Tous les projets ne sont pas listés.
 SEARCH,Search,Rechercher
 SEARCH_PLACEHOLDER,Type one or more words to search in projects title and description... ,Entrez un ou plusieurs termes à chercher dans le titre et la description…
