@@ -1,7 +1,20 @@
 import { HTMLElementHelper, PropertyAttributeBindHelper, SHADOW_HOST_CLASS, TokenListHelper } from "../lib/patou/elements/elements.js";
 import { TRANSLATION_KEY_ATTR, translationServer } from "../lib/patou/localization/localization.js";
 import { Signal } from "../lib/patou/signal/signal.js";
+import { TokenList } from "../lib/patou/token-list/token-list.js";
 
+
+const TAG_IMPLIES = {
+	scratch: "web 2D",
+	roblox: "windows xbox android iOS macOS 3D",
+	coop: "multiplayer",
+	"1vs1": "multiplayer",
+};
+const TAG_COMMAND = "!";
+const TAG_ARGUMENT = ".";
+const NO_IMPLIES_TAG = TAG_COMMAND + "no-implies";
+const DIASBLE_IMPLY_TAG = TAG_COMMAND + "disable" + TAG_ARGUMENT;
+const NOT_THAT_TAG = TAG_COMMAND + "not" + TAG_ARGUMENT;
 
 
 class ProjectCard extends HTMLElementHelper {
@@ -154,14 +167,6 @@ class ProjectCard extends HTMLElementHelper {
 	}
 }
 
-const TAG_IMPLIES = {
-	scratch: "web 2D",
-	roblox: "windows xbox android iOS macOS 3D",
-	coop: "multiplayer",
-	"1vs1": "multiplayer",
-};
-const NO_IMPLIES_TAG = "no-implies";
-
 ProjectCard.bindPropertiesToAtributes([
 	new PropertyAttributeBindHelper("fun", parseInt).setAttributeChangedCallback(function(newValue) {
 		if (newValue == "-1") {
@@ -190,7 +195,14 @@ ProjectCard.bindPropertiesToAtributes([
 	new TokenListHelper("tags").setChangedCallback(function(newValue) {
 		if (!newValue.includes(NO_IMPLIES_TAG)) {
 			for (const [tag, implies] of Object.entries(TAG_IMPLIES)) {
-				newValue = newValue.replace(tag, `${tag} ${implies}`);
+				if (!newValue.includes(`${DIASBLE_IMPLY_TAG}${tag}`)) {
+					newValue = newValue.replace(tag, `${tag} ${implies}`);
+				}
+			}
+			for (const tag of newValue.split(" ")) {
+				if (tag.startsWith(NOT_THAT_TAG)) {
+					newValue = newValue.replace(tag.slice(NOT_THAT_TAG.length), "")
+				}
 			}
 			this.tags.value = newValue;
 		}
@@ -198,7 +210,7 @@ ProjectCard.bindPropertiesToAtributes([
 		const tagsContainer = this.getElementById("tags");
 		tagsContainer.innerHTML = "";
 		for (const tag of this.tags) {
-			if (tag == NO_IMPLIES_TAG) {
+			if (tag.startsWith(TAG_COMMAND)) {
 				continue;
 			}
 			let newTag = document.createElement("project-tag");
