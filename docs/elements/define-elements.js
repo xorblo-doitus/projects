@@ -150,10 +150,7 @@ class ProjectCard extends HTMLElementHelper {
 			}
 		}
 		
-		if (!sourceCode) {
-			sourceCode = "/404.html";
-		}
-		this.sourceCode = sourceCode;
+		this.sourceCode = sourceCode || "";
 	}
 }
 
