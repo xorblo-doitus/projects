@@ -1,119 +1,119 @@
-key,en,fr,,,
-FIRST_PLATFORMER,First platformer,Premier jeu de plateforme,,,
-FIRST_PLATFORMER_DESC,My first ever platformer game.,Mon tout premier jeu de plateforme.,,,
-TAPE_TAUPE,Whack-a-mole game,Tape-taupe,,,
-TAPE_TAUPE_DESC,Pretty bad…,"Un tape-taupe, mais avec un renard…",,,
-TAPE_TAUPE_REMAKE,Whack-a-mole game remake,Tape-taupe remake,,,
-TAPE_TAUPE_REMAKE_DESC,A little project made under 12h over 1 week.,Un mini projet réalisé en moins de 12h sur une semaine.,,,
-BUBBLE,Bubble,Bulle,,,
-BUBBLE_DESC,Somewhat an arcade game.,Une sorte de jeu d’arcade.,,,
-BARTAILLERIE,Bartaillerie,Bartaillerie,,,
-BARTAILLERIE_DESC,"This local 1v1 game is one of my best creation (at least was): I worked more than a year on it. I will forever remember it, and I still play it sometimes. It's sad that there is so many bugs, but I don't want to go back in that old spaghetti code to fix them.","Ce jeu en 1v1 local est l’une de mes meilleures créations (pour l’époque) : J’ai travaillé dessus au moins un an. J’en garderai toujours un incroyable souvenir, et j’y rejoue de temps en temps. Dommage qu’il y ait tant de bugs, mais je n’ai pas envie de me replonger dans le code spaghetti de l’époque pour les corriger.",,,
-SPACE_ADVENTURE,Space Adventure,L’aventure de l’espace,,,
-SPACE_ADVENTURE_DESC,Avoid getting hit by asteroids while collecting fuel and materials.,Projet de 3ème. Évitez les astéroïdes tout en collectant du carburant et des matériaux.,,,
-PROJECTS,Projects,Projets,,,
-PROJECTS_DESC,A site listing all my projects.,Un site recensant mes projets.,,,
-PUZZLE_PROJ,Puzzle,Puzzle,,,
-PUZZLE_PROJ_DESC,A puzzle created for a school project.,Un puzzle créé pour un projet scolaire.,,,
-MULTIPLICATION,Learn your multiplication tables,Révise tes tables de multiplication,,,
-MULTIPLICATION_DESC,"Very bad, i don’t even now why I put it there… because of nostalgia ?","Horrible, je ne sais même pas pourquoi je le met sur le site… la nostalgie ?",,,
-PAINT_ADVENTURE,Paint Adventure,Peinture Aventure,,,
-PAINT_ADVENTURE_DESC,A bad game with movement limit and conveyor belts.,Un mauvais jeu avec des mouvements limités et des convoyeurs.,,,
-FETE_DES_PERES,Father’s Day,Fête des pères,,,
-FETE_DES_PERES_DESC,"A little interactive toy made for Father’s Day. (Not sure my dad liked it, but at least it doesn’t take up space.)","Un petit jouet interactif fait pour la fête des pères. (Pas sûr que mon père ait apprécié, mais au moins ça prend pas de place, et il n’a pas à le jeter.)",,,
-ELEVAGE_DE_NOMBRES,Breeding of numbers,Élevage de nombres,,,
-ELEVAGE_DE_NOMBRES_DESC,An unfinished game where you would have to breed number and use mathematical operations to upgrade them.,Un jeu inachevé où il aurait fallu élever des nombres et utiliser des opérations mathématiques pour les améliorer.,,,
-BARTAILLERIE_REMAKE,Bartaillerie Remake,Bartaillerie Remake,,,
-BARTAILLERIE_REMAKE_DESC,"Bartaillerie is one of the games I worked on the longest time. It is also one of wich I most played. One day, I started this remake with my new knowlegde, but because of school, i did not have time to finish it. Although the game has currently no goal, it is pretty addictive.","Bartaillerie est l'un des jeux sur lequel j'ai le plus longtemps travaillé et aussi auquel j'ai le plus le joué. Un jour, j'ai eu envie d'en faire une reprise avec mes nouvelles connaissances, sauf qu'à cause de la charge de travail à côté, ce projet est passé à la trappe... Néanmoins le jeu est en l'état actuel plutôt addictif même s'il n'a aucun but et que toutes les commandes de déboggage sont utilisables.",,,
-PLATFORMER_2023,Platformer 2023,Jeu de plateforme 2023,,,
-PLATFORMER_2023_DESC,A platformer created to see if I was able to create good platformer movements in Scratch.,Un jeu de plateforme commencé sur un coup tête pour voir si j’étais capable de faire une physique potable sur Scratch.,,,
-FROM_BELOW,From Below,From Below,,,
-FROM_BELOW_DESC,"From Below is inspired by a game I was playing when I was joung called Bonkheads. It is my first big game created with the Godot engine, and as of writting this, one of my most sofisticated games.","From Below est inspiré d’un jeu auquel j’ai beaucoup joué durant mon enfance : Bonkheads. C’est mon premier « gros » jeu réalisé avec le moteur Godot et, à l’heure d’écrire ceci, l’un de mes jeux les plus poussés.",,,
-LA_MAISON_DES_SECRETS,House of secrets,La maison des secrets,,,
-LA_MAISON_DES_SECRETS_DESC,An abandoned game (and house) with strange enigmas and minigames / minilevels.,Un projet abandonné avec des énigmes bizarres et des mini-jeux / mini-niveaux.,,,
-🤣🤣🤣🤣🤣🤣,🤣🤣🤣🤣🤣🤣,🤣🤣🤣🤣🤣🤣,,,
-🤣🤣🤣🤣🤣🤣_DESC,Here is the reason why we don’t say to a dev that we will do something once pink elephants will be trampolining while dancing under a rain of frogs playing violin.,Voici la raison pour laquelle on ne dit pas à un dev qu’on fera quelque chose quand des éléphants roses feront du trampoline en dansant la salsa sous une pluie de grenouilles jouant du violon.,,,
-WIP,⚠ Work in progress ⚠: Not every projects are present.,⚠ En construction ⚠ : Tous les projets ne sont pas listés.,,,
-SEARCH,Search,Rechercher,,,
-SEARCH_PLACEHOLDER,Type one or more words to search in projects title and description... ,Entrez un ou plusieurs termes à chercher dans le titre et la description…,,,
-TAG_FILTERS,Filter by tag:,Filtrer par étiquette :,,,
-SORT_FILTERS,Sort by:,Trier par :,,,
-DATE,Date,Date,,,
-FUN,Fun,Fun,,,
-FUN_DESC,A value from 0 to 100 grading the fun of the project.,Une valeur de 0 à 100 évaluant le fun du projet.,,,
-DATE_DESC,Date when the project was released. This does not take updates into account. Dates from old projects are not exact.,Date de parution du projet. Le projet a pu être mis à jour entre temps. Les dates des vieux projets sont approximatives.,,,
-TITLE,Title,Titre,,,
-THUMBNAIL,Thumbnail,Vignette,,,
-TOOLTIP_READER,Tooltip reader,Lecteur d’infobulle,,,
-TOOLTIP_SHOWER,Move your mouse over an element to show it’s tooltip…,Survolez un élément avec votre curseur pour en montrer son infobulle…,,,
-SOURCE_CODE,Source code,Code source,,,
-REMAKE,Remake,Reprise,,,
-ORIGINAL,Master copy,Projet original,,,
-PLATFORMER,Platformer,Plateforme,,,
-PLATFORMER_DESC,Platformer game.,Jeu de plateforme.,,,
-PUZZLE,Puzzle,Puzzle,,,
-PUZZLE_DESC,"A puzzle game's gameplay is made of enigmas, thought, out-of-the-box thinking...",Un jeu d’énigme où votre réflexion est mise à rude épreuve.,,,
-TOY,Toy,Jouet,,,
-TOY_DESC,"A bit like a game, but without any goal.","Un peu comme un jeu, mais sans but.",,,
-VISUAL,Visual,Visuel,,,
-VISUAL_DESC,A contemplative project without much interaction. It is just meen to be beautifull or funny to look at.,Un projet contemplatif pensé pour être beau ou amusant à regarder.,,,
-TOOL,Tool,Outils,,,
-TOOL_DESC,"Not a game, but something usefull.","Pas un jeu, mais quelque chose d’utile.",,,
-PLUGIN,Plugin,Module,,,
-PLUGIN_DESC,Something modifying a software.,Quelque chose qui ajoute des fonctionnalités à un logiciel.,,,
-2D,2D,2D,,,
-2D_DESC,2 dimensionnal game.,Jeu en 2 dimensions.,,,
-3D,3D,3D,,,
-3D_DESC,3 dimensionnal game.,Jeu en 3 dimensions.,,,
-ARCADE,Arcade,Arcade,,,
-ARCADE_DESC,Arcade game.,Jeu d’arcade.,,,
-WEB,Browser,Navigateur,,,
-WEB_DESC,"Playable directly inside one’s browser. (Chrome, Firefox, Edge…)","Jouable directement dans le navigateur. (Chrome, Firefox, Edge…)",,,
-WINDOWS,Windows,Windows,,,
-WINDOWS_DESC,Playable on a Windows computer.,Jouable sur un ordinateur avec le système d’exploitation Windows.,,,
-MACOS,macOS,macOS,,,
-MACOS_DESC,Playable on Apple’s computers.,Jouable sur un ordinateur d’Apple.,,,
-IOS,iOS,iOS,,,
-IOS_DESC,Playable on Apple’s smartphones.,Jouable sur un mobile multifonctions d’Apple.,,,
-ANDROID,Android,Android,,,
-ANDROID_DESC,Playable on Android smartphones.,Jouable sur un mobile multifonctions Android.,,,
-XBOX,Xbox,Xbox,,,
-XBOX_DESC,Playable on Xbox.,Jouable sur une console Xbox.,,,
-SCRATCH,Scratch,Scratch,,,
-SCRATCH_DESC,Created with Scratch. This is a website for beginner programmers.,"Créé avec Scratch, un site de programmation pour les débutants.",,,
-GODOT,Godot,Godot,,,
-GODOT_DESC,"Created with Godot, an open source game engine.","Créé avec Godot, un moteur de jeu open source.",,,
-ROBLOX,Roblox,Roblox,,,
-ROBLOX_DESC,Created with Roblox Studio. I now prefer Godot wich is open-source.,"Créé avec Roblox Studio. Je ne conseille pas d’utiliser cette plateforme, utilisez plutôt Godot qui est aussi gratuit, mais open-source.",,,
-COOP,Co-op,Coop,,,
-COOP_DESC,Playable cooperatively with your friends.,Jouable en coopération avec des amis.,,,
-SCHOOL,School,Scolaire,,,
-SCHOOL_DESC,Created for school.,Créé pour une activité scolaire.,,,
-1V1,1vs1,1 contre 1,,,
-1V1_DESC,1 versus 1 fighting game.,Jeu de combat en 1 contre 1.,,,
-MULTIPLAYER,Multiplayer,Multijoueur,,,
-MULTIPLAYER_DESC,You can play with other peoples localy.,Se joue à plusieurs. (En local),,,
-LTS,LTS,LTS,,,
-LTS_DESC,Long Term Support: expect only bugfix updates.,Support à Long Terme : Mises à jour correctives uniquement.,,,
-COMPLETE,Complete,Complet,,,
-COMPLETE_DESC,"Nothing will be added anymore, even bugfixes.","Le projet est terminé et rien n’y sera ajouté, pas même des correctifs.",,,
-ONGOING,In progress,En cours,,,
-ONGOING_DESC,This project is currenlty being working on.,Ce projet est actuellement en cours de développement.,,,
-PAUSED,Paused,En pause,,,
-PAUSED_DESC,"Development is paused, but there should be new updates in the future (if everything goes well).","Le développement est interrompu temporairement, mais il devrait y avoir de nouvelles mises à jours (normalement).",,,
-ABANDONED,Abandoned,Abandonné,,,
-ABANDONED_DESC,This project is not complete and wont get updates.,Ce projet n’est pas terminé et ne le sera jamais.,,,
-24H,24h,24h,,,
-24H_DESC,Made in less than 24 hours of development.,Créé en moins de 24 heures de développement.,,,
-GENRE,Genre,Genre,,,
-PLATFORM,Platform,Plateforme,,,
-PLAYER_COUNT,Player count,Nombre de joueurs,,,
-VUE,Vue,Vue,,,
-SCOPE,Scope,Cadre,,,
-MADE_WITH,Made with,Créé avec,,,
-DEVELOPMENT,Development,Développement,,,
-TIME_LIMIT,Time limit,Temps imparti,,,
-AUTO,Automatic,Automatique,,,
-en,English,Anglais,,,
-fr,French,Français,,,
-LOCALIZATION_PROGRESS,100%,100%,,,
+key,en,fr
+FIRST_PLATFORMER,First platformer,Premier jeu de plateforme
+FIRST_PLATFORMER_DESC,My first ever platformer game.,Mon tout premier jeu de plateforme.
+TAPE_TAUPE,Whack-a-mole game,Tape-taupe
+TAPE_TAUPE_DESC,Pretty bad…,"Un tape-taupe, mais avec un renard…"
+TAPE_TAUPE_REMAKE,Whack-a-mole game remake,Tape-taupe remake
+TAPE_TAUPE_REMAKE_DESC,A little project made under 12h over 1 week.,Un mini projet réalisé en moins de 12h sur une semaine.
+BUBBLE,Bubble,Bulle
+BUBBLE_DESC,Somewhat an arcade game.,Une sorte de jeu d’arcade.
+BARTAILLERIE,Bartaillerie,Bartaillerie
+BARTAILLERIE_DESC,"This local 1v1 game is one of my best creation (at least was): I worked more than a year on it. I will forever remember it, and I still play it sometimes. It's sad that there is so many bugs, but I don't want to go back in that old spaghetti code to fix them.","Ce jeu en 1v1 local est l’une de mes meilleures créations (pour l’époque) : J’ai travaillé dessus au moins un an. J’en garderai toujours un incroyable souvenir, et j’y rejoue de temps en temps. Dommage qu’il y ait tant de bugs, mais je n’ai pas envie de me replonger dans le code spaghetti de l’époque pour les corriger."
+SPACE_ADVENTURE,Space Adventure,L’aventure de l’espace
+SPACE_ADVENTURE_DESC,Avoid getting hit by asteroids while collecting fuel and materials.,Projet de 3ème. Évitez les astéroïdes tout en collectant du carburant et des matériaux.
+PROJECTS,Projects,Projets
+PROJECTS_DESC,A site listing all my projects.,Un site recensant mes projets.
+PUZZLE_PROJ,Puzzle,Puzzle
+PUZZLE_PROJ_DESC,A puzzle created for a school project.,Un puzzle créé pour un projet scolaire.
+MULTIPLICATION,Learn your multiplication tables,Révise tes tables de multiplication
+MULTIPLICATION_DESC,"Very bad, i don’t even now why I put it there… because of nostalgia ?","Horrible, je ne sais même pas pourquoi je le met sur le site… la nostalgie ?"
+PAINT_ADVENTURE,Paint Adventure,Peinture Aventure
+PAINT_ADVENTURE_DESC,A bad game with movement limit and conveyor belts.,Un mauvais jeu avec des mouvements limités et des convoyeurs.
+FETE_DES_PERES,Father’s Day,Fête des pères
+FETE_DES_PERES_DESC,"A little interactive toy made for Father’s Day. (Not sure my dad liked it, but at least it doesn’t take up space.)","Un petit jouet interactif fait pour la fête des pères. (Pas sûr que mon père ait apprécié, mais au moins ça prend pas de place, et il n’a pas à le jeter.)"
+ELEVAGE_DE_NOMBRES,Breeding of numbers,Élevage de nombres
+ELEVAGE_DE_NOMBRES_DESC,An unfinished game where you would have to breed number and use mathematical operations to upgrade them.,Un jeu inachevé où il aurait fallu élever des nombres et utiliser des opérations mathématiques pour les améliorer.
+BARTAILLERIE_REMAKE,Bartaillerie Remake,Bartaillerie Remake
+BARTAILLERIE_REMAKE_DESC,"Bartaillerie is one of the games I worked on the longest time. It is also one of wich I most played. One day, I started this remake with my new knowlegde, but because of school, i did not have time to finish it. Although the game has currently no goal, it is pretty addictive.","Bartaillerie est l'un des jeux sur lequel j'ai le plus longtemps travaillé et aussi auquel j'ai le plus le joué. Un jour, j'ai eu envie d'en faire une reprise avec mes nouvelles connaissances, sauf qu'à cause de la charge de travail à côté, ce projet est passé à la trappe... Néanmoins le jeu est en l'état actuel plutôt addictif même s'il n'a aucun but et que toutes les commandes de déboggage sont utilisables."
+PLATFORMER_2023,Platformer 2023,Jeu de plateforme 2023
+PLATFORMER_2023_DESC,A platformer created to see if I was able to create good platformer movements in Scratch.,Un jeu de plateforme commencé sur un coup tête pour voir si j’étais capable de faire une physique potable sur Scratch.
+FROM_BELOW,From Below,From Below
+FROM_BELOW_DESC,"From Below is inspired by a game I was playing when I was joung called Bonkheads. It is my first big game created with the Godot engine, and as of writting this, one of my most sofisticated games.","From Below est inspiré d’un jeu auquel j’ai beaucoup joué durant mon enfance : Bonkheads. C’est mon premier « gros » jeu réalisé avec le moteur Godot et, à l’heure d’écrire ceci, l’un de mes jeux les plus poussés."
+LA_MAISON_DES_SECRETS,House of secrets,La maison des secrets
+LA_MAISON_DES_SECRETS_DESC,An abandoned game (and house) with strange enigmas and minigames / minilevels.,Un projet abandonné avec des énigmes bizarres et des mini-jeux / mini-niveaux.
+🤣🤣🤣🤣🤣🤣,🤣🤣🤣🤣🤣🤣,🤣🤣🤣🤣🤣🤣
+🤣🤣🤣🤣🤣🤣_DESC,Here is the reason why we don’t say to a dev that we will do something once pink elephants will be trampolining while dancing under a rain of frogs playing violin.,Voici la raison pour laquelle on ne dit pas à un dev qu’on fera quelque chose quand des éléphants roses feront du trampoline en dansant la salsa sous une pluie de grenouilles jouant du violon.
+WIP,⚠ Work in progress ⚠: Not every projects are present.,⚠ En construction ⚠ : Tous les projets ne sont pas listés.
+SEARCH,Search,Rechercher
+SEARCH_PLACEHOLDER,Type one or more words to search in projects title and description... ,Entrez un ou plusieurs termes à chercher dans le titre et la description…
+TAG_FILTERS,Filter by tag:,Filtrer par étiquette :
+SORT_FILTERS,Sort by:,Trier par :
+DATE,Date,Date
+FUN,Fun,Fun
+FUN_DESC,A value from 0 to 100 grading the fun of the project.,Une valeur de 0 à 100 évaluant le fun du projet.
+DATE_DESC,Date when the project was released. This does not take updates into account. Dates from old projects are not exact.,Date de parution du projet. Le projet a pu être mis à jour entre temps. Les dates des vieux projets sont approximatives.
+TITLE,Title,Titre
+THUMBNAIL,Thumbnail,Vignette
+TOOLTIP_READER,Tooltip reader,Lecteur d’infobulle
+TOOLTIP_SHOWER,Move your mouse over an element to show it’s tooltip…,Survolez un élément avec votre curseur pour en montrer son infobulle…
+SOURCE_CODE,Source code,Code source
+REMAKE,Remake,Reprise
+ORIGINAL,Master copy,Projet original
+PLATFORMER,Platformer,Plateforme
+PLATFORMER_DESC,Platformer game.,Jeu de plateforme.
+PUZZLE,Puzzle,Puzzle
+PUZZLE_DESC,"A puzzle game's gameplay is made of enigmas, thought, out-of-the-box thinking...",Un jeu d’énigme où votre réflexion est mise à rude épreuve.
+TOY,Toy,Jouet
+TOY_DESC,"A bit like a game, but without any goal.","Un peu comme un jeu, mais sans but."
+VISUAL,Visual,Visuel
+VISUAL_DESC,A contemplative project without much interaction. It is just meen to be beautifull or funny to look at.,Un projet contemplatif pensé pour être beau ou amusant à regarder.
+TOOL,Tool,Outils
+TOOL_DESC,"Not a game, but something usefull.","Pas un jeu, mais quelque chose d’utile."
+PLUGIN,Plugin,Module
+PLUGIN_DESC,Something modifying a software.,Quelque chose qui ajoute des fonctionnalités à un logiciel.
+2D,2D,2D
+2D_DESC,2 dimensionnal game.,Jeu en 2 dimensions.
+3D,3D,3D
+3D_DESC,3 dimensionnal game.,Jeu en 3 dimensions.
+ARCADE,Arcade,Arcade
+ARCADE_DESC,Arcade game.,Jeu d’arcade.
+WEB,Browser,Navigateur
+WEB_DESC,"Playable directly inside one’s browser. (Chrome, Firefox, Edge…)","Jouable directement dans le navigateur. (Chrome, Firefox, Edge…)"
+WINDOWS,Windows,Windows
+WINDOWS_DESC,Playable on a Windows computer.,Jouable sur un ordinateur avec le système d’exploitation Windows.
+MACOS,macOS,macOS
+MACOS_DESC,Playable on Apple’s computers.,Jouable sur un ordinateur d’Apple.
+IOS,iOS,iOS
+IOS_DESC,Playable on Apple’s smartphones.,Jouable sur un mobile multifonctions d’Apple.
+ANDROID,Android,Android
+ANDROID_DESC,Playable on Android smartphones.,Jouable sur un mobile multifonctions Android.
+XBOX,Xbox,Xbox
+XBOX_DESC,Playable on Xbox.,Jouable sur une console Xbox.
+SCRATCH,Scratch,Scratch
+SCRATCH_DESC,Created with Scratch. This is a website for beginner programmers.,"Créé avec Scratch, un site de programmation pour les débutants."
+GODOT,Godot,Godot
+GODOT_DESC,"Created with Godot, an open source game engine.","Créé avec Godot, un moteur de jeu open source."
+ROBLOX,Roblox,Roblox
+ROBLOX_DESC,Created with Roblox Studio. I now prefer Godot wich is open-source.,"Créé avec Roblox Studio. Je ne conseille pas d’utiliser cette plateforme, utilisez plutôt Godot qui est aussi gratuit, mais open-source."
+COOP,Co-op,Coop
+COOP_DESC,Playable cooperatively with your friends.,Jouable en coopération avec des amis.
+SCHOOL,School,Scolaire
+SCHOOL_DESC,Created for school.,Créé pour une activité scolaire.
+1V1,1vs1,1 contre 1
+1V1_DESC,1 versus 1 fighting game.,Jeu de combat en 1 contre 1.
+MULTIPLAYER,Multiplayer,Multijoueur
+MULTIPLAYER_DESC,You can play with other peoples localy.,Se joue à plusieurs. (En local)
+LTS,LTS,LTS
+LTS_DESC,Long Term Support: expect only bugfix updates.,Support à Long Terme : Mises à jour correctives uniquement.
+COMPLETE,Complete,Complet
+COMPLETE_DESC,"Nothing will be added anymore, even bugfixes.","Le projet est terminé et rien n’y sera ajouté, pas même des correctifs."
+ONGOING,In progress,En cours
+ONGOING_DESC,This project is currenlty being working on.,Ce projet est actuellement en cours de développement.
+PAUSED,Paused,En pause
+PAUSED_DESC,"Development is paused, but there should be new updates in the future (if everything goes well).","Le développement est interrompu temporairement, mais il devrait y avoir de nouvelles mises à jours (normalement)."
+ABANDONED,Abandoned,Abandonné
+ABANDONED_DESC,This project is not complete and wont get updates.,Ce projet n’est pas terminé et ne le sera jamais.
+24H,24h,24h
+24H_DESC,Made in less than 24 hours of development.,Créé en moins de 24 heures de développement.
+GENRE,Genre,Genre
+PLATFORM,Platform,Plateforme
+PLAYER_COUNT,Player count,Nombre de joueurs
+VUE,Vue,Vue
+SCOPE,Scope,Cadre
+MADE_WITH,Made with,Créé avec
+DEVELOPMENT,Development,Développement
+TIME_LIMIT,Time limit,Temps imparti
+AUTO,Automatic,Automatique
+en,English,Anglais
+fr,French,Français
+LOCALIZATION_PROGRESS,100%,100%
