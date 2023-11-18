@@ -73,6 +73,10 @@ img {
 	background-color: rgb(230, 230, 173);
 	--border-color: rgb(196, 196, 118);
 }
+#background[tag="visual"] {
+	background-color: rgb(255 188 221);
+    --border-color: rgb(255 121 188);
+}
 #background[tag="tool"] {
 	background-color: rgb(173, 174, 230);
 	--border-color: rgb(125, 118, 196);
