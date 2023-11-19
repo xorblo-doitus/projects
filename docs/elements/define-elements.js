@@ -199,11 +199,13 @@ ProjectCard.bindPropertiesToAtributes([
 					newValue = newValue.replace(tag, `${tag} ${implies}`);
 				}
 			}
+			
 			for (const tag of newValue.split(" ")) {
 				if (tag.startsWith(NOT_THAT_TAG)) {
 					newValue = newValue.replace(tag.slice(NOT_THAT_TAG.length), "")
 				}
 			}
+			
 			this.tags.value = newValue;
 		}
 		

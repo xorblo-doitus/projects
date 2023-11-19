@@ -77,7 +77,9 @@ class TokenList extends Set {
 		this.clear();
 		
 		for (const token of newValue.split(SPLITTER)) {
-			super.add(token);
+			if (token) { // Prevent empty token due to 2 consecutive splitters.
+				super.add(token);
+			}
 		}
 		
 		this.changed.fireNoRecursion();
