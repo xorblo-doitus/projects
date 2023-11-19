@@ -37,6 +37,8 @@ COLOR_ESCAPE,Color Escape,Color Escape
 COLOR_ESCAPE_DESC,"An ""Obby"" or ""Escape"" as we say on Roblox. There are thousands of them on Roblox.","Un « Obby » ou « Escape » comme on dit sur Roblox, et comme on en trouve par millions."
 TERRA_FUNGOS,Terra Fungos,Terra Fungos
 TERRA_FUNGOS_DESC,"This project was abandoned when i had to map the world, wich was taking too much time. It would have been an exploration game.",Un projet abandonné au moment de devoir mapper le monde (cela prenait trop de temps). Cela devait devenir un jeu d’exploration.
+CARTAILLE,Cartaille,Cartaille
+CARTAILLE_DESC,"An abandoned project that was a remake of a board game I created IRL with paper. It was a turn-based fight. Only the terrain generator is working, and the user interface don't let define every settings of it.","Un projet abandonné de transposer un jeu de plateau avec des cartes que j’avais créé avec du papier, qui prenait la forme d’un combat au tour par tour. La seule chose que j’avais programmé était le générateur de terrain, mais l’interface utilisateur inachevée ne permet pas d’en tirer toutes les possibilités."
 WIP,⚠ Work in progress ⚠: Not every projects are present.,⚠ En construction ⚠ : Tous les projets ne sont pas listés.
 SEARCH,Search,Rechercher
 SEARCH_PLACEHOLDER,Type one or more words to search in projects title and description... ,Entrez un ou plusieurs termes à chercher dans le titre et la description…
