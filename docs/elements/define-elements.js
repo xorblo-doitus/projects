@@ -1,3 +1,5 @@
+import { cached } from "../lib/patou/call-caching/call-caching.js";
+import { decorate } from "../lib/patou/decorator/decorator.js";
 import { HTMLElementHelper, PropertyAttributeBindHelper, SHADOW_HOST_CLASS, TokenListHelper } from "../lib/patou/elements/elements.js";
 import { TRANSLATION_KEY_ATTR, translationServer } from "../lib/patou/localization/localization.js";
 import { Signal } from "../lib/patou/signal/signal.js";
@@ -110,9 +112,13 @@ class ProjectCard extends HTMLElementHelper {
 	
 	fetchThumbRoblox(row) {
 		if (row.get("tags").includes("roblox")) {
-			this.scrapThumbRoblox(row.get("foreign_id"));
+			this.setThumbRoblox(row.get("foreign_id"));
 			return "WARNING_finding_thumbnail";
 		}
+	}
+	
+	async setThumbRoblox(placeID) {
+		this.thumbnail = await this.scrapThumbRoblox(placeID);
 	}
 	
 	async scrapThumbRoblox(placeID) {
@@ -120,7 +126,7 @@ class ProjectCard extends HTMLElementHelper {
 			`https://apis.roblox.com/universes/v1/places/${placeID}/universe`
 		)).universeId;
 		
-		this.thumbnail = (await ProjectCard.corsProxyFetch(
+		return (await ProjectCard.corsProxyFetch(
 			`https://thumbnails.roblox.com/v1/games/icons?universeIds=${universeID}&returnPolicy=PlaceHolder&size=512x512&format=Png&isCircular=false`
 		)).data[0].imageUrl;
 	}
@@ -166,6 +172,8 @@ class ProjectCard extends HTMLElementHelper {
 		this.sourceCode = sourceCode || "";
 	}
 }
+
+decorate(ProjectCard.prototype, "scrapThumbRoblox", cached);
 
 ProjectCard.bindPropertiesToAtributes([
 	new PropertyAttributeBindHelper("fun", parseInt).setAttributeChangedCallback(function(newValue) {
