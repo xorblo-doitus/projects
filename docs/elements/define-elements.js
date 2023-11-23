@@ -3,7 +3,6 @@ import { decorate } from "../lib/patou/decorator/decorator.js";
 import { HTMLElementHelper, PropertyAttributeBindHelper, SHADOW_HOST_CLASS, TokenListHelper } from "../lib/patou/elements/elements.js";
 import { TRANSLATION_KEY_ATTR, translationServer } from "../lib/patou/localization/localization.js";
 import { Signal } from "../lib/patou/signal/signal.js";
-import { TokenList } from "../lib/patou/token-list/token-list.js";
 
 
 const TAG_IMPLIES = {
