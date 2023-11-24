@@ -123,14 +123,14 @@ class PropertyAttributeBindHelper {
 		}
 	}
 	
-	/**
-	 * @param {string} attributeName 
-	 * @returns {this}
-	 */
-	setAttributeName(attributeName) {
-		this.attributeName = attributeName;
-		return this;
-	}
+	// /**
+	//  * @param {string} attributeName 
+	//  * @returns {this}
+	//  */
+	// setAttributeName(attributeName) {
+	// 	this.attributeName = attributeName;
+	// 	return this;
+	// }
 }
 
 
