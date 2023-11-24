@@ -1,6 +1,7 @@
 import { cached } from "../lib/patou/call-caching/call-caching.js";
 import { decorateMethod } from "../lib/patou/decorator/decorator.js";
 import { HTMLElementHelper, PropertyAttributeBindHelper, SHADOW_HOST_CLASS, TokenListHelper } from "../lib/patou/elements/elements.js";
+import { HistoryHelper } from "../lib/patou/history-helper/history-helper.js";
 import { TRANSLATION_KEY_ATTR, translationServer } from "../lib/patou/localization/localization.js";
 import { Signal } from "../lib/patou/signal/signal.js";
 
@@ -65,11 +66,16 @@ class ProjectCard extends HTMLElementHelper {
 		this.getElementById("date").title = new Date(timeSince1970ms).toLocaleDateString(translationServer.lang);
 	}
 	
+	/** @type {Map<string, string>} */
+	infoAsRow = new Map();
+	
 	/**
 	 * Set all informations from a row of the projects.csv file.
 	 * @param {Map<string, string>} row 
 	 */
 	setInfoFromRow(row) {
+		this.infoAsRow = row;
+		
 		translationServer.bindAttribute(this, "project-title", row.get("title"));
 		translationServer.bindAttribute(this, "desc", row.get("title") + "_DESC");
 		
@@ -84,7 +90,7 @@ class ProjectCard extends HTMLElementHelper {
 		this.unixtime = row.get("unixtime");
 		this.fun = row.get("fun");
 		this.dateFormat = row.get("date_format");
-		this.id = row.get("id");
+		this.projectID = row.get("id");
 	}
 	
 	async fetchThumbnail(row) {
@@ -230,6 +236,7 @@ ProjectCard.bindPropertiesToAtributes([
 	new PropertyAttributeBindHelper("unixtime", parseInt).setAttributeChangedCallback(function(newValue) {
 		this.updateDate();
 	}),
+	new PropertyAttributeBindHelper("projectID", parseInt, undefined, "project-id"),
 ]).pushRegistering();
 
 
@@ -266,6 +273,16 @@ ProjectPage.bindPropertiesToAtributes([
 			const [text, url] = pair.split(":");
 			const newLink = document.createElement("a");
 			newLink.href = url;
+			if (url.startsWith("?projectPage=")) {
+				newLink.addEventListener("click", (event) => {
+					event.preventDefault();
+					const projectId = url.slice(13);
+					this.setInfoFromRow(
+						document.querySelector(`project-card[project-id="${projectId}"]`).infoAsRow
+					);
+					HistoryHelper.updateURLParameter("projectPage", projectId);
+				})
+			}
 			newLink.setAttribute("trkey", text);
 			newLink.classList.add("see-also-link");
 			this.getElementById("see-also").appendChild(newLink);

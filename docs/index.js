@@ -103,13 +103,13 @@ for (const row of parser) {
 	newCard.expandButton.toggled.bind(function(open) {
 		if (open) {
 			lastOpenedProject = newCard;
-			HistoryHelper.updateURLParameter("projectPage", newCard.id);
+			HistoryHelper.updateURLParameter("projectPage", newCard.projectID);
 			MORE_INFO.querySelector("project-page").setInfoFromRow(row);
 			MORE_INFO.querySelector("project-page").expandButton.toggle();
 		}
 	})
 	
-	if (HistoryHelper.getParameter("projectPage") == newCard.id) {
+	if (HistoryHelper.getParameter("projectPage") == newCard.projectID) {
 		newCard.expandButton.toggle();
 	}
 	
