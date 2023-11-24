@@ -20,6 +20,8 @@ const NOT_THAT_TAG = TAG_COMMAND + "not" + TAG_ARGUMENT;
 
 
 class ProjectCard extends HTMLElementHelper {
+	static _missingThumbnail = "/projects/assets/images/thumbnails/missing.svg";
+	
 	/** @type {ExpandButton} */
 	expandButton = this.getElementById("more-info");
 	
@@ -99,7 +101,7 @@ class ProjectCard extends HTMLElementHelper {
 			|| this.fetchThumbScratch(row)
 			|| this.fetchThumbSite(row)
 			|| this.fetchThumbRoblox(row)
-			|| "ERROR_no_thumbnail_provided"
+			|| (ProjectPage._missingThumbnail + "ERROR_no_thumbnail_provided")
 		);
 	}
 	
@@ -118,7 +120,7 @@ class ProjectCard extends HTMLElementHelper {
 	fetchThumbRoblox(row) {
 		if (row.get("tags").includes("roblox")) {
 			this.setThumbRoblox(row.get("foreign_id"));
-			return "WARNING_finding_thumbnail";
+			return ProjectPage._missingThumbnail + "?INFO_fetching_from_roblox";
 		}
 	}
 	
