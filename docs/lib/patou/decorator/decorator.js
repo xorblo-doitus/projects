@@ -1,26 +1,31 @@
+/**
+ * An helper to create decorators as there is still no syntactic-sugar to write them.
+ */
 class Decorator {
 	/**
-	 * 
-	 * @param {(func: Function) => {Function}} builder 
+	 * Create a decorator.
+	 * @param {(func: Function) => {Function}} builder When applied to a function,
+	 * the decorator will replace the function by the new function returned by
+	 * this builder.
 	 */
 	constructor(builder) {
 		this.build = builder;
 	}
 	
 	/**
-	 * 
-	 * @param {*} target 
-	 * @param {PropertyKey} propertyKey 
+	 * Apply this decorator to the function `target[propertyKey]`
+	 * @param {*} target The object wich's method will be modified
+	 * @param {PropertyKey} propertyKey The name of the function in `target`
 	 */
 	decorate(target, propertyKey) {
 		target[propertyKey] = this.build(target[propertyKey]);
 	}
 	
 	/**
-	 * 
-	 * @param {*} target 
-	 * @param {PropertyKey} propertyKey 
-	 * @param  {...Decorator} decorators 
+	 * Apply these decorators to the function `target[propertyKey]`
+	 * @param {*} target The object wich's method will be modified
+	 * @param {PropertyKey} propertyKey The name of the function in `target`
+	 * @param  {...Decorator} decorators An array of decorators that will be applied in this order.
 	 */
 	static decorate(target, propertyKey, ...decorators) {
 		for (const decorator of decorators) {
@@ -29,10 +34,10 @@ class Decorator {
 	}
 	
 	/**
-	 * 
-	 * @param {*} target Class
-	 * @param {PropertyKey} propertyKey 
-	 * @param  {...Decorator} decorators 
+	 * Apply these decorators to a method of a class (`target.prototype[propertyKey]`)
+	 * @param {*} target The class wich's method will be modified
+	 * @param {PropertyKey} propertyKey The name of the method of `target`
+	 * @param  {...Decorator} decorators An array of decorators that will be applied in this order.
 	 */
 	static decorateMethod(target, propertyKey, ...decorators) {
 		this.decorate(target.prototype, propertyKey, ...decorators);
