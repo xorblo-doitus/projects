@@ -73,7 +73,6 @@ class Cache {
 	}
 }
 
-const cache = new Cache()
 
 /**
  * A decorator caching results of a function calls.
@@ -83,6 +82,7 @@ const cache = new Cache()
  * with the same arguments.
  */
 export const cached = new Decorator(function(func) {
+	const cache = new Cache()
 	return function(...args) {
 		const cacheResult = cache.get(...args);
 		if (cacheResult !== Cache.notCached) {
