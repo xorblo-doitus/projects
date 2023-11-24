@@ -1,5 +1,5 @@
 import { cached } from "../lib/patou/call-caching/call-caching.js";
-import { decorate } from "../lib/patou/decorator/decorator.js";
+import { decorateMethod } from "../lib/patou/decorator/decorator.js";
 import { HTMLElementHelper, PropertyAttributeBindHelper, SHADOW_HOST_CLASS, TokenListHelper } from "../lib/patou/elements/elements.js";
 import { TRANSLATION_KEY_ATTR, translationServer } from "../lib/patou/localization/localization.js";
 import { Signal } from "../lib/patou/signal/signal.js";
@@ -172,7 +172,7 @@ class ProjectCard extends HTMLElementHelper {
 	}
 }
 
-decorate(ProjectCard.prototype, "scrapThumbRoblox", cached);
+decorateMethod(ProjectCard, "scrapThumbRoblox", cached);
 
 ProjectCard.bindPropertiesToAtributes([
 	new PropertyAttributeBindHelper("fun", parseInt).setAttributeChangedCallback(function(newValue) {

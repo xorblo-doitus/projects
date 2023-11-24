@@ -45,4 +45,5 @@ class Decorator {
 }
 
 export const decorate = Decorator.decorate
+export const decorateMethod = Decorator.decorateMethod
 export { Decorator };
