@@ -122,6 +122,15 @@ class PropertyAttributeBindHelper {
 			target.attributeChangedCallbacks = new Map(target.attributeChangedCallbacks).set(this.attributeName, func);
 		}
 	}
+	
+	/**
+	 * @param {string} attributeName 
+	 * @returns {this}
+	 */
+	setAttributeName(attributeName) {
+		this.attributeName = attributeName;
+		return this;
+	}
 }
 
 
