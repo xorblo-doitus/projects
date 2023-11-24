@@ -40,7 +40,7 @@ class Decorator {
 	 * @param  {...Decorator} decorators An array of decorators that will be applied in this order.
 	 */
 	static decorateMethod(target, propertyKey, ...decorators) {
-		this.decorate(target.prototype, propertyKey, ...decorators);
+		Decorator.decorate(target.prototype, propertyKey, ...decorators);
 	}
 }
 
