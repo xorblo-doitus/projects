@@ -184,10 +184,13 @@ body {
     margin: 1ch;
     
     translate: -100vw;
-    transition: translate 0.5s ease-in-out;
+    visibility: hidden;
+    transition: translate 0.5s ease-in-out, visibility 0s linear 0.5s;
 }
 
 #more-info.open {
+    visibility: visible;
+    transition: translate 0.5s ease-in-out, visibility 0s linear 0.0s;
     translate: 0;
 }
 
