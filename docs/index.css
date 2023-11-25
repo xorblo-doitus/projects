@@ -39,6 +39,7 @@ body {
     background-color: #63d471;
 	border: var(--default-border);
     border-radius: 9999ch;
+    overflow: hidden; /* Prevent a little visual bug with border */
     transition: background-color 0.2s ease-in-out;
 }
 
