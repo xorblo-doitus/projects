@@ -14,6 +14,53 @@
 	<script src="index.js" type="module"></script>
 </head>
 <body>
+	<div id="loading-screen">
+		<style>
+			#loading-screen {
+				z-index: 100;
+				position: absolute;
+				inset: 0;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				background-color: inherit;
+			}
+			
+			#loading-bar {
+				width: min(90vw, 50em);
+				height: 2em;
+				margin: auto;
+				border-radius: 0.5em;
+				background-color: rgb(207, 215, 221);
+				overflow: hidden;
+			}
+			
+			#loading-bar-fill {
+				width: 0%;
+				height: 100%;
+				background-color: rgb(53, 192, 69);
+				border-radius: inherit;
+				transition: width 0.2s linear;
+			}
+		</style>
+		<div id="loading-bar"><div id="loading-bar-fill"></div></div>
+		<script>
+			const start = Date.now();
+			document.body.style.overflow = "hidden";
+			const fake_load = setInterval(
+				() => {
+					document.getElementById("loading-bar-fill").style.width = (1 - Math.exp(((start - Date.now()) / 16500))) * 98 + "%";
+					if (window._stop_fake_load) {
+						clearInterval(fake_load);
+						document.getElementById("loading-screen").remove();
+						document.body.style.overflow = "";
+					}
+				},
+				400
+			);
+		</script>
+	</div>
 	<div id="top-bar">
 		<lang-select class="clickable"></lang-select>
 		<!-- <div class="wip" trkey="WIP"></div> -->

@@ -239,3 +239,5 @@ new ResizeObserver(() => {
 	document.getElementById('top-bar-spacer').style.height = document.getElementById("top-bar").offsetHeight + "px";
 	document.getElementById('more-info').style.top = document.getElementById("top-bar").offsetHeight + "px";
 }).observe(document.getElementById("top-bar"));
+
+window._stop_fake_load = true;
