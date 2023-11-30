@@ -75,7 +75,11 @@ img {
 }
 #background[tag="visual"] {
 	background-color: rgb(255 188 221);
-    --border-color: rgb(255 121 188);
+	--border-color: rgb(255 121 188);
+}
+#background[tag="mod"] {
+	background-color: rgb(136, 203, 196);
+	--border-color: rgb(45 138 129);
 }
 #background[tag="tool"] {
 	background-color: rgb(173, 174, 230);

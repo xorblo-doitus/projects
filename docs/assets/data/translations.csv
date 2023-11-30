@@ -63,6 +63,8 @@ TOY,Toy,Jouet
 TOY_DESC,"A bit like a game, but without any goal.","Un peu comme un jeu, mais sans but."
 VISUAL,Visual,Visuel
 VISUAL_DESC,A contemplative project without much interaction. It is just meen to be beautifull or funny to look at.,Un projet contemplatif pensé pour être beau ou amusant à regarder.
+MOD,Mod,Mod
+MOD_DESC,"A mod is something wich modifies an existing game, for example by adding features, levels, etc...","Un « mod » modifie un jeu existant, par exemple en lui ajoutant des fonctionnalités, des niveaux, etc."
 TOOL,Tool,Outils
 TOOL_DESC,"Not a game, but something usefull.","Pas un jeu, mais quelque chose d’utile."
 PLUGIN,Plugin,Module
