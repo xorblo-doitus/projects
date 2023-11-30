@@ -1,98 +1,98 @@
 :host {
-    --corner-radius: 1ch;
-    --width: min(40ch, calc(100vw - 3ch));
+	--corner-radius: 1ch;
+	--width: min(40ch, calc(100vw - 3ch));
 }
 
 #card {
-    border: var(--default-border);
-    border-radius: var(--corner-radius);
-    
-    width: var(--width);
-    height: 100%;
-    
-    overflow: hidden;
-    
-    background-color: #cfd7dd;
+	border: var(--default-border);
+	border-radius: var(--corner-radius);
+	
+	width: var(--width);
+	height: 100%;
+	
+	overflow: hidden;
+	
+	background-color: #cfd7dd;
 }
 
 #thumbnail {
-    /* Diasbled because caused little gap in the corner, overflow: hidden; is better */
-    /* border-radius: var(--corner-radius) var(--corner-radius) 0 0; */
-    width: var(--width);
-    height: auto;
-    
-    border-bottom: var(--default-border);
+	/* Diasbled because caused little gap in the corner, overflow: hidden; is better */
+	/* border-radius: var(--corner-radius) var(--corner-radius) 0 0; */
+	width: var(--width);
+	height: auto;
+	
+	border-bottom: var(--default-border);
 }
 
 #title {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: black;
+	font-size: 1.5em;
+	font-weight: bold;
+	color: black;
 }
 
 #date {
-    color: darkslategray;
-    /* font-size: 0.9em; */
-    flex-shrink: 1;
+	color: darkslategray;
+	/* font-size: 0.9em; */
+	flex-shrink: 1;
 }
 
 #fun {
-    --bad: rgb(247 17 17);
-    --good: rgb(15 225 15);
-    
-    color: black;
-    
-    float: left;
-    
-    --size: 1.6em;
-    width: var(--size);
-    height: var(--size);
-    
-    border: var(--default-border);
-    
-    border-radius: 100%;
-    
-    font-size: 1.18em;
-    text-align: center;
-    line-height: var(--size);
-    
-    margin: 0 0.2em 0.2em 0
+	--bad: rgb(247 17 17);
+	--good: rgb(15 225 15);
+	
+	color: black;
+	
+	float: left;
+	
+	--size: 1.6em;
+	width: var(--size);
+	height: var(--size);
+	
+	border: var(--default-border);
+	
+	border-radius: 100%;
+	
+	font-size: 1.18em;
+	text-align: center;
+	line-height: var(--size);
+	
+	margin: 0 0.2em 0.2em 0
 }
 
 #tags {
-    margin: 0.3em 0;
+	margin: 0.3em 0;
 }
 
 a.link {
-    text-decoration: none;
+	text-decoration: none;
 }
 a.link:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 .thin-padding {
-    padding: 1ch;
+	padding: 1ch;
 }
 
 
 .flex-h {
-    display: flex;
-    align-items: baseline;
-    gap: 0 1ch;
-    flex-wrap: wrap;
+	display: flex;
+	align-items: baseline;
+	gap: 0 1ch;
+	flex-wrap: wrap;
 }
 
 expand-button {
-    margin: 0px;
+	margin: 0px;
 }
 
 .thumbnail-as-bg {
-    background-size: cover;
-    background-position: center;
-    background-image: var(--thumbnail);
+	background-size: cover;
+	background-position: center;
+	background-image: var(--thumbnail);
 }
 
 .flex-grow-1 {
-    flex-grow: 1;
-    opacity: 0;
+	flex-grow: 1;
+	opacity: 0;
 }

@@ -1,41 +1,41 @@
 :host {
-    display: inline-block;
-    margin: 0.2em;
-    
-    --plus-size: var(--thin-width, 0.15em);
-    --plus-color: black;
+	display: inline-block;
+	margin: 0.2em;
+	
+	--plus-size: var(--thin-width, 0.15em);
+	--plus-color: black;
 }
 
 #background {
-    min-width: 0.8em;
-    min-height: 0.8em;
-    aspect-ratio: 1/1;
-    
-    position: relative;
-    
-    cursor: pointer;
+	min-width: 0.8em;
+	min-height: 0.8em;
+	aspect-ratio: 1/1;
+	
+	position: relative;
+	
+	cursor: pointer;
 }
 
 
 .plus-part {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50%;
-    
-    border-top: var(--plus-size) solid black;
-    /* height: var(--plus-size); */
-    width: 100%;
-    
-    background-color: var(--plus-color);
-    transition: rotate 0.5s ease-in-out;
-    
-    border-radius: 9999em;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	translate: -50%;
+	
+	border-top: var(--plus-size) solid black;
+	/* height: var(--plus-size); */
+	width: 100%;
+	
+	background-color: var(--plus-color);
+	transition: rotate 0.5s ease-in-out;
+	
+	border-radius: 9999em;
 }
 
 .plus-part.animated {
-    rotate: 270deg;
+	rotate: 270deg;
 }
 :host(.open) .plus-part.animated {
-    rotate: 0deg;
+	rotate: 0deg;
 }

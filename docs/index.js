@@ -114,10 +114,10 @@ for (const row of parser) {
 	}
 	
 	PROJECT_LIST.appendChild(newCard);
-    
-    // for (const tag of newCard.tags.values()) {
-    //     ALL_TAGS.add(tag);
-    // }
+	
+	// for (const tag of newCard.tags.values()) {
+	//	 ALL_TAGS.add(tag);
+	// }
 }
 
 function onTagFiltersChanged() {

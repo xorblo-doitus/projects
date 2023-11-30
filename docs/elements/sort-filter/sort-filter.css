@@ -1,17 +1,17 @@
 :host {
-    display: inline-block;
-    margin: 0.2em;
+	display: inline-block;
+	margin: 0.2em;
 }
 
 #background {
 	color: black;
 	
-    padding: 0.2em 0.35em;
-    border-radius: 99999px; /* Extremly high value cause a capsule shape */
-    border: 0.1em solid var(--border-color);
-    /* font-size: 0.5em; */
-    
-    display: flex;
+	padding: 0.2em 0.35em;
+	border-radius: 99999px; /* Extremly high value cause a capsule shape */
+	border: 0.1em solid var(--border-color);
+	/* font-size: 0.5em; */
+	
+	display: flex;
 	align-items: center;
 	gap: 0.5ch;
 	
@@ -49,7 +49,7 @@ label span {
 	align-self: center;
 	justify-self: center;
 	
-    font-family: arial;
+	font-family: arial;
 	
 	-webkit-user-select: none; /* Safari */
 	-ms-user-select: none; /* IE 10 and IE 11 */
