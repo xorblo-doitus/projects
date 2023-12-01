@@ -96,3 +96,7 @@ expand-button {
 	flex-grow: 1;
 	opacity: 0;
 }
+
+#icon {
+	height: 1em;
+}

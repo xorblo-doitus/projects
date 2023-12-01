@@ -82,6 +82,7 @@ class ProjectCard extends HTMLElementHelper {
 		translationServer.bindAttribute(this, "desc", row.get("title") + "_DESC");
 		
 		this.fetchThumbnail(row);
+		this.icon = row.get("icon");
 		this.url = row.get("url") ? row.get("url")
 			: row.get("tags").includes("scratch") ? `https://scratch.mit.edu/projects/${row.get("foreign_id")}/`
 			: "/404.html";
@@ -193,11 +194,24 @@ ProjectCard.bindPropertiesToAtributes([
 		}
 	}),
 	new PropertyAttributeBindHelper("thumbnail").setAttributeChangedCallback(function(newValue) {
-		for (const elem of this.querySelectorAll("#thumbnail")) {
-			elem.src = newValue;
+		if (newValue == "NONE") {
+			for (const elem of this.querySelectorAll("#thumbnail, .thumbnail-as-bg")) {
+				elem.style.display = "none";
+			}
+		} else {
+			for (const elem of this.querySelectorAll("#thumbnail")) {
+				elem.src = newValue;
+				elem.style.display = "";
+			}
+			for (const elem of this.getElementsByClassName("thumbnail-as-bg")) {
+				elem.style.setProperty("--thumbnail", `url(${newValue})`);
+				elem.style.display = "";
+			}
 		}
-		for (const elem of this.getElementsByClassName("thumbnail-as-bg")) {
-			elem.style.setProperty("--thumbnail", `url(${newValue})`);
+	}),
+	new PropertyAttributeBindHelper("icon").setAttributeChangedCallback(function(newValue) {
+		for (const elem of this.querySelectorAll("#icon")) {
+			elem.src = newValue;
 		}
 	}),
 	new PropertyAttributeBindHelper("desc").bindElements("#desc"),
