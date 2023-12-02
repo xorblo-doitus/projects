@@ -52,6 +52,8 @@ FUN_DESC,A value from 0 to 100 grading the fun of the project.,Une valeur de 0 �
 DATE_DESC,Date when the project was released. This does not take updates into account. Dates from old projects are not exact.,Date de parution du projet. Le projet a pu être mis à jour entre temps. Les dates des vieux projets sont approximatives.
 TITLE,Title,Titre
 THUMBNAIL,Thumbnail,Vignette
+FEEDBACK,Feedback,Retours
+FEEDBACK_DESC,"Send your feedbacks about this site. (Bug, feature request, typo...)","Envoyer vos retours sur ce site. (Bug, envie de fonctionnalité, faute de français…)"
 TOOLTIP_READER,Tooltip reader,Lecteur d’infobulle
 TOOLTIP_SHOWER,Move your mouse over an element to show it’s tooltip…,Survolez un élément avec votre curseur pour en montrer son infobulle…
 SOURCE_CODE,Source code,Code source

@@ -201,3 +201,12 @@ body {
 	height: 100%;
 	--width: 100%;
 }
+
+#top-bar > button {
+	color: inherit;
+}
+
+button a {
+	text-decoration: none;
+	color: inherit;
+}
