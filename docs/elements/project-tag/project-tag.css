@@ -137,7 +137,8 @@ img {
 	--border-color: rgb(245, 37, 0);
 }
 #background[tag="scratch"] img {
-	content: url("https://scratch.mit.edu/favicon.ico");
+	content: url("https://simpleicons.org/icons/scratch.svg");
+	filter: invert(1);
 	scale: 1.3;
 }
 
@@ -147,7 +148,8 @@ img {
 	--border-color: rgb(45, 100, 143);
 }
 #background[tag="godot"] img {
-	content: url("https://godotengine.org/assets/press/icon_color_outline.svg");
+	content: url("https://simpleicons.org/icons/godotengine.svg");
+	filter: invert(1);
 	scale: 1.4;
 }
 
@@ -156,7 +158,7 @@ img {
 	--border-color: #b1880a;
 }
 #background[tag="python"] img {
-	content: url("https://www.python.org/favicon.ico");
+	content: url("https://simpleicons.org/icons/python.svg");
 	scale: 1.3;
 }
 
