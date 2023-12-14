@@ -54,6 +54,7 @@ TITLE,Title,Titre
 THUMBNAIL,Thumbnail,Vignette
 FEEDBACK,Feedback,Retours
 FEEDBACK_DESC,"Send your feedbacks about this site. (Bug, feature request, typo...)","Envoyer vos retours sur ce site. (Bug, envie de fonctionnalité, faute de français…)"
+CREDITS,Credits,Crédits
 TOOLTIP_READER,Tooltip reader,Lecteur d’infobulle
 TOOLTIP_SHOWER,Move your mouse over an element to show it’s tooltip…,Survolez un élément avec votre curseur pour en montrer son infobulle…
 SOURCE_CODE,Source code,Code source
