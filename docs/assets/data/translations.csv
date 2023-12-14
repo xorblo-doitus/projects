@@ -92,9 +92,17 @@ ANDROID,Android,Android
 ANDROID_DESC,Playable on Android smartphones.,Jouable sur un mobile multifonctions Android.
 XBOX,Xbox,Xbox
 XBOX_DESC,Playable on Xbox.,Jouable sur une console Xbox.
+NUMWORKS,Numworks,Numworks
+NUMWORKS_DESC,Works on a Numworks’ calculator (through Python).,Fonctionne sur une calculatrice Numworks (via Python).
 SCRATCH,Scratch,Scratch
 SCRATCH_DESC,Created with Scratch. This is a website for beginner programmers.,"Créé avec Scratch, un site de programmation pour les débutants."
 GODOT,Godot,Godot
+PYTHON,Python,Python
+PYTHON_DESC,Python is a multifunction programming language.,Python est un langage de programmation ambivalent.
+HTML5,HTML5,HTML5
+HTML5_DESC,"Created with vanillas web technologies (without framework) : HTML, JavaScript, CSS.","Crée avec les technologies web vanilles (sans framework) : HTML, JavaScript, CSS."
+JAVA,Java,Java
+JAVA_DESC,Created with the java programing langage.,Créé via le langage de programmation Java.
 GODOT_DESC,"Created with Godot, an open source game engine.","Créé avec Godot, un moteur de jeu open source."
 ROBLOX,Roblox,Roblox
 ROBLOX_DESC,Created with Roblox Studio. I now prefer Godot wich is open-source.,"Créé avec Roblox Studio. Je ne conseille pas d’utiliser cette plateforme, utilisez plutôt Godot qui est aussi gratuit, mais open-source."
