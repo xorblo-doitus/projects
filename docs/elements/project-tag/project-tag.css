@@ -150,7 +150,7 @@ img {
 #background[tag="godot"] img {
 	content: url("https://simpleicons.org/icons/godotengine.svg");
 	filter: invert(1);
-	scale: 1.4;
+	scale: 1.25;
 }
 
 #background[tag="python"] {
@@ -170,7 +170,8 @@ img {
 #background[tag="html5"] img {
 	content: url("https://simpleicons.org/icons/html5.svg");
 	filter: invert(1);
-	scale: 1.3;
+	scale: 1.1;
+	translate: 0 7%;
 }
 
 #background[tag="java"] {
@@ -181,7 +182,8 @@ img {
 #background[tag="java"] img {
 	content: url("https://www.vectorlogo.zone/logos/java/java-icon.svg");
 	filter: brightness(0) invert(1);
-	scale: 1.35;
+	scale: 1.3;
+	translate: 0 -10%;
 }
 
 #background[tag="roblox"] {
@@ -192,7 +194,7 @@ img {
 #background[tag="roblox"] img {
 	content: url("https://simpleicons.org/icons/roblox.svg");
 	filter: invert(1);
-	scale: 1.3;
+	scale: 1.2;
 }
 
 /* Development */
