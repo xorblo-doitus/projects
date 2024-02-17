@@ -41,6 +41,10 @@ CARTAILLE,Cartaille,Cartaille
 CARTAILLE_DESC,"An abandoned project that was a remake of a board game I created IRL with paper. It was a turn-based fight. Only the terrain generator is working, and the user interface don't let define every settings of it.","Un projet abandonné de transposer un jeu de plateau avec des cartes que j’avais créé avec du papier, qui prenait la forme d’un combat au tour par tour. La seule chose que j’avais programmé était le générateur de terrain, mais l’interface utilisateur inachevée ne permet pas d’en tirer toutes les possibilités."
 EREKIR_UTILITY,Erekir Utility,Erekir Utility
 EREKIR_UTILITY_DESC,Adds two utility blocks to Erekir wich replace in an easy way things that could have been done with Logic Blocks on Serpulo.,Ajoute 2 blocks permettant de faire simplement sur Erekir des choses qu’on peut faire avec les blocks de logique sur Serpulo.
+BLOC_NOTES_PLUS_PLUS,Bloc-Notes++,Bloc-Notes++
+BLOC_NOTES_PLUS_PLUS_DESC,This little multifunction tool let you takes notes and calculate things on the fly.,"Ce petit couteau suisse permet de noter des choses comme on le ferait sur des post-its, mais aussi de faire des calculs à la volée. Créé en binôme pour un projet de Terminale."
+OOB,OOB,OOB
+OOB_DESC,"OOB (Out Of Bounds) is a little puzzle plateformer made for the 6th Chill Devs Chill Jam with the theme ""You Shouldn't Be Here"".","OOB (Out Of Bounds, Hors Limites) est petit jeu de plateforme à énigmes créé pour la sixième Chill Devs Chill Jam ayant pour thème « Vous ne devriez pas être là »."
 WIP,⚠ Work in progress ⚠: Not every projects are present.,⚠ En construction ⚠ : Tous les projets ne sont pas listés.
 SEARCH,Search,Rechercher
 SEARCH_PLACEHOLDER,Type one or more words to search in projects title and description... ,Entrez un ou plusieurs termes à chercher dans le titre et la description…
@@ -85,6 +89,8 @@ WEB,Browser,Navigateur
 WEB_DESC,"Playable directly inside one’s browser. (Chrome, Firefox, Edge…)","Jouable directement dans le navigateur. (Chrome, Firefox, Edge…)"
 WINDOWS,Windows,Windows
 WINDOWS_DESC,Playable on a Windows computer.,Jouable sur un ordinateur avec le système d’exploitation Windows.
+LINUX,Linux,Linux
+LINUX_DESC,Works on a Linux computer.,Fonctionne sur un ordinateur avec un système d’exploitation Linux.
 MACOS,macOS,macOS
 MACOS_DESC,Playable on Apple’s computers.,Jouable sur un ordinateur d’Apple.
 IOS,iOS,iOS
