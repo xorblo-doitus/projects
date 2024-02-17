@@ -5,7 +5,7 @@ Color palette: https://coolors.co/b2bec8-63d471-6a7152-233329-58355e
 */
 
 :root {
-	--thin-width: 0.1rem;
+	--thin-width: 0.08rem;
 	--default-border: var(--thin-width) solid #58355e;
 }
 

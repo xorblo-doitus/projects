@@ -8,7 +8,8 @@
 	
 	padding: 0.2em 0.35em;
 	border-radius: 99999px; /* Extremly high value cause a capsule shape */
-	border: 0.1em solid var(--border-color);
+	border: var(--thin-width) solid var(--border-color);
+	/* border: 0.1em solid var(--border-color); */
 	/* font-size: 0.5em; */
 	
 	display: flex;
@@ -35,7 +36,8 @@ label {
 	height: 1em;
 	width: 1em;
 	border-radius: 0.2em;
-	border: 0.1em solid;
+	border: var(--thin-width) solid;
+	/* border: 0.1em solid; */
 	border-color: inherit;
 	
 	transition: background-color 0.5s;
