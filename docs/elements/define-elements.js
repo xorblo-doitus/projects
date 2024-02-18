@@ -101,6 +101,7 @@ class ProjectCard extends HTMLElementHelper {
 			row.get("thumbnail")
 			|| this.fetchThumbScratch(row)
 			|| this.fetchThumbSite(row)
+			|| this.fetchThumbItch(row)
 			|| this.fetchThumbRoblox(row)
 			|| (ProjectPage._missingThumbnail + "ERROR_no_thumbnail_provided")
 		);
@@ -116,6 +117,19 @@ class ProjectCard extends HTMLElementHelper {
 		if (row.get("tags").includes("website") || row.get("url").includes("xorblo-doitus.github.io")) {
 			return ProjectCard.getAboutURL(row, "thumbnail.png");
 		}
+	}
+	
+	fetchThumbItch(row) {
+		if (row.get("url").includes("itch.io")) {
+			this.scrapThumbItch(row.get("url"));
+			return ProjectPage._missingThumbnail + "?INFO_fetching_from_itch";
+		}
+	}
+	
+	async scrapThumbItch(url) {
+		const json = await ProjectCard.corsProxyFetch(url + "/data.json");
+		// const json = await (await fetch(url + "/data.json")).json();
+		this.thumbnail = json["cover_image"];
 	}
 	
 	fetchThumbRoblox(row) {
