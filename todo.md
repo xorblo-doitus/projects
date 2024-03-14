@@ -1,0 +1,2 @@
+- [ ] Missing translations:
+  - [ ] MORE_INFO_DESC

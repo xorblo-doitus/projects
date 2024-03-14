@@ -5,3 +5,11 @@ select {
 	height: 100%;
 	border: none;
 }
+
+option {
+	background: var(--color-primary);
+}
+
+option:hover {
+	background: var(--color-accent);
+}

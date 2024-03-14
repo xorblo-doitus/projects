@@ -28,6 +28,10 @@ label {
 	cursor: pointer;
 }
 
+label:hover {
+	background-color: var(--color-accent);
+}
+
 label span {
 	/* display: none; */
 	align-self: center;

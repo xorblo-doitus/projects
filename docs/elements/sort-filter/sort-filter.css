@@ -4,11 +4,14 @@
 }
 
 #background {
-	color: black;
+	color: var(--color-dark);
 	
 	padding: 0.2em 0.35em;
 	border-radius: 99999px; /* Extremly high value cause a capsule shape */
-	border: var(--thin-width) solid var(--border-color);
+	border: var(--default-border);
+	--border-color: var(--color-dark);
+	border-color: var(--border-color);
+	/* border: var(--thin-width) solid var(--border-color); */
 	/* border: 0.1em solid var(--border-color); */
 	/* font-size: 0.5em; */
 	
@@ -22,8 +25,10 @@
 	font-size: 1em;
 	width: 100%;
 	
-	background-color: skyblue;
-	--border-color: rgb(47, 152, 193);
+	background-color: var(--color-secondary);
+	/* --border-color: rgb(47, 152, 193); */
+	/* background-color: skyblue;
+	--border-color: rgb(47, 152, 193); */
 }
 
 #sort-text {
@@ -62,13 +67,19 @@ input {
 	display: none;
 }
 
+label:hover {
+	background-color: var(--color-accent);
+	/* border-color: var(--color-accent); */
+}
+
 input:checked + label span {
 	display: revert;
 }
 
 :checked + label {
-	color: white;
+	color: var(--color-light);
 	background-color: var(--border-color);
+	/* background-color: var(--color-accent); */
 	font-weight: 1000;
 	line-height: 1em;
 	/* color: white; */

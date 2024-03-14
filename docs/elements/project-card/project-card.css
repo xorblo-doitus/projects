@@ -12,7 +12,8 @@
 	
 	overflow: hidden;
 	
-	background-color: #cfd7dd;
+	background-color: var(--color-primary);
+	/* background-color: #cfd7dd; */
 }
 
 #thumbnail {
@@ -20,6 +21,8 @@
 	/* border-radius: var(--corner-radius) var(--corner-radius) 0 0; */
 	width: var(--width);
 	height: auto;
+	
+	background-color: var(--color-secondary);
 	
 	border-bottom: var(--default-border);
 }

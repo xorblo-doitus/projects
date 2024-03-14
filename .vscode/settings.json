@@ -1,5 +1,18 @@
 {
 	"liveServer.settings.root": "/docs",
+	"cssVariables.blacklistFolders": [
+		"**/projects/*",
+		"**/.git",
+		"**/.svn",
+		"**/.hg",
+		"**/CVS",
+		"**/.DS_Store",
+		"**/node_modules",
+		"**/bower_components",
+		"**/tmp",
+		"**/dist",
+		"**/tests"
+	],
 	// "githubPullRequests.ignoredPullRequestBranches": [
 	//	 "main"
 	// ],
