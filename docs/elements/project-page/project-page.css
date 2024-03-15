@@ -15,7 +15,7 @@
 }
 
 #date {
-	color: black;
+	color: var(--color-dark);
 }
 
 #big-thumbnail {

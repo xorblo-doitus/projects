@@ -3,7 +3,7 @@
 	margin: 0.2em;
 	
 	--plus-size: var(--thin-width, 0.15em);
-	--plus-color: black;
+	--plus-color: var(--color-dark);
 }
 
 #background {

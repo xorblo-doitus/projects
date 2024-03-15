@@ -19,28 +19,32 @@
 			#loading-screen {
 				z-index: 100;
 				position: absolute;
-				inset: 0;
+				width: 100vw;
+				height: 100vh;
+				/* inset: 0; */ /* Did not work well */
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 				justify-content: center;
-				background-color: inherit;
+				background-color: var(--color-primary);
 			}
 			
 			#loading-bar {
 				width: min(90vw, 50em);
 				height: 2em;
 				margin: auto;
+				border: var(--default-border);
 				border-radius: 0.5em;
-				background-color: rgb(207, 215, 221);
+				background-color: var(--color-light);
 				overflow: hidden;
 			}
 			
 			#loading-bar-fill {
 				width: 0%;
 				height: 100%;
-				background-color: rgb(53, 192, 69);
+				border-right: var(--default-border);
 				border-radius: inherit;
+				background-color: var(--color-accent);
 				transition: width 0.2s linear;
 			}
 		</style>

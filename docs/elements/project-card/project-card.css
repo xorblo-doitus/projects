@@ -30,11 +30,11 @@
 #title {
 	font-size: 1.5em;
 	font-weight: bold;
-	color: black;
+	color: var(--color-dark);
 }
 
 #date {
-	color: darkslategray;
+	color: var(--color-dark);
 	/* font-size: 0.9em; */
 	flex-shrink: 1;
 }
@@ -43,7 +43,7 @@
 	--bad: rgb(247 17 17);
 	--good: rgb(15 225 15);
 	
-	color: black;
+	color: var(--color-dark);
 	
 	float: left;
 	
