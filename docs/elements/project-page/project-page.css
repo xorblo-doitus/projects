@@ -42,6 +42,14 @@ img.link-icon {
 	display: flex;
 	flex-direction: column;
 	gap: 1ch;
+	align-items: flex-start;
+}
+
+#see-also > a {
+	color: var(--color-dark);
+}
+#see-also > a:hover {
+	color: var(--color-accent);
 }
 
 a[href*="github.com/"] img.link-icon {
