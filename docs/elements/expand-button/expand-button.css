@@ -23,7 +23,7 @@
 	left: 50%;
 	translate: -50%;
 	
-	border-top: var(--plus-size) solid black;
+	border-top: var(--plus-size) solid var(--plus-color);
 	/* height: var(--plus-size); */
 	width: 100%;
 	
