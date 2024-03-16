@@ -429,6 +429,7 @@ class SortFilter extends Filter {}
 SortFilter.bindPropertiesToAtributes([
 	new PropertyAttributeBindHelper("sort-by").setAttributeChangedCallback(function(newValue) {
 		this.getElementById("sort-text").setAttribute(TRANSLATION_KEY_ATTR, newValue.toUpperCase().replace(" ", "_"));
+		this.getElementById("background").setAttribute("sort-by", newValue);
 	})
 ]).pushRegistering();
 
@@ -459,19 +460,32 @@ class ThemeSelect extends HTMLElementHelper {
 	
 	constructor() {
 		super();
+		if (!window.themeChoosedFromURL) {
+			window.themeChoosedFromURL = true;
+			document.documentElement.setAttribute("theme", HistoryHelper.getParameter("theme") || "default");
+		}
+		
 		this.select = this.querySelector("select");
 		
 		this.select.addEventListener(
 			"change",
 			(event) => {
-				const theme = event.target.value;
-				for (const target of this.targets) {
-					target.setAttribute("theme", theme)
-				}
+				this.onSelected(event.target.value)
 			}
 		);
 	}
-
+	
+	/**
+	 * @param {String} value 
+	 */
+	onSelected(value) {
+		for (const target of this.targets) {
+			console.log("Sat theme for", target);
+			target.setAttribute("theme", value);
+		}
+		HistoryHelper.updateURLParameter("theme", value=="default"?undefined:value);
+	}
+	
 	/**
 	 * @param {Array<String>} names 
 	 */
@@ -493,6 +507,7 @@ class ThemeSelect extends HTMLElementHelper {
 			const targetTheme = target.getAttribute("theme");
 			this.select.selectedIndex = options.findIndex(elem=>elem==targetTheme);
 			if (this.select.selectedIndex != -1) {
+				this.onSelected(targetTheme);
 				break;
 			}
 		}

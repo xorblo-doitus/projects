@@ -37,6 +37,23 @@ Color palette: https://coolors.co/b2bec8-63d471-6a7152-233329-58355e
 	--color-secondary: #61f0e9;
 }
 
+:root[theme=classic] {
+	--color-dark: #111813;
+	--color-light: #F3F5F7;
+	--color-accent: #35c045;
+	--color-primary: #cfd7dd;
+	--color-secondary: skyblue;
+}
+:root[theme=classic] #top-bar {
+	background-color: var(--color-accent);
+}
+:root[theme=classic] #top-bar > * {
+	background-color: #63d471;
+}
+:root[theme=classic] #top-bar > .clickable:hover {
+	background-color: #9fe5a7;
+}
+
 body {
 	background-color: var(--color-light);
 	color: var(--color-dark);

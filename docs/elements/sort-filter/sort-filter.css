@@ -4,7 +4,7 @@
 }
 
 #background {
-	color: var(--color-dark);
+	color: var(--border-color);
 	
 	padding: 0.2em 0.35em;
 	border-radius: 99999px; /* Extremly high value cause a capsule shape */
@@ -94,3 +94,21 @@ input:checked + label span {
 	/* background-color: rgba(0, 0, 0, 50%); */
 	/* background-color: red; */
 /* } */
+
+#background[sort-by="date"] {
+	color: black;
+	background-color: rgb(236, 236, 236);
+	--border-color: black;
+}
+
+#background[sort-by="fun"] {
+	color: black;
+	background-color: #ff0;
+	--border-color: rgb(236, 208, 0);
+}
+
+#background[sort-by="title"] {
+	color: white;
+	background-color: rgb(51, 102, 255);
+	--border-color: rgba(0, 51, 153);
+}

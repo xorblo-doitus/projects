@@ -61,6 +61,7 @@ FEEDBACK_DESC,"Send your feedbacks about this site. (Bug, feature request, typo.
 CREDITS,Credits,Crédits
 TOOLTIP_READER,Tooltip reader,Lecteur d’infobulle
 TOOLTIP_SHOWER,Move your mouse over an element to show it’s tooltip…,Survolez un élément avec votre curseur pour en montrer son infobulle…
+MORE_INFO_DESC,Show detailled informations,Montrer les informations détaillées
 SOURCE_CODE,Source code,Code source
 REMAKE,Remake,Reprise
 ORIGINAL,Master copy,Projet original
@@ -146,4 +147,6 @@ en,English,Anglais
 fr,French,Français
 THEME_DEFAULT,Default,Par défaut
 THEME_HIGH-CONTRAST,High contrast,Contraste élevé
+THEME_CLASSIC,Classic,Classique
+DUMMY_FOR_CALC_EXPR,DUMMY_FOR_CALC_EXPR,DUMMY_FOR_CALC_EXPR
 LOCALIZATION_PROGRESS,100%,100%
