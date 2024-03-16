@@ -29,7 +29,7 @@ Color palette: https://coolors.co/b2bec8-63d471-6a7152-233329-58355e
 	--default-border: var(--thin-width) solid var(--color-dark);
 }
 
-:root.high-contrast {
+:root[theme=high-contrast] {
 	--color-dark: #000000;
 	--color-light: #ffffff;
 	--color-accent: #ffa797;

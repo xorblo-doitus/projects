@@ -166,7 +166,7 @@ class TranslationServer {
 	 */
 	tr(key) {
 		if (this.CSVData == undefined) {
-			return;
+			return key;
 		}
 		
 		let translation = undefined;

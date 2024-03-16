@@ -448,6 +448,78 @@ class ExpandButton extends HTMLElementHelper {
 }
 ExpandButton.pushRegistering();
 
+
+class ThemeSelect extends HTMLElementHelper {
+	// /** @type {String} */
+	// theme = "";
+	/** @type {HTMLElement[]} */
+	targets = [document.documentElement];
+	/** @type {String} */
+	static optionPrefix = "THEME_"
+	
+	constructor() {
+		super();
+		this.select = this.querySelector("select");
+		
+		this.select.addEventListener(
+			"change",
+			(event) => {
+				const theme = event.target.value;
+				for (const target of this.targets) {
+					target.setAttribute("theme", theme)
+				}
+			}
+		);
+	}
+
+	/**
+	 * @param {Array<String>} names 
+	 */
+	setOptions(names) {
+		this.select.innerHTML = "";
+		for (const name of names) {
+			this.createOption(name);
+		}
+		
+		this.chooseBest();
+	}
+
+	/**
+	 * @param {Array<String>} langs 
+	 */
+	chooseBest() {
+		const options = [...this.options.values()];
+		for (const target of this.targets) {
+			const targetTheme = target.getAttribute("theme");
+			this.select.selectedIndex = options.findIndex(elem=>elem==targetTheme);
+			if (this.select.selectedIndex != -1) {
+				break;
+			}
+		}
+	}
+
+	/**
+	 * @param {String} name 
+	 * @returns {HTMLOptionElement}
+	 */
+	createOption(name) {
+		let option = document.createElement("option");
+		
+		option.value = name;
+		option.setAttribute("trkey", this.constructor.optionPrefix + name.toUpperCase())
+
+		this.select.appendChild(option);
+		
+		return option;
+	}
+}
+ThemeSelect.bindPropertiesToAtributes([
+	new TokenListHelper("options").setChangedCallback(function (newValue) {
+		this.setOptions(newValue.split(" "));
+	}),
+]).pushRegistering();
+
+
 class TooltipReader extends HTMLElementHelper {
 	_on = false;
 	/** @param {boolean} newValue */

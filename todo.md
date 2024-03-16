@@ -1,2 +1,3 @@
+- [ ] Add URL saving for theme
 - [ ] Missing translations:
   - [ ] MORE_INFO_DESC

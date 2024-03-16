@@ -144,4 +144,6 @@ TIME_LIMIT,Time limit,Temps imparti
 AUTO,Automatic,Automatique
 en,English,Anglais
 fr,French,Français
+THEME_DEFAULT,Default,Par défaut
+THEME_HIGH-CONTRAST,High contrast,Contraste élevé
 LOCALIZATION_PROGRESS,100%,100%
