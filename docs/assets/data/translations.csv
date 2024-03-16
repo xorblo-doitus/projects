@@ -147,6 +147,7 @@ en,English,Anglais
 fr,French,Français
 THEME_DEFAULT,Default,Par défaut
 THEME_HIGH-CONTRAST,High contrast,Contraste élevé
+THEME_DARK-MODE,Dark mode,Mode sombre
 THEME_CLASSIC,Classic,Classique
 DUMMY_FOR_CALC_EXPR,DUMMY_FOR_CALC_EXPR,DUMMY_FOR_CALC_EXPR
 LOCALIZATION_PROGRESS,100%,100%

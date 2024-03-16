@@ -43,7 +43,7 @@
 	--bad: rgb(247 17 17);
 	--good: rgb(15 225 15);
 	
-	color: var(--color-dark);
+	color: black;
 	
 	float: left;
 	
