@@ -127,9 +127,9 @@ class ProjectCard extends HTMLElementHelper {
 	}
 	
 	async scrapThumbItch(url) {
-		const json = await ProjectCard.corsProxyFetch(url + "/data.json");
+		const json = await ProjectCard.CORSProxyFetch(url + "/data.json");
 		// const json = await (await fetch(url + "/data.json")).json();
-		this.thumbnail = json["cover_image"];
+		this.thumbnail = ProjectCard.toCORSProxy(json["cover_image"]);
 	}
 	
 	fetchThumbRoblox(row) {
@@ -144,17 +144,21 @@ class ProjectCard extends HTMLElementHelper {
 	}
 	
 	async scrapThumbRoblox(placeID) {
-		const universeID = (await ProjectCard.corsProxyFetch(
+		const universeID = (await ProjectCard.CORSProxyFetch(
 			`https://apis.roblox.com/universes/v1/places/${placeID}/universe`
 		)).universeId;
 		
-		return (await ProjectCard.corsProxyFetch(
+		return ProjectCard.toCORSProxy((await ProjectCard.CORSProxyFetch(
 			`https://thumbnails.roblox.com/v1/games/icons?universeIds=${universeID}&returnPolicy=PlaceHolder&size=512x512&format=Png&isCircular=false`
-		)).data[0].imageUrl;
+		)).data[0].imageUrl);
 	}
 	
-	static corsProxyFetch(url) {
-		return fetch(`https://corsproxy.io/?${url}`).then(resp =>  resp.json());
+	static toCORSProxy(url) {
+		return `https://corsproxy.io/?${encodeURIComponent(url)}`;
+	}
+	
+	static CORSProxyFetch(url) {
+		return fetch(this.toCORSProxy(url)).then(resp =>  resp.json());
 	}
 	
 	/**
