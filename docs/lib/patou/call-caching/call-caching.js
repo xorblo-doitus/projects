@@ -82,13 +82,13 @@ class Cache {
  * with the same arguments.
  */
 export const cached = new Decorator(function(func) {
-	const cache = new Cache()
+	const cache = new Cache();
 	return function(...args) {
 		const cacheResult = cache.get(...args);
 		if (cacheResult !== Cache.notCached) {
 			return cacheResult;
 		}
-		const result = func(...args);
+		const result = func.call(this, ...args);
 		cache.store(result, ...args);
 		return result;
 	}
