@@ -240,4 +240,15 @@ new ResizeObserver(() => {
 	document.getElementById('more-info').style.top = document.getElementById("top-bar").offsetHeight + "px";
 }).observe(document.getElementById("top-bar"));
 
+
+window.addEventListener(
+	"keydown",
+	function(event) {
+		if (event.ctrlKey && event.shiftKey && event.key == "s" || event.key == "S") {
+			navigator.clipboard.writeText(JSON.stringify(ProjectCard.fetchedImageURLs, null, "\t"));
+		}
+	}
+);
+
+
 window._stop_fake_load = true;

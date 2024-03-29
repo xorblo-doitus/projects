@@ -10,6 +10,12 @@
 			"problemMatcher": []
 		},
 		{
+			"label": "Download fallback images",
+			"type": "shell",
+			"command": "tasks/download_fallback_images.cmd",
+			"problemMatcher": []
+		},
+		{
 			"label": "Update live branch",
 			"type": "shell",
 			"command": "tasks/publish/html/update_live.cmd",

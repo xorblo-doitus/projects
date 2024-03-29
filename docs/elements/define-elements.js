@@ -22,6 +22,8 @@ const NOT_THAT_TAG = TAG_COMMAND + "not" + TAG_ARGUMENT;
 class ProjectCard extends HTMLElementHelper {
 	static _missingThumbnail = "/projects/assets/images/thumbnails/missing.svg";
 	
+	static fetchedImageURLs = {};
+	
 	/** @type {ExpandButton} */
 	expandButton = this.getElementById("more-info");
 	
@@ -129,7 +131,9 @@ class ProjectCard extends HTMLElementHelper {
 	async scrapThumbItch(url) {
 		const json = await ProjectCard.CORSProxyFetch(url + "/data.json");
 		// const json = await (await fetch(url + "/data.json")).json();
-		this.thumbnail = ProjectCard.toCORSProxy(json["cover_image"]);
+		const imageURL = json["cover_image"];
+		ProjectCard.fetchedImageURLs[this.projectID] = imageURL;
+		this.thumbnail = ProjectCard.toCORSProxy(imageURL);
 	}
 	
 	fetchThumbRoblox(row) {
@@ -140,7 +144,7 @@ class ProjectCard extends HTMLElementHelper {
 	}
 	
 	async setThumbRoblox(placeID) {
-		this.thumbnail = await this.scrapThumbRoblox(placeID);
+		this.thumbnail = await this.scrapThumbRoblox.call(this, placeID);
 	}
 	
 	async scrapThumbRoblox(placeID) {
@@ -148,9 +152,12 @@ class ProjectCard extends HTMLElementHelper {
 			`https://apis.roblox.com/universes/v1/places/${placeID}/universe`
 		)).universeId;
 		
-		return ProjectCard.toCORSProxy((await ProjectCard.CORSProxyFetch(
+		const imageURL = (await ProjectCard.CORSProxyFetch(
 			`https://thumbnails.roblox.com/v1/games/icons?universeIds=${universeID}&returnPolicy=PlaceHolder&size=512x512&format=Png&isCircular=false`
-		)).data[0].imageUrl);
+		)).data[0].imageUrl;
+		
+		ProjectCard.fetchedImageURLs[this.projectID] = imageURL;
+		return ProjectCard.toCORSProxy(imageURL);
 	}
 	
 	static toCORSProxy(url) {
@@ -200,6 +207,7 @@ class ProjectCard extends HTMLElementHelper {
 }
 
 decorateMethod(ProjectCard, "scrapThumbRoblox", cached);
+decorateMethod(ProjectCard, "scrapThumbItch", cached);
 
 ProjectCard.bindPropertiesToAtributes([
 	new PropertyAttributeBindHelper("fun", parseInt).setAttributeChangedCallback(function(newValue) {
