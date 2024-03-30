@@ -496,7 +496,8 @@ class ThemeSelect extends HTMLElementHelper {
 	 */
 	onSelected(value) {
 		for (const target of this.targets) {
-			console.log("Sat theme for", target);
+			console.log("Updated theme to:", value);
+			// console.log("Sat theme for", target);
 			target.setAttribute("theme", value);
 		}
 		HistoryHelper.updateURLParameter("theme", value=="default"?undefined:value);
