@@ -1,1 +1,1 @@
-python tasks/download_backup_images.py
+python tasks/download_fallback_images.py
