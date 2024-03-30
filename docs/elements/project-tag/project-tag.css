@@ -150,6 +150,10 @@ img {
 	background-color: yellow;
 	--border-color: rgb(200, 200, 0);
 }
+#background[tag="showcased"] {
+	background-color: rgb(255 209 0);
+	--border-color: rgb(209 122 10);
+}
 
 /* Made with */
 #background[tag="scratch"] {

@@ -1,3 +1,3 @@
-- [ ] Add backup images
+- [ ] Add history navigation handling
 - [ ] Missing translations:
   - [x] MORE_INFO_DESC
