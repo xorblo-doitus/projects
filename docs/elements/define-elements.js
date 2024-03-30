@@ -83,6 +83,12 @@ class ProjectCard extends HTMLElementHelper {
 		translationServer.bindAttribute(this, "project-title", row.get("title"));
 		translationServer.bindAttribute(this, "desc", row.get("title") + "_DESC");
 		
+		this.tags.value = row.get("tags");
+		this.unixtime = row.get("unixtime");
+		this.fun = row.get("fun");
+		this.dateFormat = row.get("date_format");
+		this.projectID = row.get("id");
+		
 		this.fetchThumbnail(row);
 		this.icon = row.get("icon");
 		this.url = row.get("url") ? row.get("url")
@@ -90,12 +96,6 @@ class ProjectCard extends HTMLElementHelper {
 			: "/404.html";
 		
 		this.fetchSourceCode(row);
-		
-		this.tags.value = row.get("tags");
-		this.unixtime = row.get("unixtime");
-		this.fun = row.get("fun");
-		this.dateFormat = row.get("date_format");
-		this.projectID = row.get("id");
 	}
 	
 	async fetchThumbnail(row) {
