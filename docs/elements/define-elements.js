@@ -98,6 +98,10 @@ class ProjectCard extends HTMLElementHelper {
 		this.fetchSourceCode(row);
 	}
 	
+	useFallbackThumbnail() {
+		this.thumbnail = `/projects/assets/images/thumbnails/fallbacks/${this.projectID}.png`;
+	}
+	
 	async fetchThumbnail(row) {
 		this.thumbnail = (
 			row.get("thumbnail")
