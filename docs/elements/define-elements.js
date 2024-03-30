@@ -101,6 +101,7 @@ class ProjectCard extends HTMLElementHelper {
 		this.icon = row.get("icon");
 		this.url = row.get("url") ? row.get("url")
 			: row.get("tags").includes("scratch") ? `https://scratch.mit.edu/projects/${row.get("foreign_id")}/`
+			: row.get("tags").includes("roblox") ? `https://www.roblox.com/games/${row.get("foreign_id")}/`
 			: "/404.html";
 		
 		this.fetchSourceCode(row);
