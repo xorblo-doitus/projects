@@ -123,7 +123,9 @@ class ProjectCard extends HTMLElementHelper {
 	
 	fetchThumbScratch(row) {
 		if (row.get("tags").includes("scratch")) {
-			return `https://uploads.scratch.mit.edu/get_image/project/${row.get("foreign_id")}_480x360.png`;
+			const imageURL = `https://uploads.scratch.mit.edu/get_image/project/${row.get("foreign_id")}_480x360.png`;
+			ProjectCard.fetchedImageURLs[this.projectID] = imageURL;
+			return imageURL;
 		}
 	}
 	
