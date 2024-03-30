@@ -21,6 +21,7 @@ const NOT_THAT_TAG = TAG_COMMAND + "not" + TAG_ARGUMENT;
 
 class ProjectCard extends HTMLElementHelper {
 	static _missingThumbnail = "/projects/assets/images/thumbnails/missing.svg";
+	static _fallbackThumbnailsPath = "/projects/assets/images/thumbnails/fallbacks/";
 	
 	static fetchedImageURLs = {};
 	
@@ -29,6 +30,13 @@ class ProjectCard extends HTMLElementHelper {
 	
 	constructor() {
 		super();
+		
+		this.querySelector("#thumbnail, #big-thumbnail, .thumbnail-as-bg").addEventListener("error", (event) => {
+			if (this.thumbnail.startsWith(ProjectCard._fallbackThumbnailsPath)) {
+				return;
+			}
+			this.useFallbackThumbnail();
+		})
 		
 		translationServer.langChanged.bind(() => this.updateDate());
 	}
@@ -99,7 +107,7 @@ class ProjectCard extends HTMLElementHelper {
 	}
 	
 	useFallbackThumbnail() {
-		this.thumbnail = `/projects/assets/images/thumbnails/fallbacks/${this.projectID}.png`;
+		this.thumbnail = `${ProjectCard._fallbackThumbnailsPath}${this.projectID}.png`;
 	}
 	
 	async fetchThumbnail(row) {
@@ -109,7 +117,7 @@ class ProjectCard extends HTMLElementHelper {
 			|| this.fetchThumbSite(row)
 			|| this.fetchThumbItch(row)
 			|| this.fetchThumbRoblox(row)
-			|| (ProjectPage._missingThumbnail + "ERROR_no_thumbnail_provided")
+			|| (ProjectPage._missingThumbnail + "?ERROR_no_thumbnail_provided")
 		);
 	}
 	
@@ -134,6 +142,10 @@ class ProjectCard extends HTMLElementHelper {
 	
 	async scrapThumbItch(url) {
 		const json = await ProjectCard.CORSProxyFetch(url + "/data.json");
+		if (json === undefined) {
+			this.useFallbackThumbnail();
+			return;
+		}
 		// const json = await (await fetch(url + "/data.json")).json();
 		const imageURL = json["cover_image"];
 		ProjectCard.fetchedImageURLs[this.projectID] = imageURL;
@@ -152,13 +164,23 @@ class ProjectCard extends HTMLElementHelper {
 	}
 	
 	async scrapThumbRoblox(placeID) {
-		const universeID = (await ProjectCard.CORSProxyFetch(
+		const firstResponse = await ProjectCard.CORSProxyFetch(
 			`https://apis.roblox.com/universes/v1/places/${placeID}/universe`
-		)).universeId;
+		);
+		if (firstResponse === undefined) {
+			this.useFallbackThumbnail();
+			return;
+		}
+		const universeID = firstResponse.universeId;
 		
-		const imageURL = (await ProjectCard.CORSProxyFetch(
+		const secondResponse = await ProjectCard.CORSProxyFetch(
 			`https://thumbnails.roblox.com/v1/games/icons?universeIds=${universeID}&returnPolicy=PlaceHolder&size=512x512&format=Png&isCircular=false`
-		)).data[0].imageUrl;
+		);
+		if (secondResponse == undefined) {
+			this.useFallbackThumbnail();
+			return;
+		}
+		const imageURL = secondResponse.data[0].imageUrl;
 		
 		ProjectCard.fetchedImageURLs[this.projectID] = imageURL;
 		return ProjectCard.toCORSProxy(imageURL);
@@ -168,8 +190,12 @@ class ProjectCard extends HTMLElementHelper {
 		return `https://corsproxy.io/?${encodeURIComponent(url)}`;
 	}
 	
+	/**
+	 * @param {String} url The url to fetch
+	 * @returns The JSON contained in the response, or undefined if it fails.
+	 */
 	static CORSProxyFetch(url) {
-		return fetch(this.toCORSProxy(url)).then(resp =>  resp.json());
+		return fetch(this.toCORSProxy(url)).then(resp =>  resp.json()).catch(reason => undefined);
 	}
 	
 	/**
