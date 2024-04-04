@@ -348,6 +348,10 @@ ProjectPage.bindPropertiesToAtributes([
 			element.remove();
 		}
 		
+		if (newValue === "") {
+			return;
+		}
+		
 		for (const pair of newValue.split(" ")) {
 			const [text, url] = pair.split(":");
 			const newLink = document.createElement("a");
