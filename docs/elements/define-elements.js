@@ -138,9 +138,13 @@ class ProjectCard extends HTMLElementHelper {
 	
 	fetchThumbItch(row) {
 		if (row.get("url").includes("itch.io")) {
-			this.scrapThumbItch(row.get("url"));
+			this.setThumbItch(row.get("url"));
 			return ProjectPage._missingThumbnail + "?INFO_fetching_from_itch";
 		}
+	}
+	
+	async setThumbItch(url) {
+		this.thumbnail = await this.scrapThumbItch(url);
 	}
 	
 	async scrapThumbItch(url) {
@@ -152,7 +156,7 @@ class ProjectCard extends HTMLElementHelper {
 		// const json = await (await fetch(url + "/data.json")).json();
 		const imageURL = json["cover_image"];
 		ProjectCard.fetchedImageURLs[this.projectID] = imageURL;
-		this.thumbnail = ProjectCard.toCORSProxy(imageURL);
+		return ProjectCard.toCORSProxy(imageURL);
 	}
 	
 	fetchThumbRoblox(row) {
