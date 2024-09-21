@@ -45,6 +45,8 @@ BLOC_NOTES_PLUS_PLUS,Bloc-Notes++,Bloc-Notes++
 BLOC_NOTES_PLUS_PLUS_DESC,This little multifunction tool let you takes notes and calculate things on the fly.,"Ce petit couteau suisse permet de noter des choses comme on le ferait sur des post-its, mais aussi de faire des calculs à la volée. Créé en binôme pour un projet de Terminale."
 OOB,OOB,OOB
 OOB_DESC,"OOB (Out Of Bounds) is a little puzzle plateformer made for the 6th Chill Devs Chill Jam with the theme ""You Shouldn't Be Here"".","OOB (Out Of Bounds, Hors Limites) est petit jeu de plateforme à énigmes créé pour la sixième Chill Devs Chill Jam ayant pour thème « Vous ne devriez pas être là »."
+BBCODE_EDIT,BBCodeEdit,BBCodeEdit
+BBCODE_EDIT_DESC,A Godot addon that brings BBCode completion and QOL tools to the script editor in order to help formatting documentation comments.,"Un greffon pour Godot qui ajoute de l’auto-complétion et des raccourcis pour les balises de formatage BBCode, facilitant ainsi la rédaction de commentaires de documentation."
 WIP,⚠ Work in progress ⚠: Not every projects are present.,⚠ En construction ⚠ : Tous les projets ne sont pas listés.
 SEARCH,Search,Rechercher
 SEARCH_PLACEHOLDER,Type one or more words to search in projects title and description... ,Entrez un ou plusieurs termes à chercher dans le titre et la description…
@@ -78,7 +80,7 @@ MOD,Mod,Mod
 MOD_DESC,"A mod is something wich modifies an existing game, for example by adding features, levels, etc...","Un « mod » modifie un jeu existant, par exemple en lui ajoutant des fonctionnalités, des niveaux, etc."
 TOOL,Tool,Outils
 TOOL_DESC,"Not a game, but something usefull.","Pas un jeu, mais quelque chose d’utile."
-PLUGIN,Plugin,Module
+PLUGIN,Plugin,Greffon
 PLUGIN_DESC,Something modifying a software.,Quelque chose qui ajoute des fonctionnalités à un logiciel.
 2D,2D,2D
 2D_DESC,2 dimensionnal game.,Jeu en 2 dimensions.
