@@ -8,6 +8,16 @@ A site to showcase most of my creations.
 Under development.
 
 
+# Technical notes
+
+The site is stored in `docs/` because this and root are the only folders GitHub
+allows building from in GitHub Pages' settings. And I prefer having it in a
+subfolder rather than in the root directory.
+
+No third-party framework is involved. This is raw HTML-CSS-JS. There are only a
+few own-made tasks.
+
+
 # Testing locally
 
 Before being able to start the server locally, you need to add a symlink in docs, wich will let have paths like those on Github Pages due to the fact that the repository name is added just after domain name.
