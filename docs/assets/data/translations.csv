@@ -47,6 +47,8 @@ OOB,OOB,OOB
 OOB_DESC,"OOB (Out Of Bounds) is a little puzzle plateformer made for the 6th Chill Devs Chill Jam with the theme ""You Shouldn't Be Here"".","OOB (Out Of Bounds, Hors Limites) est petit jeu de plateforme à énigmes créé pour la sixième Chill Devs Chill Jam ayant pour thème « Vous ne devriez pas être là »."
 BBCODE_EDIT,BBCodeEdit,BBCodeEdit
 BBCODE_EDIT_DESC,A Godot addon that brings BBCode completion and QOL tools to the script editor in order to help formatting documentation comments.,"Un greffon pour Godot qui ajoute de l’auto-complétion et des raccourcis pour les balises de formatage BBCode, facilitant ainsi la rédaction de commentaires de documentation."
+BOOOUUHGIE,Booouuhgie,Booouuhgie
+BOOOUUHGIE_DESC,"Escape a haunted mansion, with only candles to protect yourself from ghosts.",Échappez vous d’un manoir hanté à la seule lueur de bougies capables de pétrifier les fantômes.
 WIP,⚠ Work in progress ⚠: Not every projects are present.,⚠ En construction ⚠ : Tous les projets ne sont pas listés.
 SEARCH,Search,Rechercher
 SEARCH_PLACEHOLDER,Type one or more words to search in projects title and description... ,Entrez un ou plusieurs termes à chercher dans le titre et la description…
@@ -136,8 +138,8 @@ PAUSED,Paused,En pause
 PAUSED_DESC,"Development is paused, but there should be new updates in the future (if everything goes well).","Le développement est interrompu temporairement, mais il devrait y avoir de nouvelles mises à jours (normalement)."
 ABANDONED,Abandoned,Abandonné
 ABANDONED_DESC,This project is not complete and wont get updates.,Ce projet n’est pas terminé et ne le sera jamais.
-24H,24h,24h
-24H_DESC,Made in less than 24 hours of development.,Créé en moins de 24 heures de développement.
+24H-NC,24h (NC),24h (N.C.)
+24H_DESC,Made in less than 24 non-consecutive hours.,Créé en moins de 24 heures non consécutives de développement.
 GENRE,Genre,Genre
 PLATFORM,Platform,Plateforme
 PLAYER_COUNT,Player count,Nombre de joueurs

@@ -249,7 +249,7 @@ img {
 }
 
 /* Time limit */
-#background[tag="24h"] {
+#background[tag="24h-nc"] {
 	background-color: rgb(236, 236, 236);
 	--border-color: rgb(0, 0, 0);
 }
