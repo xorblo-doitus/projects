@@ -230,7 +230,6 @@ class Sorter {
 		let result = [];
 		
 		if (this.query) {
-			console.dir(this._fuse.search(this.query));
 			for (const elem of this._fuse.search(this.query)) {
 				result.push(elem.item);
 			}
