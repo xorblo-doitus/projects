@@ -139,7 +139,7 @@ PAUSED_DESC,"Development is paused, but there should be new updates in the futur
 ABANDONED,Abandoned,Abandonné
 ABANDONED_DESC,This project is not complete and wont get updates.,Ce projet n’est pas terminé et ne le sera jamais.
 24H-NC,24h (NC),24h (N.C.)
-24H_DESC,Made in less than 24 non-consecutive hours.,Créé en moins de 24 heures non consécutives de développement.
+24H-NC_DESC,Made in less than 24 non-consecutive hours.,Créé en moins de 24 heures non consécutives de développement.
 GENRE,Genre,Genre
 PLATFORM,Platform,Plateforme
 PLAYER_COUNT,Player count,Nombre de joueurs
