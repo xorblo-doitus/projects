@@ -194,7 +194,7 @@ class ProjectCard extends HTMLElementHelper {
 	}
 	
 	static toCORSProxy(url) {
-		return `https://corsproxy.io/?${encodeURIComponent(url)}`;
+		return `https://corsproxy.io/?url=${encodeURIComponent(url)}`;
 	}
 	
 	/**
