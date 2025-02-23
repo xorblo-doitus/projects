@@ -202,7 +202,7 @@ class ProjectCard extends HTMLElementHelper {
 	 * @returns The JSON contained in the response, or undefined if it fails.
 	 */
 	static CORSProxyFetch(url) {
-		return fetch(this.toCORSProxy(url)).then(resp =>  resp.json()).catch(reason => undefined);
+		return fetch(this.toCORSProxy(url)).then(resp => resp.ok?resp.json():undefined).catch(reason => undefined);
 	}
 	
 	/**
