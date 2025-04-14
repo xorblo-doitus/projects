@@ -49,6 +49,8 @@ BBCODE_EDIT,BBCodeEdit,BBCodeEdit
 BBCODE_EDIT_DESC,A Godot addon that brings BBCode completion and QOL tools to the script editor in order to help formatting documentation comments.,"Un greffon pour Godot qui ajoute de l’auto-complétion et des raccourcis pour les balises de formatage BBCode, facilitant ainsi la rédaction de commentaires de documentation."
 BOOOUUHGIE,Booouuhgie,Booouuhgie
 BOOOUUHGIE_DESC,"Escape a haunted mansion, with only candles to protect yourself from ghosts.",Échappez vous d’un manoir hanté à la seule lueur de bougies capables de pétrifier les fantômes.
+TILE_SET_CLIPBOARD,TileSet Clipboard,TileSet Clipboard
+TILE_SET_CLIPBOARD_DESC,A Godot addon that adds advanced copying-and-pasting to the TileSet editor.,Un greffon pour Godot qui ajoute un copier-coller avancé à l’éditeur de TileSet.
 WIP,⚠ Work in progress ⚠: Not every projects are present.,⚠ En construction ⚠ : Tous les projets ne sont pas listés.
 SEARCH,Search,Rechercher
 SEARCH_PLACEHOLDER,Type one or more words to search in projects title and description... ,Entrez un ou plusieurs termes à chercher dans le titre et la description…
