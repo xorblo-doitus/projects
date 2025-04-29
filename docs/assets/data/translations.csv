@@ -51,6 +51,9 @@ BOOOUUHGIE,Booouuhgie,Booouuhgie
 BOOOUUHGIE_DESC,"Escape a haunted mansion, with only candles to protect yourself from ghosts.",Échappez vous d’un manoir hanté à la seule lueur de bougies capables de pétrifier les fantômes.
 TILE_SET_CLIPBOARD,TileSet Clipboard,TileSet Clipboard
 TILE_SET_CLIPBOARD_DESC,A Godot addon that adds advanced copying-and-pasting to the TileSet editor.,Un greffon pour Godot qui ajoute un copier-coller avancé à l’éditeur de TileSet.
+ANY_ICON,AnyIcon,AnyIcon
+ANY_ICON_DESC,"A singleton providing easy access to icons representing classes and types, 
+","Un singleton qui permet d’accéder facilement aux icônes des classes et des types, que ce soit en passant par une valeur ou par le membre d’un objet."
 WIP,⚠ Work in progress ⚠: Not every projects are present.,⚠ En construction ⚠ : Tous les projets ne sont pas listés.
 SEARCH,Search,Rechercher
 SEARCH_PLACEHOLDER,Type one or more words to search in projects title and description... ,Entrez un ou plusieurs termes à chercher dans le titre et la description…
