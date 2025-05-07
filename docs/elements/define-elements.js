@@ -9,6 +9,8 @@ import { Signal } from "../lib/patou/signal/signal.js";
 const TAG_IMPLIES = {
 	scratch: "web 2D",
 	roblox: "windows xbox android iOS macOS 3D",
+	numworks: "python",
+	python: "windows linux macOS",
 	coop: "multiplayer",
 	"1vs1": "multiplayer",
 };
