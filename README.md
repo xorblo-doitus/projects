@@ -5,7 +5,7 @@ A site to showcase most of my creations.
 
 # Development status
 
-Under development.
+LTS.
 
 
 # Technical notes
