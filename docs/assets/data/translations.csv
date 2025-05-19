@@ -52,10 +52,13 @@ BOOOUUHGIE_DESC,"Escape a haunted mansion, with only candles to protect yourself
 TILE_SET_CLIPBOARD,TileSet Clipboard,TileSet Clipboard
 TILE_SET_CLIPBOARD_DESC,A Godot addon that adds advanced copying-and-pasting to the TileSet editor.,Un greffon pour Godot qui ajoute un copier-coller avancé à l’éditeur de TileSet.
 ANY_ICON,AnyIcon,AnyIcon
-ANY_ICON_DESC,"A singleton providing easy access to icons representing classes and types, 
-","Un singleton qui permet d’accéder facilement aux icônes des classes et des types, que ce soit en passant par une valeur ou par le membre d’un objet."
+ANY_ICON_DESC,"A singleton providing easy access to icons representing classes and types, from values or members.","Un singleton qui permet d’accéder facilement aux icônes des classes et des types, que ce soit en passant par une valeur ou par le membre d’un objet."
 MUSIC_PLAYER,Music Player,Lecteur de musique
-MUSIC_PLAYER_DESC,"My most useful project. I used it thousands of hours. It lets define a volume for each music to equalize the volume, and you can change the probability of a music. When I have time, I refactor the code to be able to open source it, but that's nowhere near.","Mon projet le plus utile. Je dois certainement l’avoir utilisé plus de 1 000 heures. Il me permet de définir un volume par musique pour équilibrer les volumes, et aussi de pondérer la probabilité des musiques. Quand j’ai le temps, je réusine le code pour qu’il soit présentable en OpenSource (au secours le monolithe de 1 000 lignes et les infos persos dans le code source). Donc le projet sera peut-être un jour disponible publiquement."
+MUSIC_PLAYER_DESC,"My most useful project. I used it thousands of hours. It lets define a volume for each music to equalize the volume, and you can change the probability of a music.
+
+When I have time, I refactor the code to be able to open source it, but that's nowhere near.","Mon projet le plus utile. Je dois certainement l’avoir utilisé plus de 1 000 heures. Il me permet de définir un volume par musique pour équilibrer les volumes, et aussi de pondérer la probabilité des musiques.
+
+Quand j’ai le temps, je réusine le code pour qu’il soit présentable en OpenSource (au secours le monolithe de 1 000 lignes et les infos persos dans le code source). Donc le projet sera peut-être un jour disponible publiquement."
 WIP,⚠ Work in progress ⚠: Not every projects are present.,⚠ En construction ⚠ : Tous les projets ne sont pas listés.
 SEARCH,Search,Rechercher
 SEARCH_PLACEHOLDER,Type one or more words to search in projects title and description... ,Entrez un ou plusieurs termes à chercher dans le titre et la description…
