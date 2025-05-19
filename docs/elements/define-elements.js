@@ -279,7 +279,9 @@ ProjectCard.bindPropertiesToAtributes([
 			elem.src = newValue;
 		}
 	}),
-	new PropertyAttributeBindHelper("desc").bindElements("#desc"),
+	new PropertyAttributeBindHelper("desc").setAttributeChangedCallback(function(newValue) {
+		this.getElementById("desc").innerHTML = newValue.replaceAll("\n", "<br>");
+	}),
 	new PropertyAttributeBindHelper("title", undefined, undefined, "project-title").bindElements("#title"),
 	new PropertyAttributeBindHelper("url").setAttributeChangedCallback(function(newValue) {
 		for (const elem of this.getElementsByClassName("link")) {
