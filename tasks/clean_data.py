@@ -11,7 +11,10 @@ with open("docs/assets/data/translations.csv", "r", encoding="utf-8") as file:
 	
 	if to_crop > 0:
 		for row in [first_line] + file.readlines():
-			cleaned.append(row.rstrip()[:-to_crop])
+			row = row.rstrip()
+			if row.endswith(","):
+				row = row[:-to_crop]
+			cleaned.append(row)
 	else:
 		cleaned = [first_line] + file.readlines()
 
