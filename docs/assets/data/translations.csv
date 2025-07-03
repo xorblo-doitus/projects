@@ -59,6 +59,8 @@ MUSIC_PLAYER_DESC,"My most useful project. I used it thousands of hours. It lets
 When I have time, I refactor the code to be able to open source it, but that's nowhere near.","Mon projet le plus utile. Je dois certainement l’avoir utilisé plus de 1 000 heures. Il me permet de définir un volume par musique pour équilibrer les volumes, et aussi de pondérer la probabilité des musiques.
 
 Quand j’ai le temps, je réusine le code pour qu’il soit présentable en OpenSource (au secours le monolithe de 1 000 lignes et les infos persos dans le code source). Donc le projet sera peut-être un jour disponible publiquement."
+FROG_EM_UP,Frog 'em up,Frog 'em up
+FROG_EM_UP_DESC,"An arcade minigame made within roughly 5 hours for the 42th MicroJam. Theme was ""frogs"" and prerequisite was ""mouse input only"".",Un mini jeu d’arcade fait en environ 5 heures pour la MicroJam #42 avec comme thème les grenouilles et comme prérequis des contrôles à la souris.
 WIP,⚠ Work in progress ⚠: Not every projects are present.,⚠ En construction ⚠ : Tous les projets ne sont pas listés.
 SEARCH,Search,Rechercher
 SEARCH_PLACEHOLDER,Type one or more words to search in projects title and description... ,Entrez un ou plusieurs termes à chercher dans le titre et la description…
@@ -150,6 +152,8 @@ ABANDONED,Abandoned,Abandonné
 ABANDONED_DESC,This project is not complete and wont get updates.,Ce projet n’est pas terminé et ne le sera jamais.
 24H-NC,24h (NC),24h (N.C.)
 24H-NC_DESC,Made in less than 24 non-consecutive hours.,Créé en moins de 24 heures non consécutives de développement.
+6H-NC,6h (NC),6h (N.C.)
+6H-NC_DESC,Made in less than 6 non-consecutive hours.,Créé en moins de 6 heures non consécutives de développement.
 GENRE,Genre,Genre
 PLATFORM,Platform,Plateforme
 PLAYER_COUNT,Player count,Nombre de joueurs
