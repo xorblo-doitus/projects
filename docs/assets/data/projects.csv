@@ -28,3 +28,4 @@ TILE_SET_CLIPBOARD,26,-1,godot plugin LTS showcased,https://godotengine.org/asse
 ANY_ICON,27,-1,godot plugin LTS showcased,https://godotengine.org/asset-library/asset/3958,NONE,1745314620,,,,https://github.com/xorblo-doitus/AnyIcon,,,https://raw.githubusercontent.com/xorblo-doitus/AnyIcon/main/icon.svg
 MUSIC_PLAYER,28,100,python LTS showcased,,/projects/assets/images/thumbnails/music-player.png,1675119600,,,,,,,
 FROG_EM_UP,29,100,godot web 2D arcade complete 6h-nc,https://patou-todog.itch.io/frog-em-up,,1751135400,,,,https://github.com/xorblo-doitus/Frog-em-up,,,https://raw.githubusercontent.com/xorblo-doitus/Frog-em-up/main/icon.png
+NUMWORKS_GUI,30,-1,numworks 2D LTS,https://my.numworks.com/python/patou/gui_min,https://raw.githubusercontent.com/xorblo-doitus/Numworks-gui/refs/heads/main/about/example.png,1629410400,,,,https://github.com/xorblo-doitus/Numworks-gui,,,
