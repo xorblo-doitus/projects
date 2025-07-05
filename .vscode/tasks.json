@@ -7,19 +7,23 @@
 			"label": "Export data",
 			"type": "shell",
 			"command": "tasks/export_data.cmd",
-			"problemMatcher": []
+			"problemMatcher": [],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
 		},
 		{
 			"label": "Download fallback images",
 			"type": "shell",
 			"command": "tasks/download_fallback_images.cmd",
-			"problemMatcher": []
+			"problemMatcher": [],
 		},
 		{
 			"label": "Update live branch",
 			"type": "shell",
 			"command": "tasks/publish/html/update_live.cmd",
-			"problemMatcher": []
+			"problemMatcher": [],
 		}
 	]
 }
