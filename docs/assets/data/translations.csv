@@ -63,6 +63,8 @@ FROG_EM_UP,Frog 'em up,Frog 'em up
 FROG_EM_UP_DESC,"An arcade minigame made within roughly 5 hours for the 42th MicroJam. Theme was ""frogs"" and prerequisite was ""mouse input only"".",Un mini jeu d’arcade fait en environ 5 heures pour la MicroJam #42 avec comme thème les grenouilles et comme prérequis des contrôles à la souris.
 NUMWORKS_GUI,Numworks GUI,Numworks GUI
 NUMWORKS_GUI_DESC,"This module allows placing simple GUI elements on stacked rows, each row being centered horizontally.",Ce module permet de placer des éléments graphiques basiques sur des lignes. Ces lignes sont centrées horizontalement et placer les unes sur les autres.
+BEZIER,Bézier,Bézier
+BEZIER_DESC,A Bézier curve editor. Supports quad and cubic Bézier.,Un éditeur de courbes de Bézier cubiques ou quadratiques créé pour vérifier mes équations pour mon Grand Oral de maths. (Je ne suis pas tombé sur ce sujet alors que c’était mon préféré 😭)
 WIP,⚠ Work in progress ⚠: Not every projects are present.,⚠ En construction ⚠ : Tous les projets ne sont pas listés.
 SEARCH,Search,Rechercher
 SEARCH_PLACEHOLDER,Type one or more words to search in projects title and description... ,Entrez un ou plusieurs termes à chercher dans le titre et la description…
