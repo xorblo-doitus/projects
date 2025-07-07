@@ -81,7 +81,9 @@ FEEDBACK_DESC,"Send your feedbacks about this site. (Bug, feature request, typo.
 CREDITS,Credits,Crédits
 TOOLTIP_READER,Tooltip reader,Lecteur d’infobulle
 TOOLTIP_SHOWER,Move your mouse over an element to show it’s tooltip…,Survolez un élément avec votre curseur pour en montrer son infobulle…
-MORE_INFO_DESC,Show detailled informations,Montrer les informations détaillées
+MORE_INFO_DESC,Show detailled informations.,Montrer les informations détaillées.
+INCLUDE_FILTER,Only show projects with this tag.,Afficher uniquement des projets avec cette étiquette.
+EXCLUDE_FILTER,Exclude projects with this tag.,Exclure les projets avec cette étiquette.
 SOURCE_CODE,Source code,Code source
 REMAKE,Remake,Reprise
 ORIGINAL,Master copy,Projet original
