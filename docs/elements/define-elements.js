@@ -264,7 +264,23 @@ ProjectCard.bindPropertiesToAtributes([
 				elem.style.display = "none";
 			}
 		} else {
+			var width = 0;
+			var height = 0;
+			
+			if (newValue.includes("itch.")) {
+				width = 315;
+				height = 250;
+			} else if (newValue.includes("scratch.")) {
+				width = 386;
+				height = 290;
+			} else if (newValue.includes("rbxcdn")) {
+				width = 512;
+				height = 512;
+			}
+			
 			for (const elem of this.querySelectorAll("#thumbnail")) {
+				elem.width = width;
+				elem.height = height;
 				elem.src = newValue;
 				elem.style.display = "";
 			}
