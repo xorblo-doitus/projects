@@ -251,4 +251,5 @@ window.addEventListener(
 );
 
 
+PROJECT_LIST.style.display = "";
 window._stop_fake_load = true;

@@ -126,6 +126,8 @@ class ProjectCard extends HTMLElementHelper {
 	
 	fetchThumbScratch(row) {
 		if (row.get("tags").includes("scratch")) {
+			this.setThumbWidthAndHeight(386, 290);
+			
 			const imageURL = `https://uploads.scratch.mit.edu/get_image/project/${row.get("foreign_id")}_480x360.png`;
 			ProjectCard.fetchedImageURLs[this.projectID] = imageURL;
 			return imageURL;
@@ -140,6 +142,8 @@ class ProjectCard extends HTMLElementHelper {
 	
 	fetchThumbItch(row) {
 		if (row.get("url").includes("itch.io")) {
+			this.setThumbWidthAndHeight(315, 250);
+			
 			this.setThumbItch(row.get("url"));
 			return ProjectPage._missingThumbnail + "?INFO_fetching_from_itch";
 		}
@@ -163,6 +167,7 @@ class ProjectCard extends HTMLElementHelper {
 	
 	fetchThumbRoblox(row) {
 		if (row.get("tags").includes("roblox")) {
+			this.setThumbWidthAndHeight(512, 512);
 			this.setThumbRoblox(row.get("foreign_id"));
 			return ProjectPage._missingThumbnail + "?INFO_fetching_from_roblox";
 		}
@@ -243,6 +248,12 @@ class ProjectCard extends HTMLElementHelper {
 		
 		this.sourceCode = sourceCode || "";
 	}
+	
+	setThumbWidthAndHeight(width, height) {
+		const thumb = this.getElementById("thumbnail");
+		thumb.width = width;
+		thumb.height = height;
+	}
 }
 
 decorateMethod(ProjectCard, "scrapThumbRoblox", cached);
@@ -264,23 +275,7 @@ ProjectCard.bindPropertiesToAtributes([
 				elem.style.display = "none";
 			}
 		} else {
-			var width = 0;
-			var height = 0;
-			
-			if (newValue.includes("itch.")) {
-				width = 315;
-				height = 250;
-			} else if (newValue.includes("scratch.")) {
-				width = 386;
-				height = 290;
-			} else if (newValue.includes("rbxcdn")) {
-				width = 512;
-				height = 512;
-			}
-			
 			for (const elem of this.querySelectorAll("#thumbnail")) {
-				elem.width = width;
-				elem.height = height;
 				elem.src = newValue;
 				elem.style.display = "";
 			}
