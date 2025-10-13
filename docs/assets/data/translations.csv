@@ -8,7 +8,7 @@ TAPE_TAUPE_REMAKE_DESC,A little project made under 12h over 1 week.,Un mini proj
 BUBBLE,Bubble,Bulle
 BUBBLE_DESC,Somewhat an arcade game.,Une sorte de jeu d’arcade.
 BARTAILLERIE,Bartaillerie,Bartaillerie
-BARTAILLERIE_DESC,"This local 1v1 game is one of my best creation (at least was): I worked more than a year on it. I will forever remember it, and I still play it sometimes. It's sad that there is so many bugs, but I don't want to go back in that old spaghetti code to fix them.","Ce jeu en 1v1 local est l’une de mes meilleures créations (pour l’époque) : J’ai travaillé dessus au moins un an. J’en garderai toujours un incroyable souvenir, et j’y rejoue de temps en temps. Dommage qu’il y ait tant de bugs, mais je n’ai pas envie de me replonger dans le code spaghetti de l’époque pour les corriger."
+BARTAILLERIE_DESC,"This local 1v1 game is one of my best creations (at least it was): I worked more than a year on it. I will forever remember it, and I still play it sometimes. It's sad that there are so many bugs, but I don't want to go back into that old spaghetti code to fix them.","Ce jeu en 1v1 local est l’une de mes meilleures créations (pour l’époque) : J’ai travaillé dessus au moins un an. J’en garderai toujours un incroyable souvenir, et j’y rejoue de temps en temps. Dommage qu’il y ait tant de bugs, mais je n’ai pas envie de me replonger dans le code spaghetti de l’époque pour les corriger."
 SPACE_ADVENTURE,Space Adventure,L’aventure de l’espace
 SPACE_ADVENTURE_DESC,Avoid getting hit by asteroids while collecting fuel and materials.,Projet de 3ème. Évitez les astéroïdes tout en collectant du carburant et des matériaux.
 PROJECTS,Projects,Projets
@@ -16,53 +16,53 @@ PROJECTS_DESC,A site listing all my projects.,Un site recensant mes projets.
 PUZZLE_PROJ,Puzzle,Puzzle
 PUZZLE_PROJ_DESC,A puzzle created for a school project.,Un puzzle créé pour un projet scolaire.
 MULTIPLICATION,Learn your multiplication tables,Révise tes tables de multiplication
-MULTIPLICATION_DESC,"Very bad, i don’t even now why I put it there… because of nostalgia ?","Horrible, je ne sais même pas pourquoi je le met sur le site… la nostalgie ?"
+MULTIPLICATION_DESC,"Very bad, I don’t even know why I put it there… because of nostalgia ?","Horrible, je ne sais même pas pourquoi je le mets sur le site… la nostalgie ?"
 PAINT_ADVENTURE,Paint Adventure,Peinture Aventure
-PAINT_ADVENTURE_DESC,A bad game with movement limit and conveyor belts.,Un mauvais jeu avec des mouvements limités et des convoyeurs.
-FETE_DES_PERES,Father’s Day,Fête des pères
-FETE_DES_PERES_DESC,"A little interactive toy made for Father’s Day. (Not sure my dad liked it, but at least it doesn’t take up space.)","Un petit jouet interactif fait pour la fête des pères. (Pas sûr que mon père ait apprécié, mais au moins ça prend pas de place, et il n’a pas à le jeter.)"
+PAINT_ADVENTURE_DESC,A bad game with movement limits and conveyor belts.,Un mauvais jeu avec des mouvements limités et des convoyeurs.
+FETE_DES_PERES,Father’s Day,Fête des Pères
+FETE_DES_PERES_DESC,"A little interactive toy made for Father’s Day. (Not sure my dad liked it, but at least it doesn’t take up space.)","Un petit jouet interactif fait pour la fête des Pères. (Pas sûr que mon père ait apprécié, mais au moins ça ne prend pas de place, et il n’a pas à le jeter.)"
 ELEVAGE_DE_NOMBRES,Breeding of numbers,Élevage de nombres
-ELEVAGE_DE_NOMBRES_DESC,An unfinished game where you would have to breed number and use mathematical operations to upgrade them.,Un jeu inachevé où il aurait fallu élever des nombres et utiliser des opérations mathématiques pour les améliorer.
+ELEVAGE_DE_NOMBRES_DESC,An unfinished game where you would have to breed numbers and use mathematical operations to upgrade them.,Un jeu inachevé où il aurait fallu élever des nombres et utiliser des opérations mathématiques pour les améliorer.
 BARTAILLERIE_REMAKE,Bartaillerie Remake,Bartaillerie Remake
-BARTAILLERIE_REMAKE_DESC,"Bartaillerie is one of the games I worked on the longest time. It is also one of wich I most played. One day, I started this remake with my new knowlegde, but because of school, i did not have time to finish it. Although the game has currently no goal, it is pretty addictive.","Bartaillerie est l'un des jeux sur lequel j'ai le plus longtemps travaillé et aussi auquel j'ai le plus le joué. Un jour, j'ai eu envie d'en faire une reprise avec mes nouvelles connaissances, sauf qu'à cause de la charge de travail à côté, ce projet est passé à la trappe... Néanmoins le jeu est en l'état actuel plutôt addictif même s'il n'a aucun but et que toutes les commandes de déboggage sont utilisables."
+BARTAILLERIE_REMAKE_DESC,"Bartaillerie is one of the games I worked on the longest time. It is also one of the ones I played the most. One day, I started this remake with my new knowledge, but because of school, I did not have time to finish it. Although the game currently has no goal, it is pretty addictive.","Bartaillerie est l'un des jeux sur lequel j'ai le plus longtemps travaillé et aussi auquel j'ai le plus le joué. Un jour, j'ai eu envie d'en faire une reprise avec mes nouvelles connaissances, sauf qu'à cause de la charge de travail à côté, ce projet est passé à la trappe... Néanmoins, le jeu est en l'état actuel plutôt addictif, même s'il n'a aucun but et que toutes les commandes de débogage sont utilisables."
 PLATFORMER_2023,Platformer 2023,Jeu de plateforme 2023
-PLATFORMER_2023_DESC,A platformer created to see if I was able to create good platformer movements in Scratch.,Un jeu de plateforme commencé sur un coup tête pour voir si j’étais capable de faire une physique potable sur Scratch.
+PLATFORMER_2023_DESC,A platformer created to see if I was able to create good platformer movements in Scratch.,Un jeu de plateforme commencé sur un coup de tête pour voir si j’étais capable de faire une physique potable sur Scratch.
 FROM_BELOW,From Below,From Below
-FROM_BELOW_DESC,"From Below is inspired by a game I was playing when I was joung called Bonkheads. It is my first big game created with the Godot engine, and as of writting this, one of my most sofisticated games.","From Below est inspiré d’un jeu auquel j’ai beaucoup joué durant mon enfance : Bonkheads. C’est mon premier « gros » jeu réalisé avec le moteur Godot et, à l’heure d’écrire ceci, l’un de mes jeux les plus poussés."
+FROM_BELOW_DESC,"From Below is inspired by a game I was playing when I was young called Bonkheads. It is my first big game created with the Godot engine, and as of writing this, one of my most sophisticated games.","From Below est inspiré d’un jeu auquel j’ai beaucoup joué durant mon enfance : Bonkheads. C’est mon premier « gros » jeu réalisé avec le moteur Godot et, à l’heure d’écrire ceci, l’un de mes jeux les plus poussés."
 LA_MAISON_DES_SECRETS,House of secrets,La maison des secrets
 LA_MAISON_DES_SECRETS_DESC,An abandoned game (and house) with strange enigmas and minigames / minilevels.,Un projet abandonné avec des énigmes bizarres et des mini-jeux / mini-niveaux.
 🤣🤣🤣🤣🤣🤣,🤣🤣🤣🤣🤣🤣,🤣🤣🤣🤣🤣🤣
 🤣🤣🤣🤣🤣🤣_DESC,Here is the reason why we don’t say to a dev that we will do something once pink elephants will be trampolining while dancing under a rain of frogs playing violin.,Voici la raison pour laquelle on ne dit pas à un dev qu’on fera quelque chose quand des éléphants roses feront du trampoline en dansant la salsa sous une pluie de grenouilles jouant du violon.
 COLOR_ESCAPE,Color Escape,Color Escape
-COLOR_ESCAPE_DESC,"An ""Obby"" or ""Escape"" as we say on Roblox. There are thousands of them on Roblox.","Un « Obby » ou « Escape » comme on dit sur Roblox, et comme on en trouve par millions."
+COLOR_ESCAPE_DESC,"An ""obby"" or ""escape"" as we say on Roblox. There are thousands of them on Roblox.","Un « Obby » ou « Escape » comme on dit sur Roblox, et comme on en trouve par millions."
 TERRA_FUNGOS,Terra Fungos,Terra Fungos
-TERRA_FUNGOS_DESC,"This project was abandoned when i had to map the world, wich was taking too much time. It would have been an exploration game.",Un projet abandonné au moment de devoir mapper le monde (cela prenait trop de temps). Cela devait devenir un jeu d’exploration.
+TERRA_FUNGOS_DESC,"This project was abandoned when I had to map the world, which was taking too much time. It would have been an exploration game.",Un projet abandonné au moment de devoir mapper le monde (cela prenait trop de temps). Cela devait devenir un jeu d’exploration.
 CARTAILLE,Cartaille,Cartaille
-CARTAILLE_DESC,"An abandoned project that was a remake of a board game I created IRL with paper. It was a turn-based fight. Only the terrain generator is working, and the user interface don't let define every settings of it.","Un projet abandonné de transposer un jeu de plateau avec des cartes que j’avais créé avec du papier, qui prenait la forme d’un combat au tour par tour. La seule chose que j’avais programmé était le générateur de terrain, mais l’interface utilisateur inachevée ne permet pas d’en tirer toutes les possibilités."
+CARTAILLE_DESC,"An abandoned project that was a remake of a board game I created IRL with paper. It was a turn-based fight. Only the terrain generator is working, and the user interface doesn't let you define every setting of it.","Un projet abandonné de transposer un jeu de plateau avec des cartes que j’avais créées avec du papier, qui prenait la forme d’un combat au tour par tour. La seule chose que j’avais programmée était le générateur de terrain, mais l’interface utilisateur inachevée ne permet pas d’en tirer toutes les possibilités."
 EREKIR_UTILITY,Erekir Utility,Erekir Utility
-EREKIR_UTILITY_DESC,Adds two utility blocks to Erekir wich replace in an easy way things that could have been done with Logic Blocks on Serpulo.,Ajoute 2 blocks permettant de faire simplement sur Erekir des choses qu’on peut faire avec les blocks de logique sur Serpulo.
+EREKIR_UTILITY_DESC,"Adds two utility blocks to Erekir, which replace in an easy way things that could have been done with Logic Blocks on Serpulo.",Ajoute 2 blocs permettant de faire simplement sur Erekir des choses qu’on peut faire avec les blocs de logique sur Serpulo.
 BLOC_NOTES_PLUS_PLUS,Bloc-Notes++,Bloc-Notes++
-BLOC_NOTES_PLUS_PLUS_DESC,This little multifunction tool let you takes notes and calculate things on the fly.,"Ce petit couteau suisse permet de noter des choses comme on le ferait sur des post-its, mais aussi de faire des calculs à la volée. Créé en binôme pour un projet de Terminale."
+BLOC_NOTES_PLUS_PLUS_DESC,This little multifunction tool lets you take notes and calculate things on the fly.,"Ce petit couteau suisse permet de noter des choses comme on le ferait sur des post-its, mais aussi de faire des calculs à la volée. Créé en binôme pour un projet de Terminale."
 OOB,OOB,OOB
-OOB_DESC,"OOB (Out Of Bounds) is a little puzzle plateformer made for the 6th Chill Devs Chill Jam with the theme ""You Shouldn't Be Here"".","OOB (Out Of Bounds, Hors Limites) est petit jeu de plateforme à énigmes créé pour la sixième Chill Devs Chill Jam ayant pour thème « Vous ne devriez pas être là »."
+OOB_DESC,"OOB (Out Of Bounds) is a little puzzle platformer made for the 6th Chill Devs Chill Jam with the theme ""You Shouldn't Be Here"".","OOB (Out Of Bounds, Hors Limites) est un petit jeu de plateforme à énigmes créé pour la sixième Chill Devs Chill Jam ayant pour thème « Vous ne devriez pas être là »."
 BBCODE_EDIT,BBCodeEdit,BBCodeEdit
 BBCODE_EDIT_DESC,A Godot addon that brings BBCode completion and QOL tools to the script editor in order to help formatting documentation comments.,"Un greffon pour Godot qui ajoute de l’auto-complétion et des raccourcis pour les balises de formatage BBCode, facilitant ainsi la rédaction de commentaires de documentation."
 BOOOUUHGIE,Booouuhgie,Booouuhgie
-BOOOUUHGIE_DESC,"Escape a haunted mansion, with only candles to protect yourself from ghosts.",Échappez vous d’un manoir hanté à la seule lueur de bougies capables de pétrifier les fantômes.
+BOOOUUHGIE_DESC,"Escape a haunted mansion, with only candles to protect yourself from ghosts.",Échappez-vous d’un manoir hanté à la seule lueur de bougies capables de pétrifier les fantômes.
 TILE_SET_CLIPBOARD,TileSet Clipboard,TileSet Clipboard
 TILE_SET_CLIPBOARD_DESC,A Godot addon that adds advanced copying-and-pasting to the TileSet editor.,Un greffon pour Godot qui ajoute un copier-coller avancé à l’éditeur de TileSet.
 ANY_ICON,AnyIcon,AnyIcon
 ANY_ICON_DESC,"A singleton providing easy access to icons representing classes and types, from values or members.","Un singleton qui permet d’accéder facilement aux icônes des classes et des types, que ce soit en passant par une valeur ou par le membre d’un objet."
 MUSIC_PLAYER,Music Player,Lecteur de musique
-MUSIC_PLAYER_DESC,"My most useful project. I used it thousands of hours. It lets define a volume for each music to equalize the volume, and you can change the probability of a music.
+MUSIC_PLAYER_DESC,"My most useful project. I used it for thousands of hours. It lets you define a volume for each piece of music to equalize the volume, and you can change the probability of a music.
 
 When I have time, I refactor the code to be able to open source it, but that's nowhere near.","Mon projet le plus utile. Je dois certainement l’avoir utilisé plus de 1 000 heures. Il me permet de définir un volume par musique pour équilibrer les volumes, et aussi de pondérer la probabilité des musiques.
 
 Quand j’ai le temps, je réusine le code pour qu’il soit présentable en OpenSource (au secours le monolithe de 1 000 lignes et les infos persos dans le code source). Donc le projet sera peut-être un jour disponible publiquement."
 FROG_EM_UP,Frog 'em up,Frog 'em up
-FROG_EM_UP_DESC,"An arcade minigame made within roughly 5 hours for the 42th MicroJam. Theme was ""frogs"" and prerequisite was ""mouse input only"".",Un mini jeu d’arcade fait en environ 5 heures pour la MicroJam #42 avec comme thème les grenouilles et comme prérequis des contrôles à la souris.
+FROG_EM_UP_DESC,"An arcade minigame made within roughly 5 hours for the 42nd MicroJam. The theme was ""frogs"" and the prerequisite was ""mouse input only"".",Un mini jeu d’arcade fait en environ 5 heures pour la MicroJam #42 avec comme thème les grenouilles et comme prérequis des contrôles à la souris.
 NUMWORKS_GUI,Numworks GUI,Numworks GUI
-NUMWORKS_GUI_DESC,"This module allows placing simple GUI elements on stacked rows, each row being centered horizontally.",Ce module permet de placer des éléments graphiques basiques sur des lignes. Ces lignes sont centrées horizontalement et placer les unes sur les autres.
+NUMWORKS_GUI_DESC,"This module allows placing simple GUI elements on stacked rows, each row being centered horizontally.",Ce module permet de placer des éléments graphiques basiques sur des lignes. Ces lignes sont centrées horizontalement et placées les unes sur les autres.
 BEZIER,Bézier,Bézier
 BEZIER_DESC,A Bézier curve editor. Supports quad and cubic Bézier.,Un éditeur de courbes de Bézier cubiques ou quadratiques créé pour vérifier mes équations pour mon Grand Oral de maths. (Je ne suis pas tombé sur ce sujet alors que c’était mon préféré 😭)
 WIP,⚠ Work in progress ⚠: Not every projects are present.,⚠ En construction ⚠ : Tous les projets ne sont pas listés.
@@ -95,7 +95,7 @@ PUZZLE_DESC,"A puzzle game's gameplay is made of enigmas, thought, out-of-the-bo
 TOY,Toy,Jouet
 TOY_DESC,"A bit like a game, but without any goal.","Un peu comme un jeu, mais sans but."
 VISUAL,Visual,Visuel
-VISUAL_DESC,A contemplative project without much interaction. It is just meen to be beautifull or funny to look at.,Un projet contemplatif pensé pour être beau ou amusant à regarder.
+VISUAL_DESC,A contemplative project without much interaction. It is just meant to be beautiful or funny to look at.,Un projet contemplatif pensé pour être beau ou amusant à regarder.
 MOD,Mod,Mod
 MOD_DESC,"A mod is something wich modifies an existing game, for example by adding features, levels, etc...","Un « mod » modifie un jeu existant, par exemple en lui ajoutant des fonctionnalités, des niveaux, etc."
 TOOL,Tool,Outils
@@ -123,17 +123,17 @@ ANDROID_DESC,Playable on Android smartphones.,Jouable sur un mobile multifonctio
 XBOX,Xbox,Xbox
 XBOX_DESC,Playable on Xbox.,Jouable sur une console Xbox.
 NUMWORKS,Numworks,Numworks
-NUMWORKS_DESC,Works on a Numworks’ calculator (through Python).,Fonctionne sur une calculatrice Numworks (via Python).
+NUMWORKS_DESC,Works on a Numworks calculator (through Python).,Fonctionne sur une calculatrice Numworks (via Python).
 SCRATCH,Scratch,Scratch
 SCRATCH_DESC,Created with Scratch. This is a website for beginner programmers.,"Créé avec Scratch, un site de programmation pour les débutants."
 GODOT,Godot,Godot
 PYTHON,Python,Python
 PYTHON_DESC,Python is a multifunction programming language.,Python est un langage de programmation ambivalent.
 HTML5,HTML5,HTML5
-HTML5_DESC,"Created with vanillas web technologies (without framework) : HTML, JavaScript, CSS.","Crée avec les technologies web vanilles (sans framework) : HTML, JavaScript, CSS."
+HTML5_DESC,"Created with vanilla web technologies (without a framework): HTML, JavaScript, CSS.","Créé avec les technologies web vanilles (sans framework) : HTML, JavaScript, CSS."
 JAVA,Java,Java
 JAVA_DESC,Created with the java programing langage.,Créé via le langage de programmation Java.
-GODOT_DESC,"Created with Godot, an open source game engine.","Créé avec Godot, un moteur de jeu open source."
+GODOT_DESC,"Created with Godot, an open-source game engine.","Créé avec Godot, un moteur de jeu open source."
 ROBLOX,Roblox,Roblox
 ROBLOX_DESC,Created with Roblox Studio. I now prefer Godot wich is open-source.,"Créé avec Roblox Studio. Je ne conseille pas d’utiliser cette plateforme, utilisez plutôt Godot qui est aussi gratuit, mais open-source."
 COOP,Co-op,Coop
@@ -141,7 +141,7 @@ COOP_DESC,Playable cooperatively with your friends.,Jouable en coopération avec
 SCHOOL,School,Scolaire
 SCHOOL_DESC,Created for school.,Créé pour une activité scolaire.
 SHOWCASED,Showcased,En avant
-SHOWCASED_DESC,Creations that show my progression from when I was a child to today. (Tag mainly added to choose wich creations show first in my CV),Créations qui m’ont marqué et relatent de mes progrès au fil des ans. (Étiquette utilisée pour choisir quelles créations apparaissent sur mon CV.)
+SHOWCASED_DESC,Creations that show my progression from when I was a child to today. (Tag mainly added to choose which creations show first in my CV),Créations qui m’ont marqué et relatent de mes progrès au fil des ans. (Étiquette utilisée pour choisir quelles créations apparaissent sur mon CV.)
 1V1,1vs1,1 contre 1
 1V1_DESC,1 versus 1 fighting game.,Jeu de combat en 1 contre 1.
 MULTIPLAYER,Multiplayer,Multijoueur
@@ -151,11 +151,11 @@ LTS_DESC,Long Term Support: expect only bugfix updates.,Support à Long Terme :
 COMPLETE,Complete,Complet
 COMPLETE_DESC,"Nothing will be added anymore, even bugfixes.","Le projet est terminé et rien n’y sera ajouté, pas même des correctifs."
 ONGOING,In progress,En cours
-ONGOING_DESC,This project is currenlty being working on.,Ce projet est actuellement en cours de développement.
+ONGOING_DESC,This project is currently being worked on.,Ce projet est actuellement en cours de développement.
 PAUSED,Paused,En pause
-PAUSED_DESC,"Development is paused, but there should be new updates in the future (if everything goes well).","Le développement est interrompu temporairement, mais il devrait y avoir de nouvelles mises à jours (normalement)."
+PAUSED_DESC,"Development is paused, but there should be new updates in the future (if everything goes well).","Le développement est interrompu temporairement, mais il devrait y avoir de nouvelles mises à jour (normalement)."
 ABANDONED,Abandoned,Abandonné
-ABANDONED_DESC,This project is not complete and wont get updates.,Ce projet n’est pas terminé et ne le sera jamais.
+ABANDONED_DESC,This project is not complete and will not get updates.,Ce projet n’est pas terminé et ne le sera jamais.
 24H-NC,24h (NC),24h (N.C.)
 24H-NC_DESC,Made in less than 24 non-consecutive hours.,Créé en moins de 24 heures non consécutives de développement.
 6H-NC,6h (NC),6h (N.C.)
