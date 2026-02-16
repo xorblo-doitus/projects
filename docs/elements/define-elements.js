@@ -251,6 +251,11 @@ class ProjectCard extends HTMLElementHelper {
 	
 	setThumbWidthAndHeight(width, height) {
 		const thumb = this.getElementById("thumbnail");
+		
+		if (thumb == null) {
+			return;
+		}
+		
 		thumb.width = width;
 		thumb.height = height;
 	}
