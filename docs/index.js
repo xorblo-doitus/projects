@@ -220,11 +220,23 @@ document.getElementById("search-bar").addEventListener("input", function(event) 
 
 
 for (const filterContainer of document.getElementsByClassName("filters-container")) {
-	const expandButton = filterContainer.querySelector("expand-button")
+	const expandButton = filterContainer.querySelector("expand-button");
+	const headers = filterContainer.getElementsByClassName("filter-header");
+	
 	if (expandButton) {
 		expandButton.toggled.bind(() => {filterContainer.classList.toggle("open")});
+		
+		for (const header of headers) {
+			header.addEventListener("click", (event) => {
+				if (event.target == header) {
+					expandButton.toggle()
+				}
+			})
+		}
 	}
 }
+
+document.getElementById("tag-filter-header")
 
 if (HistoryHelper.getParameter("sortBy") == null && HistoryHelper.getParameter("sortRevert") == null) {
 	document.querySelector('sort-filter[sort-by="date"]').mode = -1;
