@@ -257,7 +257,8 @@ window.addEventListener(
 	"keydown",
 	function(event) {
 		if (event.ctrlKey && event.shiftKey && event.key == "s" || event.key == "S") {
-			navigator.clipboard.writeText(JSON.stringify(ProjectCard.fetchedImageURLs, null, "\t"));
+			navigator.clipboard.writeText(JSON.stringify(ProjectCard.fetchedImageURLs, null, "\t"))
+			.then(_=>console.log("Fallback images copied to clipboard"));
 		}
 	}
 );
