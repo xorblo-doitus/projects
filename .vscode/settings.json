@@ -13,6 +13,7 @@
 		"**/dist",
 		"**/tests"
 	],
+	"git.branchProtection": ["live"],
 	// "githubPullRequests.ignoredPullRequestBranches": [
 	//	 "main"
 	// ],
